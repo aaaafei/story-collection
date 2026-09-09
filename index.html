@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>故事收藏屋 · 绘本目录</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --paper:#FFFDF7;
+    --pink:#FFD9E5;
+    --pink-deep:#F59AB8;
+    --pink-soft:#FFECF2;
+    --blue:#CDEAF8;
+    --blue-deep:#7FB8D9;
+    --blue-soft:#E9F6FD;
+    --yellow:#FFF1C6;
+    --mint:#D9F2DE;
+    --mint-deep:#8FCBA4;
+    --lavender:#E9DDF6;
+    --ink:#5B4A43;
+    --ink-soft:#8A7368;
+    --radius-lg:30px;
+    --radius-md:20px;
+    --font-display:'ZCOOL KuaiLe','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+    --font-body:'Noto Sans SC','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(1200px 600px at 12% -5%, #FFE9F1 0%, transparent 60%),
+      radial-gradient(1000px 500px at 92% 6%, #E1F4FC 0%, transparent 55%),
+      radial-gradient(900px 500px at 50% 112%, #FDF3D8 0%, transparent 55%);
+  }
+  .wrap{max-width:1100px;margin:0 auto;padding:0 22px;width:100%;}
+
+  /* ===== Hero ===== */
+  .hero{
+    text-align:center;
+    padding:60px 0 36px;
+    animation:riseIn .7s ease both;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(46px,8vw,78px);
+    color:var(--pink-deep);
+    text-shadow:0 6px 0 #fff, 0 10px 24px rgba(245,154,184,.32);
+    letter-spacing:8px;
+    line-height:1.2;
+    margin-bottom:12px;
+  }
+  .hero .subtitle{
+    font-size:clamp(15px,2.4vw,18px);
+    color:var(--ink-soft);
+    letter-spacing:3px;
+    margin-bottom:16px;
+  }
+  .hero .count-badge{
+    display:inline-block;
+    font-size:14px;
+    color:var(--blue-deep);
+    background:var(--blue-soft);
+    border:1.5px solid #C2E2F4;
+    border-radius:999px;
+    padding:5px 20px;
+    letter-spacing:1px;
+  }
+
+  /* ===== 故事卡片网格 ===== */
+  .shelf{
+    padding:36px 0 20px;
+    animation:riseIn .7s .15s ease both;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:26px;
+  }
+  .card{
+    display:flex;
+    flex-direction:column;
+    background:var(--paper);
+    border-radius:var(--radius-lg);
+    overflow:hidden;
+    border:2px solid #F4E7DE;
+    box-shadow:0 14px 34px rgba(220,180,168,.14);
+    text-decoration:none;
+    color:inherit;
+    transition:transform .3s ease, box-shadow .3s ease;
+    position:relative;
+  }
+  .card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 22px 44px rgba(220,180,168,.26);
+  }
+  .card .cover{
+    aspect-ratio:16/10;
+    overflow:hidden;
+    background:var(--blue-soft);
+    line-height:0;
+  }
+  .card .cover img{
+    width:100%;height:100%;
+    object-fit:cover;
+    object-position:center 45%;
+    transition:transform .5s ease;
+  }
+  .card:hover .cover img{transform:scale(1.05);}
+  .card .info{
+    padding:18px 20px 22px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    flex:1;
+  }
+  .card .info h2{
+    font-family:var(--font-display);
+    font-size:24px;
+    letter-spacing:2px;
+    color:var(--ink);
+    line-height:1.3;
+  }
+  .card .info p{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    line-height:1.75;
+    flex:1;
+  }
+  .card .tags{
+    display:flex;flex-wrap:wrap;gap:8px;
+  }
+  .card .tags span{
+    font-size:12px;
+    color:var(--pink-deep);
+    background:var(--pink-soft);
+    border-radius:999px;
+    padding:2px 12px;
+  }
+  .card .go{
+    margin-top:4px;
+    font-family:var(--font-display);
+    font-size:15px;
+    letter-spacing:2px;
+    color:var(--blue-deep);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+  }
+  .card .go::after{
+    content:"→";
+    transition:transform .25s ease;
+  }
+  .card:hover .go::after{transform:translateX(4px);}
+
+  /* ===== 空状态 ===== */
+  .empty{
+    text-align:center;
+    padding:60px 20px;
+    background:var(--paper);
+    border:2px dashed #E8D5C9;
+    border-radius:var(--radius-lg);
+    color:var(--ink-soft);
+  }
+  .empty .big{
+    font-family:var(--font-display);
+    font-size:30px;
+    color:var(--pink-deep);
+    letter-spacing:3px;
+    margin-bottom:10px;
+  }
+
+  /* ===== 如何新增 ===== */
+  .howto{
+    padding:20px 0 44px;
+    animation:riseIn .7s .25s ease both;
+  }
+  .howto details{
+    background:var(--paper);
+    border:2px solid #F4E7DE;
+    border-radius:var(--radius-md);
+    padding:18px 24px;
+    cursor:pointer;
+  }
+  .howto summary{
+    font-family:var(--font-display);
+    font-size:18px;
+    letter-spacing:2px;
+    color:var(--mint-deep);
+    list-style:none;
+    user-select:none;
+  }
+  .howto summary::before{content:"＋ ";color:var(--mint-deep);}
+  .howto ol{
+    margin:14px 0 6px 20px;
+    color:var(--ink-soft);
+    font-size:14.5px;
+  }
+  .howto li{margin-bottom:8px;}
+  .howto code{
+    background:var(--blue-soft);
+    color:var(--blue-deep);
+    border-radius:6px;
+    padding:1px 8px;
+    font-size:13px;
+    word-break:break-all;
+  }
+
+  /* ===== 页脚 ===== */
+  footer{
+    margin-top:auto;
+    text-align:center;
+    padding:22px 0 32px;
+    font-size:13px;
+    color:#B49C91;
+    letter-spacing:1px;
+  }
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+
+  @media (max-width:640px){
+    .wrap{padding:0 16px;}
+    .hero{padding:42px 0 24px;}
+    .grid{gap:20px;}
+  }
+
+  @media print{
+    .howto,footer{display:none;}
+    body{background:#fff;}
+    .card{box-shadow:none;break-inside:avoid;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== Hero ===== -->
+<header class="hero">
+  <div class="wrap">
+    <h1>故事收藏屋</h1>
+    <p class="subtitle">我的绘本故事目录 · 点击封面开始阅读</p>
+    <span class="count-badge" id="countBadge">已收录 0 个故事</span>
+  </div>
+</header>
+
+<!-- ===== 故事卡片 ===== -->
+<section class="shelf">
+  <div class="wrap">
+    <div class="grid" id="storyGrid"></div>
+    <div class="empty" id="emptyState" hidden>
+      <p class="big">书架还空空的</p>
+      <p>添加第一个故事，让书架热闹起来吧！</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 如何新增 ===== -->
+<section class="howto">
+  <div class="wrap">
+    <details>
+      <summary>如何添加新故事</summary>
+      <ol>
+        <li>在本目录下新建一个故事文件夹（例如 <code>my-story/</code>），里面放好 <code>index.html</code> 和配图（建议放 <code>assets/</code> 子目录）。</li>
+        <li>打开本页面的 <code>index.html</code> 源码，在底部 <code>&lt;script&gt;</code> 的 <code>stories</code> 数组里复制一条记录，改成新故事的封面图路径、标题、简介和链接。</li>
+        <li>保存并刷新本页，新故事卡片会自动出现。</li>
+      </ol>
+    </details>
+  </div>
+</section>
+
+<footer>故事收藏屋 · 每一个故事都是小小世界</footer>
+
+<script>
+  // ===== 故事数据：新增故事时，在这里复制一条记录并修改 =====
+  // cover: 封面图路径（相对本页面）
+  // title: 故事标题
+  // desc: 一句话简介
+  // tags: 标签数组
+  // link: 故事首页 HTML 的相对路径
+  const stories = [
+    {
+      cover: "labu-princess-picturebook/assets/page-01.jpg",
+      title: "拉不下公主",
+      desc: "屁屁城堡里住着最爱偷懒的拉不下公主，挑食不喝水，肚子怪怪的！屁屁小精灵飞来支招：喝水水、吃果蔬、蹦跳跳，一起捉弄懒粑粑！",
+      tags: ["适龄 2-6 岁", "调皮搞笑", "低幼治愈"],
+      link: "labu-princess-picturebook/index.html"
+    },
+    {
+      cover: "rose-princess-picturebook/assets/page-01.jpg",
+      title: "蔷薇公主的玫瑰公主花",
+      desc: "彩虹城堡里，蔷薇公主种下一颗神奇的玫瑰公主花种子，浇水、唱歌、撒星光，用心照顾……直到花苞「嘭」地绽放，开出了一位蓝色的小玫瑰公主！",
+      tags: ["适龄 3-6 岁", "温柔治愈", "梦幻想象"],
+      link: "rose-princess-picturebook/index.html"
+    },
+    {
+      cover: "sneeze-princess-picturebook/assets/page-01.jpg",
+      title: "打喷嚏公主",
+      desc: "云朵城堡里住着一位喷嚏力气特别大的可爱公主，一个喷嚏能吹跑茶杯和小鸟。云朵小精灵飞来告诉她：打喷嚏不是坏事情，用手帕接住就好啦！",
+      tags: ["适龄 3-6 岁", "温柔治愈", "接纳自己"],
+      link: "sneeze-princess-picturebook/index.html"
+    }
+  ];
+
+  // ===== 渲染 =====
+  const grid = document.getElementById("storyGrid");
+  const empty = document.getElementById("emptyState");
+  const badge = document.getElementById("countBadge");
+
+  function render(){
+    badge.textContent = "已收录 " + stories.length + " 个故事";
+    if(stories.length === 0){
+      grid.innerHTML = "";
+      empty.hidden = false;
+      return;
+    }
+    empty.hidden = true;
+    grid.innerHTML = stories.map(function(s, i){
+      return '<a class="card" href="' + s.link + '">' +
+        '<div class="cover"><img src="' + s.cover + '" alt="' + s.title + '" loading="lazy"></div>' +
+        '<div class="info">' +
+          '<h2>' + s.title + '</h2>' +
+          '<p>' + s.desc + '</p>' +
+          '<div class="tags">' + s.tags.map(function(t){return "<span>" + t + "</span>";}).join("") + '</div>' +
+          '<span class="go">开始阅读</span>' +
+        '</div>' +
+      '</a>';
+    }).join("");
+  }
+  render();
+</script>
+
+</body>
+</html>
