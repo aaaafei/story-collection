@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>蔷薇公主和玫瑰公主 · 儿童绘本</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --paper:#FFFDF7;
+    --pink:#FFD9E5;
+    --pink-deep:#F59AB8;
+    --pink-soft:#FFECF2;
+    --blue:#CDEAF8;
+    --blue-deep:#7FB8D9;
+    --blue-soft:#E9F6FD;
+    --lavender:#E9DDF6;
+    --lavender-deep:#B49AE0;
+    --lavender-soft:#F3ECFB;
+    --mint:#D9F2DE;
+    --mint-deep:#7FB88E;
+    --mint-soft:#EFFAF2;
+    --ink:#5B4A43;
+    --ink-soft:#8A7368;
+    --radius-lg:34px;
+    --radius-md:22px;
+    --font-display:'ZCOOL KuaiLe','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+    --font-body:'Noto Sans SC','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  /* ===== 装饰背景：粉蓝梦幻光晕 ===== */
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(1200px 600px at 15% -5%, #FFE9F1 0%, transparent 60%),
+      radial-gradient(1000px 500px at 90% 8%, #E1F4FC 0%, transparent 55%),
+      radial-gradient(900px 500px at 50% 110%, #F3ECFB 0%, transparent 55%);
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px;}
+
+  /* ===== 返回目录悬浮按钮 ===== */
+  .back-home{
+    position:fixed;
+    top:16px;left:16px;
+    z-index:50;
+    font-family:var(--font-display);
+    font-size:14px;
+    letter-spacing:1px;
+    color:var(--lavender-deep);
+    background:rgba(255,255,255,.92);
+    border:2px solid #D8C6F0;
+    border-radius:999px;
+    padding:7px 18px;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(180,154,224,.28);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .back-home:hover{transform:translateX(-3px);box-shadow:0 10px 24px rgba(180,154,224,.38);}
+
+  /* ===== 封面 Hero ===== */
+  .hero{
+    position:relative;
+    padding:52px 0 40px;
+    text-align:center;
+  }
+  .hero .page-tag{
+    display:inline-block;
+    font-family:var(--font-display);
+    font-size:15px;
+    letter-spacing:3px;
+    color:var(--pink-deep);
+    background:var(--pink-soft);
+    border:2px dashed #F8C7D8;
+    border-radius:999px;
+    padding:6px 20px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(40px,7.5vw,74px);
+    color:var(--pink-deep);
+    text-shadow:0 6px 0 #fff, 0 10px 24px rgba(245,154,184,.35);
+    letter-spacing:6px;
+    line-height:1.2;
+    margin-bottom:10px;
+  }
+  .hero .subtitle{
+    font-size:clamp(16px,2.6vw,21px);
+    color:var(--blue-deep);
+    font-weight:500;
+    letter-spacing:2px;
+    margin-bottom:8px;
+  }
+  .hero .meta-line{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+    margin:16px 0 26px;
+  }
+  .hero .meta-line span{
+    font-size:13.5px;color:var(--ink-soft);
+    background:#fff;border:1.5px solid #F2E4DA;
+    border-radius:999px;padding:5px 15px;
+  }
+  .hero .cover-frame{
+    position:relative;
+    max-width:760px;margin:0 auto;
+    border-radius:var(--radius-lg);
+    padding:14px;
+    background:linear-gradient(160deg,#fff 0%,var(--pink-soft) 100%);
+    box-shadow:0 22px 60px rgba(245,154,184,.26);
+  }
+  .hero .cover-frame img{
+    display:block;width:100%;height:auto;
+    border-radius:calc(var(--radius-lg) - 10px);
+  }
+  .hero .cover-line{
+    max-width:700px;margin:26px auto 0;
+    font-family:var(--font-display);
+    font-size:clamp(19px,3vw,24px);
+    color:var(--lavender-deep);
+    letter-spacing:1px;
+  }
+
+  /* ===== 人物介绍 ===== */
+  .characters{
+    padding:44px 0 8px;
+  }
+  .section-title{
+    text-align:center;
+    font-family:var(--font-display);
+    font-size:clamp(26px,4vw,34px);
+    color:var(--ink);
+    margin-bottom:8px;
+    letter-spacing:2px;
+  }
+  .section-note{
+    text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:24px;
+  }
+  .char-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;
+  }
+  .char-card{
+    background:var(--paper);
+    border-radius:var(--radius-md);
+    padding:26px 24px;
+    border:2px solid #F4E7DE;
+    position:relative;
+    overflow:hidden;
+  }
+  .char-card.c1{background:linear-gradient(160deg,#fff,var(--pink-soft));}
+  .char-card.c2{background:linear-gradient(160deg,#fff,var(--blue-soft));}
+  .char-card.c3{background:linear-gradient(160deg,#fff,var(--lavender-soft));}
+  .char-card.c4{background:linear-gradient(160deg,#fff,var(--mint-soft));}
+  .char-card h3{
+    font-family:var(--font-display);
+    font-size:22px;letter-spacing:2px;margin-bottom:10px;
+  }
+  .char-card.c1 h3{color:var(--pink-deep);}
+  .char-card.c2 h3{color:var(--blue-deep);}
+  .char-card.c3 h3{color:var(--lavender-deep);}
+  .char-card.c4 h3{color:var(--mint-deep);}
+  .char-card p{font-size:15px;color:var(--ink-soft);}
+  .char-card .badge{
+    display:inline-block;font-size:12px;color:#fff;
+    border-radius:999px;padding:3px 12px;margin-bottom:10px;letter-spacing:1px;
+  }
+  .char-card.c1 .badge{background:var(--pink-deep);}
+  .char-card.c2 .badge{background:var(--blue-deep);}
+  .char-card.c3 .badge{background:var(--lavender-deep);}
+  .char-card.c4 .badge{background:var(--mint-deep);}
+
+  /* ===== 故事正文 ===== */
+  .story{
+    padding:44px 0 10px;
+  }
+  .story .intro{
+    text-align:center;font-size:15px;color:var(--ink-soft);margin-bottom:30px;
+  }
+  .page{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    gap:26px;
+    align-items:center;
+    background:var(--paper);
+    border-radius:var(--radius-lg);
+    padding:26px;
+    margin-bottom:30px;
+    border:2px solid #F4E7DE;
+    box-shadow:0 14px 34px rgba(180,154,224,.14);
+    position:relative;
+  }
+  .page .img-box{
+    border-radius:calc(var(--radius-md) - 6px);
+    overflow:hidden;
+    background:var(--lavender-soft);
+    line-height:0;
+  }
+  .page .img-box img{
+    display:block;width:100%;height:auto;
+    transition:transform .5s ease;
+  }
+  .page .img-box:hover img{transform:scale(1.03);}
+  .page .text-box{
+    padding:6px 10px;
+    position:relative;
+  }
+  .page .text-box .p-no{
+    font-family:var(--font-display);
+    font-size:14px;letter-spacing:2px;
+    display:inline-block;
+    border-radius:999px;padding:4px 16px;margin-bottom:14px;
+  }
+  .page .text-box h2{
+    font-family:var(--font-display);
+    font-size:clamp(24px,3.4vw,30px);
+    letter-spacing:1px;
+    margin-bottom:14px;
+    line-height:1.4;
+  }
+  .page .text-box .quote{
+    font-size:clamp(16.5px,2.4vw,19px);
+    color:var(--ink);
+    line-height:2;
+    position:relative;
+    padding-left:20px;
+    border-left:5px solid var(--pink);
+    border-radius:2px;
+  }
+  /* 页面主题色：粉蓝交替错落 */
+  .page:nth-of-type(even) .p-no,.page:nth-of-type(even) h2{color:var(--blue-deep);}
+  .page:nth-of-type(even) .p-no{background:var(--blue-soft);border:1.5px solid #C2E2F4;}
+  .page:nth-of-type(even) .quote{border-left-color:var(--blue);}
+  .page:nth-of-type(odd) .p-no,.page:nth-of-type(odd) h2{color:var(--pink-deep);}
+  .page:nth-of-type(odd) .p-no{background:var(--pink-soft);border:1.5px solid #F8C7D8;}
+  .page:nth-of-type(odd) .quote{border-left-color:var(--pink);}
+
+  /* ===== 结尾 ===== */
+  .ending{
+    text-align:center;
+    padding:40px 0 56px;
+  }
+  .ending .the-end{
+    font-family:var(--font-display);
+    font-size:clamp(34px,6vw,52px);
+    color:var(--lavender-deep);
+    letter-spacing:10px;
+    text-shadow:0 4px 0 #fff, 0 8px 20px rgba(180,154,224,.3);
+    margin-bottom:10px;
+  }
+  .ending p{color:var(--ink-soft);font-size:15px;}
+
+  footer{
+    text-align:center;padding:22px 0 34px;
+    font-size:13px;color:#B49C91;
+    letter-spacing:1px;
+  }
+
+  /* ===== 动画（加载时依次淡入上浮） ===== */
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero{animation:riseIn .7s ease both;}
+  .characters{animation:riseIn .7s .12s ease both;}
+  .story{animation:riseIn .7s .22s ease both;}
+  .ending{animation:riseIn .7s .3s ease both;}
+
+  /* ===== 响应式 ===== */
+  @media (max-width:820px){
+    .page{grid-template-columns:1fr;padding:20px;}
+    .page .text-box{padding:6px 4px 2px;}
+    .wrap{padding:0 16px;}
+    .hero{padding:38px 0 28px;}
+  }
+
+  /* ===== 打印：每页卡片一页 ===== */
+  @media print{
+    .hero .cover-frame{box-shadow:none;}
+    .page,.char-card{box-shadow:none;break-inside:avoid;}
+    .page{grid-template-columns:1fr 1fr;page-break-inside:avoid;}
+    footer{display:none;}
+    body{background:#fff;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== 返回目录 ===== -->
+<a class="back-home" href="../index.html">← 返回故事目录</a>
+
+<!-- ===== 封面 Hero：第1页 封面 ===== -->
+<header class="hero">
+  <div class="wrap">
+    <span class="page-tag">系列故事 · 第二篇</span>
+    <h1>蔷薇公主和玫瑰公主</h1>
+    <p class="subtitle">种花诞生的好姐妹 · 勇敢救姐姐</p>
+    <div class="meta-line">
+      <span>适读年龄 3-6 岁</span>
+      <span>调皮可爱</span>
+      <span>勇敢求助</span>
+      <span>水彩画风</span>
+    </div>
+    <div class="cover-frame">
+      <img src="assets/page-01.jpg" alt="封面：蔷薇公主在花园里种下玫瑰种子">
+    </div>
+    <p class="cover-line">百花城堡里，调皮的蔷薇公主种出一位玫瑰小公主，从此她们成了最好的姐妹！</p>
+  </div>
+</header>
+
+<!-- ===== 人物介绍 ===== -->
+<section class="characters">
+  <div class="wrap">
+    <h2 class="section-title">登场小主角</h2>
+    <p class="section-note">马卡龙柔和画风 · 水彩晕染 · 圆润软萌 · 高清适合打印</p>
+    <div class="char-grid">
+      <div class="char-card c1">
+        <span class="badge">姐姐 · 主角</span>
+        <h3>蔷薇公主</h3>
+        <p>穿着粉红色蓬蓬裙，浅棕卷发上别着粉色小花。活泼调皮，最爱种花和捣蛋，是玫瑰公主最亲的好姐姐。</p>
+      </div>
+      <div class="char-card c2">
+        <span class="badge">妹妹 · 主角</span>
+        <h3>玫瑰公主</h3>
+        <p>穿着蓝色蓬蓬裙，蓝色软卷发，眼睛亮晶晶。她是蔷薇公主亲手种出来的宝贝公主，软萌又勇敢。</p>
+      </div>
+      <div class="char-card c3">
+        <span class="badge">爸爸妈妈</span>
+        <h3>国王和王后</h3>
+        <p>温柔又厉害的花国王、花王后，穿着华丽的礼服，是两位公主最可靠的守护者。</p>
+      </div>
+      <div class="char-card c4">
+        <span class="badge">调皮小妖怪</span>
+        <h3>小风妖怪</h3>
+        <p>白色毛茸茸的云朵小妖怪，长得软萌可爱，只是太贪玩啦，总想找人陪它玩。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 故事正文：第2-8页 ===== -->
+<section class="story">
+  <div class="wrap">
+    <p class="intro">翻开故事，看看玫瑰公主怎样勇敢地把姐姐救回来</p>
+
+    <!-- 第2页 -->
+    <article class="page">
+      <div class="img-box"><img src="assets/page-02.jpg" alt="种出玫瑰小公主"></div>
+      <div class="text-box">
+        <span class="p-no">第 2 页</span>
+        <h2>种出玫瑰小公主</h2>
+        <p class="quote">蔷薇公主最喜欢种花。她得到一颗闪闪发光的玫瑰种子，小心地种进花园的泥土里，天天浇水、晒太阳。玫瑰花终于开啦——花里竟然变出一位穿蓝色蓬蓬裙的玫瑰小公主！</p>
+      </div>
+    </article>
+
+    <!-- 第3页 -->
+    <article class="page">
+      <div class="img-box"><img src="assets/page-03.jpg" alt="最要好的小姐妹"></div>
+      <div class="text-box">
+        <span class="p-no">第 3 页</span>
+        <h2>最要好的小姐妹</h2>
+        <p class="quote">姐姐蔷薇公主活泼调皮，妹妹玫瑰公主勇敢机灵。她们天天一起追蝴蝶、玩花草、调皮打闹，花园里到处都是她们的笑声。</p>
+      </div>
+    </article>
+
+    <!-- 第4页 -->
+    <article class="page">
+      <div class="img-box"><img src="assets/page-04.jpg" alt="小风妖怪抓走姐姐"></div>
+      <div class="text-box">
+        <span class="p-no">第 4 页</span>
+        <h2>小风妖怪抓走姐姐</h2>
+        <p class="quote">这天下午，调皮的蔷薇公主偷偷跑出花园，想去森林边摘漂亮的小野花。森林里住着贪玩的小风妖怪——「呼——」一阵风卷来，蔷薇公主被带到了高高的树顶小阁楼！</p>
+      </div>
+    </article>
+
+    <!-- 第5页 -->
+    <article class="page">
+      <div class="img-box"><img src="assets/page-05.jpg" alt="勇敢的玫瑰公主"></div>
+      <div class="text-box">
+        <span class="p-no">第 5 页</span>
+        <h2>勇敢的玫瑰公主</h2>
+        <p class="quote">玫瑰公主听见姐姐的呼救，勇敢地冲进森林。她握紧小拳头，想用小花魔法救姐姐——可是她刚诞生不久，本领还小小的，跳不高、魔法也不够强，怎么都够不到树顶。</p>
+      </div>
+    </article>
+
+    <!-- 第6页 -->
+    <article class="page">
+      <div class="img-box"><img src="assets/page-06.jpg" alt="找爸爸妈妈帮忙"></div>
+      <div class="text-box">
+        <span class="p-no">第 6 页</span>
+        <h2>找爸爸妈妈帮忙</h2>
+        <p class="quote">玫瑰公主没有哭，也没有逞强。她聪明地想：我自己不行，一定要找爸爸妈妈帮忙！她飞快跑回家，大声喊：「爸爸！妈妈！蔷薇姐姐被风妖怪抓走啦！快来帮忙呀！」</p>
+      </div>
+    </article>
+
+    <!-- 第7页 -->
+    <article class="page">
+      <div class="img-box"><img src="assets/page-07.jpg" alt="魔法救出蔷薇公主"></div>
+      <div class="text-box">
+        <span class="p-no">第 7 页</span>
+        <h2>魔法救出蔷薇公主</h2>
+        <p class="quote">国王挥动魔法权杖，王后洒出香香的花香魔力。调皮的小风妖怪变得乖乖的，蔷薇公主安全地落下来啦！</p>
+      </div>
+    </article>
+
+    <!-- 第8页 -->
+    <article class="page">
+      <div class="img-box"><img src="assets/page-08.jpg" alt="永远在一起"></div>
+      <div class="text-box">
+        <span class="p-no">第 8 页</span>
+        <h2>永远在一起</h2>
+        <p class="quote">蔷薇公主扑进妹妹和爸爸妈妈的怀里：「我以后再也不偷偷乱跑啦！」姐妹俩紧紧牵手，在百花花园里开开心心长大，永远不分开。</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ===== 结尾 ===== -->
+<section class="ending">
+  <div class="wrap">
+    <p class="the-end">完</p>
+    <p>蔷薇公主和玫瑰公主讲完啦，遇到困难不要怕，自己不行，一定要找爸爸妈妈帮忙哦</p>
+  </div>
+</section>
+
+<footer>《蔷薇公主和玫瑰公主》· 系列第二篇 · 献给勇敢又爱家人的小宝贝</footer>
+
+</body>
+</html>

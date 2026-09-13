@@ -80,6 +80,55 @@
     letter-spacing:1px;
   }
 
+  /* ===== 系列分组标题 ===== */
+  .series-head{
+    text-align:center;
+    padding:14px 0 22px;
+    animation:riseIn .7s .1s ease both;
+  }
+  .series-badge{
+    display:inline-block;
+    font-size:13px;
+    letter-spacing:2px;
+    color:#fff;
+    background:var(--pink-deep);
+    border-radius:999px;
+    padding:4px 18px;
+    margin-bottom:12px;
+  }
+  .series-title{
+    font-family:var(--font-display);
+    font-size:clamp(30px,4.6vw,44px);
+    color:var(--pink-deep);
+    letter-spacing:5px;
+    margin-bottom:6px;
+    line-height:1.3;
+  }
+  .series-desc{
+    font-size:15px;
+    color:var(--ink-soft);
+    letter-spacing:1px;
+  }
+  .other-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin:46px 0 18px;
+    animation:riseIn .7s .15s ease both;
+  }
+  .other-title{
+    font-family:var(--font-display);
+    font-size:22px;
+    letter-spacing:3px;
+    color:var(--blue-deep);
+    white-space:nowrap;
+  }
+  .other-head::after{
+    content:"";flex:1;height:2px;
+    background:linear-gradient(90deg,var(--blue) 0%,transparent 100%);
+    border-radius:2px;
+  }
+
   /* ===== 故事卡片网格 ===== */
   .shelf{
     padding:36px 0 20px;
@@ -103,7 +152,7 @@
     transition:transform .3s ease, box-shadow .3s ease;
     position:relative;
   }
-  .card:hover{
+  a.card:hover{
     transform:translateY(-8px);
     box-shadow:0 22px 44px rgba(220,180,168,.26);
   }
@@ -119,7 +168,7 @@
     object-position:center 45%;
     transition:transform .5s ease;
   }
-  .card:hover .cover img{transform:scale(1.05);}
+  a.card:hover .cover img{transform:scale(1.05);}
   .card .info{
     padding:18px 20px 22px;
     display:flex;
@@ -160,11 +209,42 @@
     align-items:center;
     gap:6px;
   }
-  .card .go::after{
+  a.card .go::after{
     content:"→";
     transition:transform .25s ease;
   }
-  .card:hover .go::after{transform:translateX(4px);}
+  a.card:hover .go::after{transform:translateX(4px);}
+
+  /* ===== 系列卡片（暂不可点击） ===== */
+  .card.card-locked{
+    cursor:default;
+    border-color:#F6DDE5;
+    background:linear-gradient(170deg,var(--paper) 0%,var(--pink-soft) 130%);
+  }
+  .card.card-locked .go{
+    color:var(--pink-deep);
+  }
+  .card.card-locked .go::before{
+    content:"✿ ";
+  }
+  .card.card-locked .go::after{
+    content:"系列连载中 · 敬请期待";
+    font-family:var(--font-body);
+    font-size:12.5px;
+    letter-spacing:1px;
+    color:var(--ink-soft);
+  }
+  .card .series-tag{
+    position:absolute;
+    top:12px;right:12px;
+    z-index:2;
+    font-size:12px;
+    letter-spacing:1px;
+    color:#fff;
+    background:rgba(245,154,184,.92);
+    border-radius:999px;
+    padding:3px 12px;
+  }
 
   /* ===== 空状态 ===== */
   .empty{
@@ -238,6 +318,7 @@
     .wrap{padding:0 16px;}
     .hero{padding:42px 0 24px;}
     .grid{gap:20px;}
+    .other-head{margin-top:34px;}
   }
 
   @media print{
@@ -254,7 +335,7 @@
 <header class="hero">
   <div class="wrap">
     <h1>故事收藏屋</h1>
-    <p class="subtitle">我的绘本故事目录 · 点击封面开始阅读</p>
+    <p class="subtitle">我的绘本故事目录</p>
     <span class="count-badge" id="countBadge">已收录 0 个故事</span>
   </div>
 </header>
@@ -262,7 +343,21 @@
 <!-- ===== 故事卡片 ===== -->
 <section class="shelf">
   <div class="wrap">
+
+    <!-- 蔷薇公主系列：集中展示（平铺，暂不可点击） -->
+    <div class="series-head" id="seriesHead" hidden>
+      <span class="series-badge">连载中</span>
+      <h2 class="series-title">蔷薇公主系列</h2>
+      <p class="series-desc">种花诞生的姐妹花故事，新故事会陆续加入这里</p>
+    </div>
+    <div class="grid" id="seriesGrid"></div>
+
+    <!-- 其他故事 -->
+    <div class="other-head" id="otherHead" hidden>
+      <h2 class="other-title">其他故事</h2>
+    </div>
     <div class="grid" id="storyGrid"></div>
+
     <div class="empty" id="emptyState" hidden>
       <p class="big">书架还空空的</p>
       <p>添加第一个故事，让书架热闹起来吧！</p>
@@ -278,6 +373,7 @@
       <ol>
         <li>在本目录下新建一个故事文件夹（例如 <code>my-story/</code>），里面放好 <code>index.html</code> 和配图（建议放 <code>assets/</code> 子目录）。</li>
         <li>打开本页面的 <code>index.html</code> 源码，在底部 <code>&lt;script&gt;</code> 的 <code>stories</code> 数组里复制一条记录，改成新故事的封面图路径、标题、简介和链接。</li>
+        <li>属于「蔷薇公主系列」的故事，在记录里加上 <code>series: "蔷薇公主系列"</code> 字段，会自动归入系列分组。</li>
         <li>保存并刷新本页，新故事卡片会自动出现。</li>
       </ol>
     </details>
@@ -292,21 +388,32 @@
   // title: 故事标题
   // desc: 一句话简介
   // tags: 标签数组
-  // link: 故事首页 HTML 的相对路径
+  // link: 故事首页 HTML 的相对路径（留空表示暂不开放阅读）
+  // series: 所属系列（可选，如 "蔷薇公主系列"）
+  const SERIES = "蔷薇公主系列";
   const stories = [
+    {
+      series: SERIES,
+      cover: "rose-princess-picturebook/assets/page-01.jpg",
+      title: "蔷薇公主的玫瑰公主花",
+      desc: "系列开篇：彩虹城堡里，蔷薇公主种下一颗神奇的玫瑰公主花种子，浇水、唱歌、撒星光，用心照顾……直到花苞「嘭」地绽放，开出了一位蓝色的小玫瑰公主！",
+      tags: ["系列开篇", "温柔治愈", "梦幻想象"],
+      link: ""
+    },
+    {
+      series: SERIES,
+      cover: "rose-sisters-picturebook/assets/page-01.jpg",
+      title: "蔷薇公主和玫瑰公主",
+      desc: "系列第二篇：蔷薇公主种出一位穿蓝裙子的玫瑰小公主，姐妹俩好得不得了。一天，贪玩的小风妖怪抓走了蔷薇公主，勇敢的玫瑰公主立刻去救，可是本领不够——她马上跑回家喊来国王王后，一起把姐姐救回来！",
+      tags: ["调皮勇敢", "亲情救援", "勇敢求助"],
+      link: ""
+    },
     {
       cover: "labu-princess-picturebook/assets/page-01.jpg",
       title: "拉不下公主",
       desc: "屁屁城堡里住着最爱偷懒的拉不下公主，挑食不喝水，肚子怪怪的！屁屁小精灵飞来支招：喝水水、吃果蔬、蹦跳跳，一起捉弄懒粑粑！",
       tags: ["适龄 2-6 岁", "调皮搞笑", "低幼治愈"],
       link: "labu-princess-picturebook/index.html"
-    },
-    {
-      cover: "rose-princess-picturebook/assets/page-01.jpg",
-      title: "蔷薇公主的玫瑰公主花",
-      desc: "彩虹城堡里，蔷薇公主种下一颗神奇的玫瑰公主花种子，浇水、唱歌、撒星光，用心照顾……直到花苞「嘭」地绽放，开出了一位蓝色的小玫瑰公主！",
-      tags: ["适龄 3-6 岁", "温柔治愈", "梦幻想象"],
-      link: "rose-princess-picturebook/index.html"
     },
     {
       cover: "sneeze-princess-picturebook/assets/page-01.jpg",
@@ -318,29 +425,43 @@
   ];
 
   // ===== 渲染 =====
+  const seriesHead = document.getElementById("seriesHead");
+  const seriesGrid = document.getElementById("seriesGrid");
+  const otherHead = document.getElementById("otherHead");
   const grid = document.getElementById("storyGrid");
   const empty = document.getElementById("emptyState");
   const badge = document.getElementById("countBadge");
 
+  function cardHTML(s){
+    var locked = !s.link;
+    var body =
+      '<div class="cover"><img src="' + s.cover + '" alt="' + s.title + '" loading="lazy"></div>' +
+      '<div class="info">' +
+        (locked ? '<span class="series-tag">系列故事</span>' : "") +
+        '<h2>' + s.title + '</h2>' +
+        '<p>' + s.desc + '</p>' +
+        '<div class="tags">' + s.tags.map(function(t){return "<span>" + t + "</span>";}).join("") + '</div>' +
+        (locked
+          ? '<span class="go"></span>'
+          : '<span class="go">开始阅读</span>') +
+      '</div>';
+    return locked
+      ? '<div class="card card-locked">' + body + '</div>'
+      : '<a class="card" href="' + s.link + '">' + body + '</a>';
+  }
+
   function render(){
     badge.textContent = "已收录 " + stories.length + " 个故事";
-    if(stories.length === 0){
-      grid.innerHTML = "";
-      empty.hidden = false;
-      return;
-    }
-    empty.hidden = true;
-    grid.innerHTML = stories.map(function(s, i){
-      return '<a class="card" href="' + s.link + '">' +
-        '<div class="cover"><img src="' + s.cover + '" alt="' + s.title + '" loading="lazy"></div>' +
-        '<div class="info">' +
-          '<h2>' + s.title + '</h2>' +
-          '<p>' + s.desc + '</p>' +
-          '<div class="tags">' + s.tags.map(function(t){return "<span>" + t + "</span>";}).join("") + '</div>' +
-          '<span class="go">开始阅读</span>' +
-        '</div>' +
-      '</a>';
-    }).join("");
+    empty.hidden = stories.length > 0;
+
+    var series = stories.filter(function(s){return s.series === SERIES;});
+    var others = stories.filter(function(s){return s.series !== SERIES;});
+
+    seriesHead.hidden = series.length === 0;
+    seriesGrid.innerHTML = series.map(cardHTML).join("");
+
+    otherHead.hidden = others.length === 0;
+    grid.innerHTML = others.map(cardHTML).join("");
   }
   render();
 </script>
