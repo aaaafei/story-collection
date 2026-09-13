@@ -8,11 +8,24 @@
 |--------|------|------|
 | `rose-princess-front.jpg` | 蔷薇公主 · 正面全身 | 已生成 |
 | `rose-princess-bust.jpg` | 蔷薇公主 · 半身特写 | 已生成 |
-| `blue-rose-princess-front.jpg` | 玫瑰公主 · 正面全身 | 已生成 |
-| `blue-rose-princess-bust.jpg` | 玫瑰公主 · 半身特写 | 已生成 |
+| `rose-princess-side.jpg` | 蔷薇公主 · 侧面全身 | 已生成 |
+| `rose-princess-back.jpg` | 蔷薇公主 · 背面全身 | 已生成 |
+| `blue-rose-princess-front.jpg` | 玫瑰公主 · 正面全身（浅黑色软卷发） | 已生成 |
+| `blue-rose-princess-bust.jpg` | 玫瑰公主 · 半身特写（浅黑色软卷发） | 已生成 |
+| `blue-rose-princess-side.jpg` | 玫瑰公主 · 侧面全身（浅黑色软卷发） | 已生成 |
+| `blue-rose-princess-back.jpg` | 玫瑰公主 · 背面全身（浅黑色软卷发） | 已生成 |
 | `king-front.jpg` | 国王 · 正面全身 | 已生成 |
+| `king-side.jpg` | 国王 · 侧面全身 | 已生成 |
+| `king-back.jpg` | 国王 · 背面全身 | 已生成 |
 | `queen-front.jpg` | 王后 · 正面全身 | 已生成 |
+| `queen-side.jpg` | 王后 · 侧面全身 | 已生成 |
+| `queen-back.jpg` | 王后 · 背面全身 | 已生成 |
 | `wind-sprite-front.jpg` | 小风妖怪 · 正面 | 已生成 |
+| `wind-sprite-side.jpg` | 小风妖怪 · 侧面 | 已生成 |
+| `wind-sprite-back.jpg` | 小风妖怪 · 背面 | 已生成 |
+
+> 2026-09-13 更新：玫瑰公主发色调整为**浅黑色软卷发**（原蓝色软卷发），
+> `front` / `bust` 已按新形象重新生成；全角色补齐侧面、背面多角度标准照。
 
 ## 标准照怎么生成
 

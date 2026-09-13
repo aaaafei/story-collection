@@ -3,7 +3,7 @@
 > **唯一真相来源。** 各册 `prompts.md` 禁止另写冲突的外形 / 性格描述。  
 > 改外形时：先改本文 + 更新 `refs/` 标准照，再决定是否重渲旧书。  
 > 改性格时：先改本文「性格设定」，再写新故事；旧册文字可按需同步。  
-> 最后更新：2026-09-13（已补两位公主性格初稿，可再调）
+> 最后更新：2026-09-13（玫瑰公主发色调整为浅黑色软卷发；补充全角色多角度参考图）
 
 ---
 
@@ -53,7 +53,7 @@
 
 **禁止项：** 金发 / 金冠卷发、换裙色、成人比例、写实脸、无发饰。
 
-**标准参考图：** `refs/rose-princess-front.jpg`、`refs/rose-princess-bust.jpg`
+**标准参考图：** `refs/rose-princess-front.jpg`、`refs/rose-princess-bust.jpg`、`refs/rose-princess-side.jpg`、`refs/rose-princess-back.jpg`
 
 ---
 
@@ -63,7 +63,7 @@
 |---|---|
 | 身份 | 蔷薇公主亲手种出的宝贝公主、妹妹 |
 | 年龄感 | Q 版幼儿公主，可比姐姐略小一点 |
-| 发型发色 | **蓝色软卷发** |
+| 发型发色 | **浅黑色软卷发** |
 | 发饰 | 蓝色小花发饰 |
 | 服装 | 蓝色蓬蓬公主裙（可带少量蕾丝细节，主色必须是蓝） |
 | 眼睛 | 亮晶晶，像小星辰 |
@@ -85,12 +85,12 @@
 
 **Prompt 固定段（复制用）：**
 ```
-蓝色软卷发、头戴蓝色小花发饰、穿蓝色蓬蓬公主裙、眼睛亮晶晶的玫瑰公主（Q版软萌小公主）
+浅黑色软卷发、头戴蓝色小花发饰、穿蓝色蓬蓬公主裙、眼睛亮晶晶的玫瑰公主（Q版软萌小公主）
 ```
 
-**禁止项：** 粉裙、棕发/金发、成人比例、写实脸、无发饰。
+**禁止项：** 粉裙、蓝发/棕发/金发、成人比例、写实脸、无发饰。
 
-**标准参考图：** `refs/blue-rose-princess-front.jpg`、`refs/blue-rose-princess-bust.jpg`
+**标准参考图：** `refs/blue-rose-princess-front.jpg`、`refs/blue-rose-princess-bust.jpg`、`refs/blue-rose-princess-side.jpg`、`refs/blue-rose-princess-back.jpg`
 
 ---
 
@@ -121,7 +121,7 @@
 正常华丽人形形象的国王（深红色镶金王袍、金色王冠、慈祥面容）
 ```
 
-**标准参考图：** `refs/king-front.jpg`
+**标准参考图：** `refs/king-front.jpg`、`refs/king-side.jpg`、`refs/king-back.jpg`
 
 ---
 
@@ -139,7 +139,7 @@
 正常华丽人形形象的王后（淡紫色优雅长裙礼服、金色小皇冠、温柔面容）
 ```
 
-**标准参考图：** `refs/queen-front.jpg`
+**标准参考图：** `refs/queen-front.jpg`、`refs/queen-side.jpg`、`refs/queen-back.jpg`
 
 ---
 
@@ -178,7 +178,7 @@
 软萌可爱的云朵状小妖怪（白色毛茸茸云朵身体、圆圆大眼睛、蓝色小脸、带小翅膀，笑容顽皮，不恐怖）
 ```
 
-**标准参考图：** `refs/wind-sprite-front.jpg`
+**标准参考图：** `refs/wind-sprite-front.jpg`、`refs/wind-sprite-side.jpg`、`refs/wind-sprite-back.jpg`
 
 ---
 
@@ -199,5 +199,5 @@
 两人都出场时，可直接粘贴：
 
 ```
-两位Q版小公主：浅棕色微卷长发、头戴粉色小花发饰、穿粉红色蓬蓬公主裙的蔷薇公主（姐姐）；蓝色软卷发、头戴蓝色小花发饰、穿蓝色蓬蓬公主裙的玫瑰公主（妹妹）
+两位Q版小公主：浅棕色微卷长发、头戴粉色小花发饰、穿粉红色蓬蓬公主裙的蔷薇公主（姐姐）；浅黑色软卷发、头戴蓝色小花发饰、穿蓝色蓬蓬公主裙的玫瑰公主（妹妹）
 ```
