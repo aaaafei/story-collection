@@ -23,9 +23,14 @@
 | `wind-sprite-front.jpg` | 小风妖怪 · 正面 | 已生成 |
 | `wind-sprite-side.jpg` | 小风妖怪 · 侧面 | 已生成 |
 | `wind-sprite-back.jpg` | 小风妖怪 · 背面 | 已生成 |
+| `underground-princess-front.jpg` | 地下公主 · 正面全身（蓝色软卷发、黑色星光裙） | 已生成 |
+| `underground-princess-bust.jpg` | 地下公主 · 半身特写（蓝色软卷发、黑色星光裙） | 已生成 |
+| `underground-princess-side.jpg` | 地下公主 · 侧面全身（蓝色软卷发、黑色星光裙） | 已生成 |
+| `underground-princess-back.jpg` | 地下公主 · 背面全身（蓝色软卷发、黑色星光裙） | 已生成 |
 
 > 2026-09-13 更新：玫瑰公主发色调整为**浅黑色软卷发**（原蓝色软卷发），
 > `front` / `bust` 已按新形象重新生成；全角色补齐侧面、背面多角度标准照。
+> 2026-09-14 更新：新增地下公主四视角标准照（ep05 首登场角色）。
 
 ## 标准照怎么生成
 

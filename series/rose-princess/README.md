@@ -28,7 +28,8 @@ series/rose-princess/
 | 2 | [`ep02-sisters/`](ep02-sisters/) | 蔷薇公主和玫瑰公主 |
 | 3 | [`ep03-haircut/`](ep03-haircut/) | 超长头发大捣乱 |
 | 4 | [`ep04-water-beads/`](ep04-water-beads/) | 水宝宝和手工香皂的大混乱 |
-| … | `ep05-.../` | 后续新故事（序号连续） |
+| 5 | [`ep05-underground-lamp/`](ep05-underground-lamp/) | 地下城堡的神灯奇遇 |
+| … | `ep06-.../` | 后续新故事（序号连续） |
 
 ## 快速开始（生成一张新图）
 
