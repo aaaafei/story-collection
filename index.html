@@ -79,6 +79,37 @@
     padding:5px 20px;
     letter-spacing:1px;
   }
+  .hero .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
+    margin-top:4px;
+  }
+  .hero .refresh-btn{
+    appearance:none;
+    border:1.5px solid #C2E2F4;
+    background:var(--paper);
+    color:var(--blue-deep);
+    font-family:var(--font-body);
+    font-size:14px;
+    letter-spacing:1px;
+    border-radius:999px;
+    padding:5px 18px;
+    cursor:pointer;
+    transition:background .2s ease, border-color .2s ease, transform .2s ease;
+  }
+  .hero .refresh-btn:hover{
+    background:var(--blue-soft);
+    border-color:var(--blue-deep);
+    transform:translateY(-1px);
+  }
+  .hero .refresh-btn:active{transform:translateY(0);}
+  .hero .refresh-btn.is-busy{
+    opacity:.7;
+    cursor:wait;
+  }
 
   /* ===== 系列分组标题 ===== */
   .series-head{
@@ -322,7 +353,7 @@
   }
 
   @media print{
-    .howto,footer{display:none;}
+    .howto,footer,.refresh-btn{display:none;}
     body{background:#fff;}
     .card{box-shadow:none;break-inside:avoid;}
     *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
@@ -336,7 +367,10 @@
   <div class="wrap">
     <h1>故事收藏屋</h1>
     <p class="subtitle">我的绘本故事目录</p>
-    <span class="count-badge" id="countBadge">已收录 0 个故事</span>
+    <div class="hero-actions">
+      <span class="count-badge" id="countBadge">已收录 0 个故事</span>
+      <button type="button" class="refresh-btn" id="refreshBtn" title="绕过缓存，强制重新加载本页">强制刷新</button>
+    </div>
   </div>
 </header>
 
@@ -344,11 +378,11 @@
 <section class="shelf">
   <div class="wrap">
 
-    <!-- 蔷薇公主系列：集中展示（平铺，暂不可点击） -->
+    <!-- 蔷薇公主系列：集中展示 -->
     <div class="series-head" id="seriesHead" hidden>
       <span class="series-badge">连载中</span>
       <h2 class="series-title">蔷薇公主系列</h2>
-      <p class="series-desc">种花诞生的姐妹花故事，新故事会陆续加入这里</p>
+      <p class="series-desc">种花诞生的姐妹花故事，点击封面开始阅读</p>
     </div>
     <div class="grid" id="seriesGrid"></div>
 
@@ -398,7 +432,7 @@
       title: "蔷薇公主的玫瑰公主花",
       desc: "系列开篇：彩虹城堡里，蔷薇公主种下一颗神奇的玫瑰公主花种子，浇水、唱歌、撒星光，用心照顾……直到花苞「嘭」地绽放，开出了一位蓝色的小玫瑰公主！",
       tags: ["系列开篇", "温柔治愈", "梦幻想象"],
-      link: ""
+      link: "rose-princess-picturebook/index.html"
     },
     {
       series: SERIES,
@@ -406,7 +440,7 @@
       title: "蔷薇公主和玫瑰公主",
       desc: "系列第二篇：蔷薇公主种出一位穿蓝裙子的玫瑰小公主，姐妹俩好得不得了。一天，贪玩的小风妖怪抓走了蔷薇公主，勇敢的玫瑰公主立刻去救，可是本领不够——她马上跑回家喊来国王王后，一起把姐姐救回来！",
       tags: ["调皮勇敢", "亲情救援", "勇敢求助"],
-      link: ""
+      link: "rose-sisters-picturebook/index.html"
     },
     {
       cover: "labu-princess-picturebook/assets/page-01.jpg",
@@ -437,7 +471,7 @@
     var body =
       '<div class="cover"><img src="' + s.cover + '" alt="' + s.title + '" loading="lazy"></div>' +
       '<div class="info">' +
-        (locked ? '<span class="series-tag">系列故事</span>' : "") +
+        (s.series ? '<span class="series-tag">系列故事</span>' : "") +
         '<h2>' + s.title + '</h2>' +
         '<p>' + s.desc + '</p>' +
         '<div class="tags">' + s.tags.map(function(t){return "<span>" + t + "</span>";}).join("") + '</div>' +
@@ -463,6 +497,20 @@
     otherHead.hidden = others.length === 0;
     grid.innerHTML = others.map(cardHTML).join("");
   }
+
+  function forceRefresh(){
+    var btn = document.getElementById("refreshBtn");
+    if(btn){
+      btn.classList.add("is-busy");
+      btn.disabled = true;
+      btn.textContent = "刷新中…";
+    }
+    var url = new URL(window.location.href);
+    url.searchParams.set("_", String(Date.now()));
+    window.location.replace(url.toString());
+  }
+
+  document.getElementById("refreshBtn").addEventListener("click", forceRefresh);
   render();
 </script>
 
