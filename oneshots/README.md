@@ -15,4 +15,4 @@ oneshots/
 1. 新建 `series/<slug>/`（可复制 `series/_template/`）
 2. 将本书移为 `series/<slug>/ep01-.../`
 3. 补角色圣经与 refs
-4. 更新根目录 `index.html` 的路径与 `seriesCatalog`
+4. 更新根目录 `stories.json` 的路径与 `seriesCatalog`

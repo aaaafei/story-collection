@@ -5,8 +5,9 @@
 1. 在本系列目录下新建 `epNN-主题/`（序号连续）
 2. 放入 `index.html`、`assets/`、`prompts.md`
 3. `prompts.md` 写明：角色与画风见本系列根目录（`../character-bible.md` 等）
-4. 根目录 `index.html`：`stories` 增加一条，`series` 填本系列中文名；路径指向新分册
+4. 根目录 `stories.json`：`stories` 增加一条，`series` 填本系列中文名；路径指向新分册；必要时同步 `seriesCatalog`
 5. 长期新角色：先写入 `character-bible.md`，再补 `refs/` 标准照
+6. 「返回故事目录」链接使用 `../../../index.html`
 
 ## B. 替换一页配图
 

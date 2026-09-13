@@ -5,11 +5,10 @@
 1. 在本目录下新建 `epNN-主题/`（序号连续，如 `ep03-garden-party/`）
 2. 放入 `index.html`、`assets/`、`prompts.md`
 3. `prompts.md` 开头写明：角色与画风见本系列根目录（`../character-bible.md` 等）
-4. 在仓库根目录 `index.html` 的 `stories` 数组增加一条：
-   - `series: "蔷薇公主系列"`
-   - `cover` / `link` 指向 `series/rose-princess/epNN-主题/...`
-5. 若有长期新角色：先写入 `character-bible.md`，再生成 `refs/` 标准照
-6. 「返回故事目录」链接使用 `../../../index.html`
+4. 根目录 `stories.json`：`stories` 增加一条，`series` 填本系列中文名；路径指向新分册
+5. 若在 `seriesCatalog` 中尚无本系列，一并登记（`name` 须一致）
+6. 若有长期新角色：先写入 `character-bible.md`，再生成 `refs/` 标准照
+7. 「返回故事目录」链接使用 `../../../index.html`
 
 ## B. 为已有故事生成 / 替换一页配图
 

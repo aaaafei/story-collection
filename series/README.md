@@ -31,4 +31,4 @@ story-collection/
 1. 复制 `series/_template/` → `series/<新slug>/`
 2. 填写该系列的 `character-bible.md` 等
 3. 创建 `ep01-.../` 放入首册
-4. 在根目录 `index.html` 的 `seriesCatalog` 与 `stories` 中登记
+4. 在根目录 `stories.json` 的 `seriesCatalog` 与 `stories` 中登记

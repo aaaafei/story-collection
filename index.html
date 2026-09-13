@@ -401,7 +401,7 @@
 
     <div class="empty" id="emptyState" hidden>
       <p class="big">书架还空空的</p>
-      <p>添加第一个故事，让书架热闹起来吧！</p>
+      <p id="emptyHint">添加第一个故事，让书架热闹起来吧！</p>
     </div>
   </div>
 </section>
@@ -414,9 +414,9 @@
       <ol>
         <li>目录约定：连载放 <code>series/&lt;系列slug&gt;/epNN-主题/</code>；单本放 <code>oneshots/&lt;书名slug&gt;/</code>。新系列可复制 <code>series/_template/</code>。</li>
         <li>在对应文件夹放好 <code>index.html</code> 与 <code>assets/</code>；系列分册的角色设定写在该系列根目录的 <code>character-bible.md</code> / <code>refs/</code>。</li>
-        <li>打开本页底部 <code>stories</code> 数组，复制一条记录并改封面、标题、简介、链接路径。</li>
-        <li>连载故事加上 <code>series: "中文系列名"</code>，并在上方 <code>seriesCatalog</code> 登记该系列（名称需一致）；单本不要填 <code>series</code>。</li>
-        <li>保存后点「强制刷新」，新卡片会出现在对应系列或「独立故事」分区。</li>
+        <li>打开根目录 <code>stories.json</code>：在 <code>stories</code> 数组里复制一条记录，改封面、标题、简介、链接路径。</li>
+        <li>连载故事加上 <code>"series": "中文系列名"</code>，并在同文件的 <code>seriesCatalog</code> 登记该系列（名称需一致）；单本不要填 <code>series</code>。</li>
+        <li>通过 Nginx 等 HTTP 方式访问本站（不要用双击本地文件预览），保存后点「强制刷新」，新卡片会出现在对应分区。</li>
       </ol>
     </details>
   </div>
@@ -425,91 +425,29 @@
 <footer>故事收藏屋 · 每一个故事都是小小世界</footer>
 
 <script>
-  // ===== 系列登记：新开系列时在此追加一条（name 须与 stories[].series 一致）=====
-  // id: 对应 series/<id>/ 目录名
-  // accent: pink | blue | mint | lavender（分区标题配色）
-  const seriesCatalog = [
-    {
-      id: "rose-princess",
-      name: "蔷薇公主系列",
-      badge: "连载中",
-      desc: "种花诞生的姐妹花故事，点击封面开始阅读",
-      accent: "pink"
-    }
-    // 示例：第二个系列取消注释并改内容
-    // ,{
-    //   id: "sneeze-princess",
-    //   name: "打喷嚏公主系列",
-    //   badge: "连载中",
-    //   desc: "云朵城堡里的喷嚏与温柔小故事",
-    //   accent: "blue"
-    // }
-  ];
+  // 目录数据在 stories.json（静态文件，无需后台）
+  // 通过 HTTP 访问本站；直接双击打开 index.html 时无法读取 JSON
 
-  // ===== 故事数据：新增故事时，在这里复制一条记录并修改 =====
-  // cover / link: 相对本页面的路径
-  // series: 所属系列中文名（与 seriesCatalog.name 一致；单本省略）
-  // episode: 可选，分册序号，仅作备注
-  const stories = [
-    {
-      series: "蔷薇公主系列",
-      episode: 1,
-      cover: "series/rose-princess/ep01-seed-flower/assets/page-01.jpg",
-      title: "蔷薇公主的玫瑰公主花",
-      desc: "系列开篇：彩虹城堡里，蔷薇公主种下一颗神奇的玫瑰公主花种子，浇水、唱歌、撒星光，用心照顾……直到花苞「嘭」地绽放，开出了一位蓝色的小玫瑰公主！",
-      tags: ["系列开篇", "温柔治愈", "梦幻想象"],
-      link: "series/rose-princess/ep01-seed-flower/index.html"
-    },
-    {
-      series: "蔷薇公主系列",
-      episode: 2,
-      cover: "series/rose-princess/ep02-sisters/assets/page-01.jpg",
-      title: "蔷薇公主和玫瑰公主",
-      desc: "系列第二篇：蔷薇公主种出一位穿蓝裙子的玫瑰小公主，姐妹俩好得不得了。一天，贪玩的小风妖怪抓走了蔷薇公主，勇敢的玫瑰公主立刻去救，可是本领不够——她马上跑回家喊来国王王后，一起把姐姐救回来！",
-      tags: ["调皮勇敢", "亲情救援", "勇敢求助"],
-      link: "series/rose-princess/ep02-sisters/index.html"
-    },
-    {
-      series: "蔷薇公主系列",
-      episode: 3,
-      cover: "series/rose-princess/ep03-haircut/assets/page-01.jpg",
-      title: "超长头发大捣乱",
-      desc: "系列第三篇：蔷薇公主和玫瑰公主的头发又长又软，长到拖地！她们去花园理发店剪头发，调皮的小风妖怪却呼呼一吹，超长头发满天飞，堵住了窗户、塞满了小店……还好有国王王后的魔法来帮忙！",
-      tags: ["调皮搞笑", "亲子陪伴", "求助教育"],
-      link: "series/rose-princess/ep03-haircut/index.html"
-    },
-    {
-      cover: "oneshots/labu-princess/assets/page-01.jpg",
-      title: "拉不下公主",
-      desc: "屁屁城堡里住着最爱偷懒的拉不下公主，挑食不喝水，肚子怪怪的！屁屁小精灵飞来支招：喝水水、吃果蔬、蹦跳跳，一起捉弄懒粑粑！",
-      tags: ["适龄 2-6 岁", "调皮搞笑", "低幼治愈"],
-      link: "oneshots/labu-princess/index.html"
-    },
-    {
-      cover: "oneshots/sneeze-princess/assets/page-01.jpg",
-      title: "打喷嚏公主",
-      desc: "云朵城堡里住着一位喷嚏力气特别大的可爱公主，一个喷嚏能吹跑茶杯和小鸟。云朵小精灵飞来告诉她：打喷嚏不是坏事情，用手帕接住就好啦！",
-      tags: ["适龄 3-6 岁", "温柔治愈", "接纳自己"],
-      link: "oneshots/sneeze-princess/index.html"
-    }
-  ];
+  var seriesCatalog = [];
+  var stories = [];
 
-  // ===== 渲染 =====
-  const seriesMount = document.getElementById("seriesMount");
-  const otherHead = document.getElementById("otherHead");
-  const grid = document.getElementById("storyGrid");
-  const empty = document.getElementById("emptyState");
-  const badge = document.getElementById("countBadge");
+  var seriesMount = document.getElementById("seriesMount");
+  var otherHead = document.getElementById("otherHead");
+  var grid = document.getElementById("storyGrid");
+  var empty = document.getElementById("emptyState");
+  var emptyHint = document.getElementById("emptyHint");
+  var badge = document.getElementById("countBadge");
 
   function cardHTML(s){
     var locked = !s.link;
+    var tags = (s.tags || []).map(function(t){ return "<span>" + t + "</span>"; }).join("");
     var body =
       '<div class="cover"><img src="' + s.cover + '" alt="' + s.title + '" loading="lazy"></div>' +
       '<div class="info">' +
         (s.series ? '<span class="series-tag">系列故事</span>' : "") +
         '<h2>' + s.title + '</h2>' +
         '<p>' + s.desc + '</p>' +
-        '<div class="tags">' + s.tags.map(function(t){return "<span>" + t + "</span>";}).join("") + '</div>' +
+        '<div class="tags">' + tags + '</div>' +
         (locked
           ? '<span class="go"></span>'
           : '<span class="go">开始阅读</span>') +
@@ -531,9 +469,21 @@
     '</div>';
   }
 
+  function showLoadError(msg){
+    badge.textContent = "目录加载失败";
+    seriesMount.innerHTML = "";
+    otherHead.hidden = true;
+    grid.innerHTML = "";
+    empty.hidden = false;
+    empty.querySelector(".big").textContent = "目录读取失败";
+    emptyHint.textContent = msg;
+  }
+
   function render(){
     badge.textContent = "已收录 " + stories.length + " 个故事";
     empty.hidden = stories.length > 0;
+    empty.querySelector(".big").textContent = "书架还空空的";
+    emptyHint.textContent = "添加第一个故事，让书架热闹起来吧！";
 
     var catalogNames = {};
     seriesCatalog.forEach(function(c){ catalogNames[c.name] = true; });
@@ -544,7 +494,6 @@
       if(books.length) html += seriesBlockHTML(meta, books);
     });
 
-    // 未在 catalog 登记、但仍带 series 的故事：自动成块，避免遗漏
     var orphanNames = [];
     stories.forEach(function(s){
       if(s.series && !catalogNames[s.series] && orphanNames.indexOf(s.series) === -1){
@@ -563,6 +512,24 @@
     grid.innerHTML = oneshots.map(cardHTML).join("");
   }
 
+  function loadCatalog(){
+    var url = "stories.json?_=" + Date.now();
+    return fetch(url, { cache: "no-store" })
+      .then(function(res){
+        if(!res.ok) throw new Error("HTTP " + res.status);
+        return res.json();
+      })
+      .then(function(data){
+        seriesCatalog = data.seriesCatalog || [];
+        stories = data.stories || [];
+        render();
+      })
+      .catch(function(err){
+        console.error(err);
+        showLoadError("请通过 Nginx 等 HTTP 方式打开本站，并确认根目录存在 stories.json。不要直接双击本地 HTML 预览。");
+      });
+  }
+
   function forceRefresh(){
     var btn = document.getElementById("refreshBtn");
     if(btn){
@@ -576,7 +543,7 @@
   }
 
   document.getElementById("refreshBtn").addEventListener("click", forceRefresh);
-  render();
+  loadCatalog();
 </script>
 
 </body>

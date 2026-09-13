@@ -5,7 +5,8 @@
 ## 目录结构
 
 ```
-├── index.html              # 首页（多系列分组 + 独立故事）
+├── index.html              # 首页（读取 stories.json 渲染）
+├── stories.json            # 书架目录（系列登记 + 故事列表）
 ├── series/                 # 连载系列
 │   ├── _template/          # 新系列脚手架
 │   └── rose-princess/      # 蔷薇公主系列（设定 + ep01/ep02/...）
@@ -17,10 +18,11 @@
 
 ## 本地预览
 
-用浏览器打开根目录 `index.html`，或挂到 Nginx 的 `/story/`（见 `deploy/nginx-story-collection.conf`）。
+需通过 HTTP 访问（Nginx 的 `/story/`，或任意静态文件服务）。  
+不要直接双击 `index.html`，否则无法加载 `stories.json`。
 
 ## 新开系列 / 新分册
 
 1. 复制 `series/_template/` → `series/<slug>/`，填写角色圣经与 refs  
 2. 新建 `epNN-主题/` 放入绘本  
-3. 在根 `index.html` 登记 `seriesCatalog` 与 `stories`
+3. 在根目录 `stories.json` 登记 `seriesCatalog` 与 `stories`
