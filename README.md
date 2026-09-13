@@ -10,6 +10,9 @@
 ├── manifest.webmanifest    # 轻量 PWA 清单（scope=/story/）
 ├── sw.js                   # 网络透传 SW（不缓存内容，仅便于安装）
 ├── icons/                  # PWA 图标
+├── tools/                  # 本地工具（图片优化等）
+│   ├── optimize_images.py
+│   └── README.md
 ├── series/                 # 连载系列
 │   ├── _template/          # 新系列脚手架
 │   └── rose-princess/      # 蔷薇公主系列（设定 + ep01/ep02/...）
@@ -17,7 +20,8 @@
 └── deploy/                 # Nginx 配置示例
 ```
 
-详细约定见 [`series/README.md`](series/README.md)。
+详细约定见 [`series/README.md`](series/README.md)。  
+图片优化（手机网页用图）见 [`tools/README.md`](tools/README.md)。
 
 ## 本地预览
 
@@ -30,8 +34,20 @@
 - `manifest` 的 `start_url` / `scope` 固定为 `/story/`（与 Nginx 挂载一致）。
 - iOS 多为「添加到主屏幕」；微信内请用系统浏览器打开。
 
+## 网页用图（本地优化）
+
+高清原图放入各册 `assets/src/` 后，在仓库根目录执行：
+
+```powershell
+pip install -r tools/requirements.txt
+python tools/optimize_images.py --all
+```
+
+会生成网页内页与 `cover.jpg`。首页封面请指向 `assets/cover.jpg`。详见 [`tools/README.md`](tools/README.md)。
+
 ## 新开系列 / 新分册
 
 1. 复制 `series/_template/` → `series/<slug>/`，填写角色圣经与 refs  
-2. 新建 `epNN-主题/` 放入绘本  
-3. 在根目录 `stories.json` 登记 `seriesCatalog` 与 `stories`
+2. 新建 `epNN-主题/` 放入绘本与高清图  
+3. 运行 `python tools/optimize_images.py <该册路径>`  
+4. 在根目录 `stories.json` 登记（`cover` 用 `assets/cover.jpg`）

@@ -24,11 +24,21 @@
 
 | 项 | 值 |
 |---|---|
-| 工具 | 图片生成（image_gen 等） |
+| 工具 | 图片生成（image_gen 等）出**高清源图** |
 | 模型版本 | seedream_4.5（尽量不要中途换模型） |
-| 尺寸 | 2304 × 1728（4:3 横版） |
-| 导出 | JPEG，建议 quality 85 |
-| 命名 | `assets/page-01.jpg` 起连续编号 |
+| 源图尺寸 | 2304 × 1728（4:3 横版）建议 |
+| 源图存放 | 各册 `assets/src/page-XX.jpg` |
+| 网页内页 | 由本地脚本生成，默认最长边 1400px、JPEG quality 82 → `assets/page-XX.jpg` |
+| 列表封面 | 同脚本生成 `assets/cover.jpg`（默认最长边 800px） |
+| 命名 | `page-01.jpg` 起连续编号 |
+
+**网页用图请在本仓库处理，不要依赖豆包等第三方压缩：**
+
+```powershell
+python tools/optimize_images.py series/rose-princess/epNN-主题
+```
+
+说明见 [`../../tools/README.md`](../../tools/README.md)。
 
 ---
 

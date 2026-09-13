@@ -16,6 +16,9 @@
 | 项 | 值 |
 |---|---|
 | 模型 | seedream_4.5（系列内尽量固定） |
-| 尺寸 | 2304 × 1728（4:3 横版） |
-| 导出 | JPEG quality 85 |
+| 源图尺寸 | 建议 2304 × 1728（4:3 横版） |
+| 源图存放 | `assets/src/` |
+| 网页图 | `python tools/optimize_images.py <本册路径>` → `assets/page-XX.jpg` + `cover.jpg` |
 | 命名 | `assets/page-01.jpg` 起连续编号 |
+
+详见仓库 [`tools/README.md`](../../../tools/README.md)。

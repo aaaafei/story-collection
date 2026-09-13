@@ -3,21 +3,28 @@
 ## A. 新增一本分册
 
 1. 在本目录下新建 `epNN-主题/`（序号连续，如 `ep03-garden-party/`）
-2. 放入 `index.html`、`assets/`、`prompts.md`
-3. `prompts.md` 开头写明：角色与画风见本系列根目录（`../character-bible.md` 等）
-4. 根目录 `stories.json`：`stories` 增加一条，`series` 填本系列中文名；路径指向新分册
-5. 若在 `seriesCatalog` 中尚无本系列，一并登记（`name` 须一致）
-6. 若有长期新角色：先写入 `character-bible.md`，再生成 `refs/` 标准照
-7. 「返回故事目录」链接使用 `../../../index.html`
+2. 放入 `index.html`、`prompts.md`；高清图放入 `assets/src/`
+3. 运行本地优化（生成网页内页与封面）：
+
+   ```powershell
+   python tools/optimize_images.py series/rose-princess/epNN-主题
+   ```
+
+4. `prompts.md` 开头写明：角色与画风见本系列根目录（`../character-bible.md` 等）
+5. 根目录 `stories.json`：`stories` 增加一条，`series` 填本系列中文名；`cover` 指向 `.../assets/cover.jpg`
+6. 若在 `seriesCatalog` 中尚无本系列，一并登记（`name` 须一致）
+7. 若有长期新角色：先写入 `character-bible.md`，再生成 `refs/` 标准照
+8. 「返回故事目录」链接使用 `../../../index.html`
 
 ## B. 为已有故事生成 / 替换一页配图
 
 1. 打开 `character-bible.md` → 复制出场角色固定段  
 2. 打开 `prompt-template.md` → 拼完整 Prompt  
-3. 挂上 `refs/` 参考图 → 按 `style-guide.md` 参数生成  
-4. 验收（见下）→ 替换该册 `assets/page-XX.jpg`  
-5. 把最终 Prompt 写入该册 `prompts.md` 对应页  
-6. 浏览器打开首页，点「强制刷新」确认
+3. 挂上 `refs/` 参考图 → 按 `style-guide.md` 参数生成高清图  
+4. 验收后放入该册 `assets/src/page-XX.jpg`（覆盖源图）  
+5. 再跑 `python tools/optimize_images.py <本册路径>`，更新网页用 `assets/page-XX.jpg`（若改了第 1 页会重出 `cover.jpg`）  
+6. 把最终 Prompt 写入该册 `prompts.md` 对应页  
+7. 浏览器打开首页，点「强制刷新」确认
 
 ## C. 出图验收清单
 
