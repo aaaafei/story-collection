@@ -15,7 +15,11 @@
       "cover": "series/rose-princess/ep01-seed-flower/assets/cover.jpg",
       "title": "蔷薇公主的玫瑰公主花",
       "desc": "系列开篇：彩虹城堡里，蔷薇公主种下一颗神奇的玫瑰公主花种子，浇水、唱歌、撒星光，用心照顾……直到花苞「嘭」地绽放，开出了一位蓝色的小玫瑰公主！",
-      "tags": ["系列开篇", "温柔治愈", "梦幻想象"],
+      "tags": [
+        "系列开篇",
+        "温柔治愈",
+        "梦幻想象"
+      ],
       "link": "series/rose-princess/ep01-seed-flower/index.html"
     },
     {
@@ -24,7 +28,11 @@
       "cover": "series/rose-princess/ep02-sisters/assets/cover.jpg",
       "title": "蔷薇公主和玫瑰公主",
       "desc": "系列第二篇：蔷薇公主种出一位穿蓝裙子的玫瑰小公主，姐妹俩好得不得了。一天，贪玩的小风妖怪抓走了蔷薇公主，勇敢的玫瑰公主立刻去救，可是本领不够——她马上跑回家喊来国王王后，一起把姐姐救回来！",
-      "tags": ["调皮勇敢", "亲情救援", "勇敢求助"],
+      "tags": [
+        "调皮勇敢",
+        "亲情救援",
+        "勇敢求助"
+      ],
       "link": "series/rose-princess/ep02-sisters/index.html"
     },
     {
@@ -33,21 +41,46 @@
       "cover": "series/rose-princess/ep03-haircut/assets/cover.jpg",
       "title": "超长头发大捣乱",
       "desc": "系列第三篇：蔷薇公主和玫瑰公主的头发又长又软，长到拖地！她们去花园理发店剪头发，调皮的小风妖怪却呼呼一吹，超长头发满天飞，堵住了窗户、塞满了小店……还好有国王王后的魔法来帮忙！",
-      "tags": ["调皮搞笑", "亲子陪伴", "求助教育"],
+      "tags": [
+        "调皮搞笑",
+        "亲子陪伴",
+        "求助教育"
+      ],
       "link": "series/rose-princess/ep03-haircut/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 4,
+      "cover": "series/rose-princess/ep04-water-beads/assets/cover.jpg",
+      "title": "水宝宝和手工香皂的大混乱",
+      "desc": "系列第四篇：蔷薇公主做香香的花朵香皂，玫瑰公主用滴管一滴一滴做圆滚滚的水宝宝。手工做得正开心，调皮的小风妖怪又呼呼冲进来，吹乱了长发、打翻了染料，把手工教室弄得一团乱……还好国王王后端来一大盘美味零食！",
+      "tags": [
+        "调皮搞笑",
+        "亲子陪伴",
+        "求助教育"
+      ],
+      "link": "series/rose-princess/ep04-water-beads/index.html"
     },
     {
       "cover": "oneshots/labu-princess/assets/cover.jpg",
       "title": "拉不下公主",
       "desc": "屁屁城堡里住着最爱偷懒的拉不下公主，挑食不喝水，肚子怪怪的！屁屁小精灵飞来支招：喝水水、吃果蔬、蹦跳跳，一起捉弄懒粑粑！",
-      "tags": ["适龄 2-6 岁", "调皮搞笑", "低幼治愈"],
+      "tags": [
+        "适龄 2-6 岁",
+        "调皮搞笑",
+        "低幼治愈"
+      ],
       "link": "oneshots/labu-princess/index.html"
     },
     {
       "cover": "oneshots/sneeze-princess/assets/cover.jpg",
       "title": "打喷嚏公主",
       "desc": "云朵城堡里住着一位喷嚏力气特别大的可爱公主，一个喷嚏能吹跑茶杯和小鸟。云朵小精灵飞来告诉她：打喷嚏不是坏事情，用手帕接住就好啦！",
-      "tags": ["适龄 3-6 岁", "温柔治愈", "接纳自己"],
+      "tags": [
+        "适龄 3-6 岁",
+        "温柔治愈",
+        "接纳自己"
+      ],
       "link": "oneshots/sneeze-princess/index.html"
     }
   ]
