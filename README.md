@@ -1,37 +1,26 @@
-# story-collection
+# story-collection · 故事收藏屋
 
-#### 介绍
-故事
+儿童绘本静态站。首页目录 + 多系列连载 + 独立单本。
 
-#### 软件架构
-软件架构说明
+## 目录结构
 
+```
+├── index.html              # 首页（多系列分组 + 独立故事）
+├── series/                 # 连载系列
+│   ├── _template/          # 新系列脚手架
+│   └── rose-princess/      # 蔷薇公主系列（设定 + ep01/ep02/...）
+├── oneshots/               # 独立单本（拉不下公主、打喷嚏公主等）
+└── deploy/                 # Nginx 配置示例
+```
 
-#### 安装教程
+详细约定见 [`series/README.md`](series/README.md)。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 本地预览
 
-#### 使用说明
+用浏览器打开根目录 `index.html`，或挂到 Nginx 的 `/story/`（见 `deploy/nginx-story-collection.conf`）。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 新开系列 / 新分册
 
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
-
-
-#### 特技
-
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+1. 复制 `series/_template/` → `series/<slug>/`，填写角色圣经与 refs  
+2. 新建 `epNN-主题/` 放入绘本  
+3. 在根 `index.html` 登记 `seriesCatalog` 与 `stories`

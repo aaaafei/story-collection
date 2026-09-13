@@ -112,6 +112,12 @@
   }
 
   /* ===== 系列分组标题 ===== */
+  .series-block{
+    margin-bottom:12px;
+  }
+  .series-block + .series-block{
+    margin-top:52px;
+  }
   .series-head{
     text-align:center;
     padding:14px 0 22px;
@@ -127,6 +133,9 @@
     padding:4px 18px;
     margin-bottom:12px;
   }
+  .series-block[data-accent="blue"] .series-badge{background:var(--blue-deep);}
+  .series-block[data-accent="mint"] .series-badge{background:var(--mint-deep);}
+  .series-block[data-accent="lavender"] .series-badge{background:#B49AE0;}
   .series-title{
     font-family:var(--font-display);
     font-size:clamp(30px,4.6vw,44px);
@@ -135,6 +144,9 @@
     margin-bottom:6px;
     line-height:1.3;
   }
+  .series-block[data-accent="blue"] .series-title{color:var(--blue-deep);}
+  .series-block[data-accent="mint"] .series-title{color:var(--mint-deep);}
+  .series-block[data-accent="lavender"] .series-title{color:#B49AE0;}
   .series-desc{
     font-size:15px;
     color:var(--ink-soft);
@@ -378,17 +390,12 @@
 <section class="shelf">
   <div class="wrap">
 
-    <!-- 蔷薇公主系列：集中展示 -->
-    <div class="series-head" id="seriesHead" hidden>
-      <span class="series-badge">连载中</span>
-      <h2 class="series-title">蔷薇公主系列</h2>
-      <p class="series-desc">种花诞生的姐妹花故事，点击封面开始阅读</p>
-    </div>
-    <div class="grid" id="seriesGrid"></div>
+    <!-- 各连载系列（由 JS 按 seriesCatalog 动态渲染） -->
+    <div id="seriesMount"></div>
 
-    <!-- 其他故事 -->
+    <!-- 独立故事 -->
     <div class="other-head" id="otherHead" hidden>
-      <h2 class="other-title">其他故事</h2>
+      <h2 class="other-title">独立故事</h2>
     </div>
     <div class="grid" id="storyGrid"></div>
 
@@ -405,10 +412,11 @@
     <details>
       <summary>如何添加新故事</summary>
       <ol>
-        <li>在本目录下新建一个故事文件夹（例如 <code>my-story/</code>），里面放好 <code>index.html</code> 和配图（建议放 <code>assets/</code> 子目录）。</li>
-        <li>打开本页面的 <code>index.html</code> 源码，在底部 <code>&lt;script&gt;</code> 的 <code>stories</code> 数组里复制一条记录，改成新故事的封面图路径、标题、简介和链接。</li>
-        <li>属于「蔷薇公主系列」的故事，在记录里加上 <code>series: "蔷薇公主系列"</code> 字段，会自动归入系列分组。</li>
-        <li>保存并刷新本页，新故事卡片会自动出现。</li>
+        <li>目录约定：连载放 <code>series/&lt;系列slug&gt;/epNN-主题/</code>；单本放 <code>oneshots/&lt;书名slug&gt;/</code>。新系列可复制 <code>series/_template/</code>。</li>
+        <li>在对应文件夹放好 <code>index.html</code> 与 <code>assets/</code>；系列分册的角色设定写在该系列根目录的 <code>character-bible.md</code> / <code>refs/</code>。</li>
+        <li>打开本页底部 <code>stories</code> 数组，复制一条记录并改封面、标题、简介、链接路径。</li>
+        <li>连载故事加上 <code>series: "中文系列名"</code>，并在上方 <code>seriesCatalog</code> 登记该系列（名称需一致）；单本不要填 <code>series</code>。</li>
+        <li>保存后点「强制刷新」，新卡片会出现在对应系列或「独立故事」分区。</li>
       </ol>
     </details>
   </div>
@@ -417,50 +425,68 @@
 <footer>故事收藏屋 · 每一个故事都是小小世界</footer>
 
 <script>
+  // ===== 系列登记：新开系列时在此追加一条（name 须与 stories[].series 一致）=====
+  // id: 对应 series/<id>/ 目录名
+  // accent: pink | blue | mint | lavender（分区标题配色）
+  const seriesCatalog = [
+    {
+      id: "rose-princess",
+      name: "蔷薇公主系列",
+      badge: "连载中",
+      desc: "种花诞生的姐妹花故事，点击封面开始阅读",
+      accent: "pink"
+    }
+    // 示例：第二个系列取消注释并改内容
+    // ,{
+    //   id: "sneeze-princess",
+    //   name: "打喷嚏公主系列",
+    //   badge: "连载中",
+    //   desc: "云朵城堡里的喷嚏与温柔小故事",
+    //   accent: "blue"
+    // }
+  ];
+
   // ===== 故事数据：新增故事时，在这里复制一条记录并修改 =====
-  // cover: 封面图路径（相对本页面）
-  // title: 故事标题
-  // desc: 一句话简介
-  // tags: 标签数组
-  // link: 故事首页 HTML 的相对路径（留空表示暂不开放阅读）
-  // series: 所属系列（可选，如 "蔷薇公主系列"）
-  const SERIES = "蔷薇公主系列";
+  // cover / link: 相对本页面的路径
+  // series: 所属系列中文名（与 seriesCatalog.name 一致；单本省略）
+  // episode: 可选，分册序号，仅作备注
   const stories = [
     {
-      series: SERIES,
-      cover: "rose-princess-picturebook/assets/page-01.jpg",
+      series: "蔷薇公主系列",
+      episode: 1,
+      cover: "series/rose-princess/ep01-seed-flower/assets/page-01.jpg",
       title: "蔷薇公主的玫瑰公主花",
       desc: "系列开篇：彩虹城堡里，蔷薇公主种下一颗神奇的玫瑰公主花种子，浇水、唱歌、撒星光，用心照顾……直到花苞「嘭」地绽放，开出了一位蓝色的小玫瑰公主！",
       tags: ["系列开篇", "温柔治愈", "梦幻想象"],
-      link: "rose-princess-picturebook/index.html"
+      link: "series/rose-princess/ep01-seed-flower/index.html"
     },
     {
-      series: SERIES,
-      cover: "rose-sisters-picturebook/assets/page-01.jpg",
+      series: "蔷薇公主系列",
+      episode: 2,
+      cover: "series/rose-princess/ep02-sisters/assets/page-01.jpg",
       title: "蔷薇公主和玫瑰公主",
       desc: "系列第二篇：蔷薇公主种出一位穿蓝裙子的玫瑰小公主，姐妹俩好得不得了。一天，贪玩的小风妖怪抓走了蔷薇公主，勇敢的玫瑰公主立刻去救，可是本领不够——她马上跑回家喊来国王王后，一起把姐姐救回来！",
       tags: ["调皮勇敢", "亲情救援", "勇敢求助"],
-      link: "rose-sisters-picturebook/index.html"
+      link: "series/rose-princess/ep02-sisters/index.html"
     },
     {
-      cover: "labu-princess-picturebook/assets/page-01.jpg",
+      cover: "oneshots/labu-princess/assets/page-01.jpg",
       title: "拉不下公主",
       desc: "屁屁城堡里住着最爱偷懒的拉不下公主，挑食不喝水，肚子怪怪的！屁屁小精灵飞来支招：喝水水、吃果蔬、蹦跳跳，一起捉弄懒粑粑！",
       tags: ["适龄 2-6 岁", "调皮搞笑", "低幼治愈"],
-      link: "labu-princess-picturebook/index.html"
+      link: "oneshots/labu-princess/index.html"
     },
     {
-      cover: "sneeze-princess-picturebook/assets/page-01.jpg",
+      cover: "oneshots/sneeze-princess/assets/page-01.jpg",
       title: "打喷嚏公主",
       desc: "云朵城堡里住着一位喷嚏力气特别大的可爱公主，一个喷嚏能吹跑茶杯和小鸟。云朵小精灵飞来告诉她：打喷嚏不是坏事情，用手帕接住就好啦！",
       tags: ["适龄 3-6 岁", "温柔治愈", "接纳自己"],
-      link: "sneeze-princess-picturebook/index.html"
+      link: "oneshots/sneeze-princess/index.html"
     }
   ];
 
   // ===== 渲染 =====
-  const seriesHead = document.getElementById("seriesHead");
-  const seriesGrid = document.getElementById("seriesGrid");
+  const seriesMount = document.getElementById("seriesMount");
   const otherHead = document.getElementById("otherHead");
   const grid = document.getElementById("storyGrid");
   const empty = document.getElementById("emptyState");
@@ -484,18 +510,48 @@
       : '<a class="card" href="' + s.link + '">' + body + '</a>';
   }
 
+  function seriesBlockHTML(meta, books){
+    var accent = meta.accent && meta.accent !== "pink" ? ' data-accent="' + meta.accent + '"' : "";
+    return '<div class="series-block"' + accent + '>' +
+      '<div class="series-head">' +
+        '<span class="series-badge">' + (meta.badge || "连载中") + '</span>' +
+        '<h2 class="series-title">' + meta.name + '</h2>' +
+        (meta.desc ? '<p class="series-desc">' + meta.desc + '</p>' : "") +
+      '</div>' +
+      '<div class="grid">' + books.map(cardHTML).join("") + '</div>' +
+    '</div>';
+  }
+
   function render(){
     badge.textContent = "已收录 " + stories.length + " 个故事";
     empty.hidden = stories.length > 0;
 
-    var series = stories.filter(function(s){return s.series === SERIES;});
-    var others = stories.filter(function(s){return s.series !== SERIES;});
+    var catalogNames = {};
+    seriesCatalog.forEach(function(c){ catalogNames[c.name] = true; });
 
-    seriesHead.hidden = series.length === 0;
-    seriesGrid.innerHTML = series.map(cardHTML).join("");
+    var html = "";
+    seriesCatalog.forEach(function(meta){
+      var books = stories.filter(function(s){ return s.series === meta.name; });
+      if(books.length) html += seriesBlockHTML(meta, books);
+    });
 
-    otherHead.hidden = others.length === 0;
-    grid.innerHTML = others.map(cardHTML).join("");
+    // 未在 catalog 登记、但仍带 series 的故事：自动成块，避免遗漏
+    var orphanNames = [];
+    stories.forEach(function(s){
+      if(s.series && !catalogNames[s.series] && orphanNames.indexOf(s.series) === -1){
+        orphanNames.push(s.series);
+      }
+    });
+    orphanNames.forEach(function(name){
+      var books = stories.filter(function(s){ return s.series === name; });
+      html += seriesBlockHTML({ name: name, badge: "连载中", desc: "", accent: "lavender" }, books);
+    });
+
+    seriesMount.innerHTML = html;
+
+    var oneshots = stories.filter(function(s){ return !s.series; });
+    otherHead.hidden = oneshots.length === 0;
+    grid.innerHTML = oneshots.map(cardHTML).join("");
   }
 
   function forceRefresh(){
