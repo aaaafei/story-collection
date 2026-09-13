@@ -4,6 +4,14 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>故事收藏屋 · 绘本目录</title>
+<meta name="theme-color" content="#F59AB8">
+<meta name="application-name" content="故事收藏屋">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="故事收藏屋">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icons/icon-192.png">
 <link rel="preconnect" href="https://miaoda.feishu.cn">
 <link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap">
 <style>
@@ -416,7 +424,8 @@
         <li>在对应文件夹放好 <code>index.html</code> 与 <code>assets/</code>；系列分册的角色设定写在该系列根目录的 <code>character-bible.md</code> / <code>refs/</code>。</li>
         <li>打开根目录 <code>stories.json</code>：在 <code>stories</code> 数组里复制一条记录，改封面、标题、简介、链接路径。</li>
         <li>连载故事加上 <code>"series": "中文系列名"</code>，并在同文件的 <code>seriesCatalog</code> 登记该系列（名称需一致）；单本不要填 <code>series</code>。</li>
-        <li>通过 Nginx 等 HTTP 方式访问本站（不要用双击本地文件预览），保存后点「强制刷新」，新卡片会出现在对应分区。</li>
+        <li>通过 Nginx 等 HTTPS 方式访问本站（不要用双击本地文件预览），保存后点「强制刷新」，新卡片会出现在对应分区。</li>
+        <li>本站为轻量 PWA：可用浏览器「安装应用 / 添加到主屏幕」；不做离线缓存，上架故事流程不变。</li>
       </ol>
     </details>
   </div>
@@ -544,6 +553,15 @@
 
   document.getElementById("refreshBtn").addEventListener("click", forceRefresh);
   loadCatalog();
+
+  // 轻量 PWA：注册透传 SW（不缓存内容），便于「安装到主屏幕」
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", function () {
+      navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch(function (err) {
+        console.warn("Service Worker 注册失败", err);
+      });
+    });
+  }
 </script>
 
 </body>
