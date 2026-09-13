@@ -37,7 +37,7 @@
 
 **禁止项：** 金发 / 金冠卷发、换裙色、成人比例、写实脸、无发饰。
 
-**标准参考图：** `refs/rose-princess-front.jpg`、`refs/rose-princess-bust.jpg`（待放入）
+**标准参考图：** `refs/rose-princess-front.jpg`、`refs/rose-princess-bust.jpg`
 
 ---
 
@@ -60,7 +60,7 @@
 
 **禁止项：** 粉裙、棕发/金发、成人比例、写实脸、无发饰。
 
-**标准参考图：** `refs/blue-rose-princess-front.jpg`、`refs/blue-rose-princess-bust.jpg`（待放入）
+**标准参考图：** `refs/blue-rose-princess-front.jpg`、`refs/blue-rose-princess-bust.jpg`
 
 ---
 
@@ -80,7 +80,7 @@
 正常华丽人形形象的国王（深红色镶金王袍、金色王冠、慈祥面容）
 ```
 
-**标准参考图：** `refs/king-front.jpg`（待放入）
+**标准参考图：** `refs/king-front.jpg`
 
 ---
 
@@ -98,7 +98,7 @@
 正常华丽人形形象的王后（淡紫色优雅长裙礼服、金色小皇冠、温柔面容）
 ```
 
-**标准参考图：** `refs/queen-front.jpg`（待放入）
+**标准参考图：** `refs/queen-front.jpg`
 
 ---
 
@@ -119,7 +119,7 @@
 软萌可爱的云朵状小妖怪（白色毛茸茸云朵身体、圆圆大眼睛、蓝色小脸、带小翅膀，笑容顽皮，不恐怖）
 ```
 
-**标准参考图：** `refs/wind-sprite-front.jpg`（待放入）
+**标准参考图：** `refs/wind-sprite-front.jpg`
 
 ---
 

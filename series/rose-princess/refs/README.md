@@ -6,13 +6,13 @@
 
 | 文件名 | 内容 | 状态 |
 |--------|------|------|
-| `rose-princess-front.jpg` | 蔷薇公主 · 正面全身 | 待生成 |
-| `rose-princess-bust.jpg` | 蔷薇公主 · 半身特写 | 待生成 |
-| `blue-rose-princess-front.jpg` | 玫瑰公主 · 正面全身 | 待生成 |
-| `blue-rose-princess-bust.jpg` | 玫瑰公主 · 半身特写 | 待生成 |
-| `king-front.jpg` | 国王 · 正面全身 | 待生成 |
-| `queen-front.jpg` | 王后 · 正面全身 | 待生成 |
-| `wind-sprite-front.jpg` | 小风妖怪 · 正面 | 待生成 |
+| `rose-princess-front.jpg` | 蔷薇公主 · 正面全身 | 已生成 |
+| `rose-princess-bust.jpg` | 蔷薇公主 · 半身特写 | 已生成 |
+| `blue-rose-princess-front.jpg` | 玫瑰公主 · 正面全身 | 已生成 |
+| `blue-rose-princess-bust.jpg` | 玫瑰公主 · 半身特写 | 已生成 |
+| `king-front.jpg` | 国王 · 正面全身 | 已生成 |
+| `queen-front.jpg` | 王后 · 正面全身 | 已生成 |
+| `wind-sprite-front.jpg` | 小风妖怪 · 正面 | 已生成 |
 
 ## 标准照怎么生成
 
@@ -34,4 +34,4 @@
 
 - 标准照一经定稿，不要随手替换；若替换视为「改人设」，需走 `workflow.md` 的 D 流程
 - 本目录可提交到 Git，便于各环境统一参考
-- 未放入真实图片前，仍可用文字固定段生成，但一致性会弱很多——请尽快补齐主角两套 front + bust
+- 主角两套 front + bust 已就位，后续新配图务必挂上对应标准照作为参考图
