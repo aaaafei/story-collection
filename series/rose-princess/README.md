@@ -30,6 +30,7 @@ series/rose-princess/
 | 4 | [`ep04-water-beads/`](ep04-water-beads/) | 水宝宝和手工香皂的大混乱 |
 | 5 | [`ep05-underground-lamp/`](ep05-underground-lamp/) | 地下城堡的神灯奇遇 |
 | 6 | [`ep06-star-seeds/`](ep06-star-seeds/) | 捣乱的星种子 |
+| 7 | [`ep07-kindergarten/`](ep07-kindergarten/) | 小玫瑰接姐姐放学（小宝贝形态首秀 · 魔法幼儿园） |
 | … | `epNN-.../` | 后续新故事（序号连续） |
 
 ## 快速开始（生成一张新图）
