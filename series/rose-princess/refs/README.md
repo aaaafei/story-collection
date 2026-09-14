@@ -23,14 +23,19 @@
 | `wind-sprite-front.jpg` | 小风妖怪 · 正面 | 已生成 |
 | `wind-sprite-side.jpg` | 小风妖怪 · 侧面 | 已生成 |
 | `wind-sprite-back.jpg` | 小风妖怪 · 背面 | 已生成 |
-| `underground-princess-front.jpg` | 地下公主 · 正面全身（蓝色软卷发、黑色星光裙） | 已生成 |
-| `underground-princess-bust.jpg` | 地下公主 · 半身特写（蓝色软卷发、黑色星光裙） | 已生成 |
-| `underground-princess-side.jpg` | 地下公主 · 侧面全身（蓝色软卷发、黑色星光裙） | 已生成 |
-| `underground-princess-back.jpg` | 地下公主 · 背面全身（蓝色软卷发、黑色星光裙） | 已生成 |
+| `underground-princess-front.jpg` | 地下公主 · 正面全身（浅蓝软卷发、黑色星光裙） | 已生成 |
+| `underground-princess-bust.jpg` | 地下公主 · 半身特写（浅蓝软卷发、黑色星光裙） | 已生成 |
+| `underground-princess-side.jpg` | 地下公主 · 侧面全身（浅蓝软卷发、黑色星光裙） | 已生成 |
+| `underground-princess-back.jpg` | 地下公主 · 背面全身（浅蓝软卷发、黑色星光裙） | 已生成 |
+| `underground-princess-3q.jpg` | 地下公主 · 3/4 侧面全身（故事页常用视角） | 已生成 |
+| `underground-princess-lookback.jpg` | 地下公主 · 回眸半身（背对镜头回头笑） | 已生成 |
+| `underground-princess-happy.jpg` | 地下公主 · 开心拍手表情（笑眼弯弯） | 已生成 |
+| `underground-princess-magic.jpg` | 地下公主 · 施展星光屏障动作（双手上托、头顶星光环） | 已生成 |
 
 > 2026-09-13 更新：玫瑰公主发色调整为**浅黑色软卷发**（原蓝色软卷发），
 > `front` / `bust` 已按新形象重新生成；全角色补齐侧面、背面多角度标准照。
 > 2026-09-14 更新：新增地下公主四视角标准照（ep05 首登场角色）。
+> 2026-09-14 二次更新：为地下公主补充 3/4 侧面、回眸、开心拍手、星光魔法动作四张参考图，共 8 张。
 
 ## 标准照怎么生成
 
