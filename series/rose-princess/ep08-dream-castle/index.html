@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>美梦城堡的甜甜梦 · 儿童绘本</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --paper:#FFFDF7;
+    --pink:#FFD9E5;
+    --pink-deep:#F59AB8;
+    --pink-soft:#FFECF2;
+    --blue:#CDEAF8;
+    --blue-deep:#7FB8D9;
+    --blue-soft:#E9F6FD;
+    --lavender:#E9DDF6;
+    --lavender-deep:#B49AE0;
+    --lavender-soft:#F3ECFB;
+    --mint:#D9F2DE;
+    --mint-deep:#7FB88E;
+    --mint-soft:#EFFAF2;
+    --night-deep:#6E7FB8;
+    --night-soft:#ECEEFA;
+    --ink:#5B4A43;
+    --ink-soft:#8A7368;
+    --radius-lg:34px;
+    --radius-md:22px;
+    --font-display:'ZCOOL KuaiLe','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+    --font-body:'Noto Sans SC','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(1200px 600px at 15% -5%, #FFE9F1 0%, transparent 60%),
+      radial-gradient(1000px 500px at 90% 8%, #E1F4FC 0%, transparent 55%),
+      radial-gradient(900px 500px at 50% 110%, #F0EAF9 0%, transparent 55%);
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px;}
+
+  .back-home{
+    position:fixed;
+    top:16px;left:16px;
+    z-index:50;
+    font-family:var(--font-display);
+    font-size:14px;
+    letter-spacing:1px;
+    color:var(--pink-deep);
+    background:rgba(255,255,255,.92);
+    border:2px solid #F8C7D8;
+    border-radius:999px;
+    padding:7px 18px;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(245,154,184,.28);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .back-home:hover{transform:translateX(-3px);box-shadow:0 10px 24px rgba(245,154,184,.38);}
+
+  .hero{
+    position:relative;
+    padding:52px 0 40px;
+    text-align:center;
+  }
+  .hero .page-tag{
+    display:inline-block;
+    font-family:var(--font-display);
+    font-size:15px;
+    letter-spacing:3px;
+    color:var(--pink-deep);
+    background:var(--pink-soft);
+    border:2px dashed #F8C7D8;
+    border-radius:999px;
+    padding:6px 20px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(38px,7vw,66px);
+    color:var(--pink-deep);
+    text-shadow:0 6px 0 #fff, 0 10px 24px rgba(245,154,184,.35);
+    letter-spacing:4px;
+    line-height:1.2;
+    margin-bottom:10px;
+  }
+  .hero .subtitle{
+    font-size:clamp(16px,2.6vw,21px);
+    color:var(--blue-deep);
+    font-weight:500;
+    letter-spacing:2px;
+    margin-bottom:8px;
+  }
+  .hero .meta-line{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+    margin:16px 0 26px;
+  }
+  .hero .meta-line span{
+    font-size:13.5px;color:var(--ink-soft);
+    background:#fff;border:1.5px solid #F2E4DA;
+    border-radius:999px;padding:5px 15px;
+  }
+  .hero .cover-frame{
+    position:relative;
+    max-width:760px;margin:0 auto;
+    border-radius:var(--radius-lg);
+    padding:14px;
+    background:linear-gradient(160deg,#fff 0%,var(--pink-soft) 100%);
+    box-shadow:0 22px 60px rgba(245,154,184,.26);
+  }
+  .hero .cover-frame img{
+    display:block;width:100%;height:auto;
+    border-radius:calc(var(--radius-lg) - 10px);
+  }
+  .hero .cover-line{
+    max-width:700px;margin:26px auto 0;
+    font-family:var(--font-display);
+    font-size:clamp(19px,3vw,24px);
+    color:var(--pink-deep);
+    letter-spacing:1px;
+  }
+
+  .characters{
+    padding:44px 0 8px;
+  }
+  .section-title{
+    text-align:center;
+    font-family:var(--font-display);
+    font-size:clamp(26px,4vw,34px);
+    color:var(--ink);
+    margin-bottom:8px;
+    letter-spacing:2px;
+  }
+  .section-note{
+    text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:24px;
+  }
+  .char-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;
+  }
+  .char-card{
+    background:var(--paper);
+    border-radius:var(--radius-md);
+    padding:26px 24px;
+    border:2px solid #F4E7DE;
+    position:relative;
+    overflow:hidden;
+  }
+  .char-card.c1{background:linear-gradient(160deg,#fff,var(--pink-soft));}
+  .char-card.c2{background:linear-gradient(160deg,#fff,var(--blue-soft));}
+  .char-card.c3{background:linear-gradient(160deg,#fff,var(--lavender-soft));}
+  .char-card.c4{background:linear-gradient(160deg,#fff,var(--mint-soft));}
+  .char-card h3{
+    font-family:var(--font-display);
+    font-size:22px;letter-spacing:2px;margin-bottom:10px;
+  }
+  .char-card.c1 h3{color:var(--pink-deep);}
+  .char-card.c2 h3{color:var(--blue-deep);}
+  .char-card.c3 h3{color:var(--lavender-deep);}
+  .char-card.c4 h3{color:var(--mint-deep);}
+  .char-card p{font-size:15px;color:var(--ink-soft);}
+  .char-card .badge{
+    display:inline-block;font-size:12px;color:#fff;
+    border-radius:999px;padding:3px 12px;margin-bottom:10px;letter-spacing:1px;
+  }
+  .char-card.c1 .badge{background:var(--pink-deep);}
+  .char-card.c2 .badge{background:var(--blue-deep);}
+  .char-card.c3 .badge{background:var(--lavender-deep);}
+  .char-card.c4 .badge{background:var(--mint-deep);}
+
+  .story{
+    padding:44px 0 10px;
+  }
+  .story .intro{
+    text-align:center;font-size:15px;color:var(--ink-soft);margin-bottom:30px;
+  }
+  .page{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    gap:26px;
+    align-items:center;
+    background:var(--paper);
+    border-radius:var(--radius-lg);
+    padding:26px;
+    margin-bottom:30px;
+    border:2px solid #F4E7DE;
+    box-shadow:0 14px 34px rgba(245,154,184,.14);
+    position:relative;
+  }
+  .page .img-box{
+    border-radius:calc(var(--radius-md) - 6px);
+    overflow:hidden;
+    background:var(--pink-soft);
+    line-height:0;
+  }
+  .page .img-box img{
+    display:block;width:100%;height:auto;
+    transition:transform .5s ease;
+  }
+  .page .img-box:hover img{transform:scale(1.03);}
+  .page .text-box{
+    padding:6px 10px;
+    position:relative;
+  }
+  .page .text-box .p-no{
+    font-family:var(--font-display);
+    font-size:14px;letter-spacing:2px;
+    display:inline-block;
+    border-radius:999px;padding:4px 16px;margin-bottom:14px;
+  }
+  .page .text-box h2{
+    font-family:var(--font-display);
+    font-size:clamp(24px,3.4vw,30px);
+    letter-spacing:1px;
+    margin-bottom:14px;
+    line-height:1.4;
+  }
+  .page .text-box .quote{
+    font-size:clamp(16.5px,2.4vw,19px);
+    color:var(--ink);
+    line-height:2;
+    position:relative;
+    padding-left:20px;
+    border-left:5px solid var(--pink);
+    border-radius:2px;
+  }
+  .page:nth-of-type(even) .p-no,.page:nth-of-type(even) h2{color:var(--blue-deep);}
+  .page:nth-of-type(even) .p-no{background:var(--blue-soft);border:1.5px solid #C2E2F4;}
+  .page:nth-of-type(even) .quote{border-left-color:var(--blue);}
+  .page:nth-of-type(odd) .p-no,.page:nth-of-type(odd) h2{color:var(--pink-deep);}
+  .page:nth-of-type(odd) .p-no{background:var(--pink-soft);border:1.5px solid #F8C7D8;}
+  .page:nth-of-type(odd) .quote{border-left-color:var(--pink);}
+
+  .ending{
+    text-align:center;
+    padding:40px 0 56px;
+  }
+  .ending .the-end{
+    font-family:var(--font-display);
+    font-size:clamp(34px,6vw,52px);
+    color:var(--pink-deep);
+    letter-spacing:10px;
+    text-shadow:0 4px 0 #fff, 0 8px 20px rgba(245,154,184,.3);
+    margin-bottom:10px;
+  }
+  .ending p{color:var(--ink-soft);font-size:15px;}
+
+  footer{
+    text-align:center;padding:22px 0 34px;
+    font-size:13px;color:#B49C91;
+    letter-spacing:1px;
+  }
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero{animation:riseIn .7s ease both;}
+  .characters{animation:riseIn .7s .12s ease both;}
+  .story{animation:riseIn .7s .22s ease both;}
+  .ending{animation:riseIn .7s .3s ease both;}
+
+  @media (max-width:820px){
+    .page{grid-template-columns:1fr;padding:20px;}
+    .page .text-box{padding:6px 4px 2px;}
+    .wrap{padding:0 16px;}
+    .hero{padding:38px 0 28px;}
+  }
+
+  @media print{
+    .hero .cover-frame{box-shadow:none;}
+    .page,.char-card{box-shadow:none;break-inside:avoid;}
+    .page{grid-template-columns:1fr 1fr;page-break-inside:avoid;}
+    footer{display:none;}
+    body{background:#fff;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<a class="back-home" href="../../../index.html">← 返回故事目录</a>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="page-tag">系列故事 · 第八篇</span>
+    <h1>美梦城堡的甜甜梦</h1>
+    <p class="subtitle">噩梦妖怪的大捣蛋 · 美梦仙子的星光魔法</p>
+    <div class="meta-line">
+      <span>适读年龄 3-6 岁</span>
+      <span>郊游日常</span>
+      <span>温柔治愈</span>
+      <span>水彩画风</span>
+    </div>
+    <div class="cover-frame">
+      <img src="assets/page-01.jpg" alt="封面：蔷薇公主和玫瑰公主挎着野餐篮，走向星星月亮装饰的美梦城堡">
+    </div>
+    <p class="cover-line">蔷薇公主和玫瑰公主去美梦城堡郊游啦！美梦仙子端出星星饼干，请她们在云朵床上休息。可是，趁仙子不在的时候——一个抱着噩梦泡泡的小妖怪，悄悄溜了进来……</p>
+  </div>
+</header>
+
+<section class="characters">
+  <div class="wrap">
+    <h2 class="section-title">登场小主角</h2>
+    <p class="section-note">马卡龙柔和画风 · 水彩晕染 · 圆润软萌 · 高清适合打印</p>
+    <div class="char-grid">
+      <div class="char-card c1">
+        <span class="badge">姐姐 · 主角</span>
+        <h3>蔷薇公主</h3>
+        <p>穿着粉红色蓬蓬裙，浅棕色微卷长发上别着粉色小花。这一篇她牵着妹妹去美梦城堡郊游，晚上却做起花园变黑的黑漆漆噩梦——还好有美梦仙子来帮忙！</p>
+      </div>
+      <div class="char-card c2">
+        <span class="badge">妹妹 · 主角</span>
+        <h3>玫瑰公主</h3>
+        <p>浅黑色软卷发、蓝色小花发饰、蓝色蓬蓬裙，眼睛亮晶晶。和姐姐一起去郊游，却在梦里一个人找不到姐姐，着急得直喊——醒来后紧紧抱住姐姐。</p>
+      </div>
+      <div class="char-card c3">
+        <span class="badge">爸爸 · 妈妈</span>
+        <h3>国王和王后</h3>
+        <p>国王穿着深红镶金王袍、戴着金色王冠，王后穿着淡紫色长裙、戴着金色小皇冠。听到小公主们的呼救，王后吹响亮晶晶的星光哨子，召唤美梦仙子！</p>
+      </div>
+      <div class="char-card c4">
+        <span class="badge">梦境搭档 · 新登场</span>
+        <h3>噩梦妖怪 &amp; 美梦仙子</h3>
+        <p>深紫色毛球小妖怪抱着噩梦泡泡，只想找人玩，却把梦变黑了；粉头发的星光仙子最擅长把可怕的梦变成甜甜的梦——他们一起，成了守护好梦的夜晚搭档。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap">
+    <p class="intro">翻开故事，跟着两位小公主去美梦城堡郊游，看噩梦妖怪怎么被温柔地「治」好，一起把梦变甜</p>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-02.jpg" alt="出发去美梦城堡"></div>
+      <div class="text-box">
+        <span class="p-no">第 2 页</span>
+        <h2>出发去美梦城堡</h2>
+        <p class="quote">阳光暖暖的，蔷薇公主和玫瑰公主提着野餐小篮子，穿过开满花的花园小路去郊游。远处，一座奶油色的小城堡在云朵间闪闪发光——那就是美梦城堡！</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-03.jpg" alt="仙子的招待"></div>
+      <div class="text-box">
+        <span class="p-no">第 3 页</span>
+        <h2>仙子的招待</h2>
+        <p class="quote">美梦仙子在城堡门口张开双臂欢迎她们：「欢迎来美梦城堡！」她端出星星饼干、倒上花蜜果汁，城堡里会发光的水晶灯一闪一闪，会唱歌的小风铃「叮铃铃」地响。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-04.jpg" alt="请先睡一觉"></div>
+      <div class="text-box">
+        <span class="p-no">第 4 页</span>
+        <h2>请先睡一觉</h2>
+        <p class="quote">玩累了，美梦仙子请两位小公主在云朵床上睡午觉：「我去给别的小朋友洒星光，你们先睡一觉，回来给你们变甜甜的梦！」姐妹俩钻进软软的云朵被窝，不一会儿就睡着了。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-05.jpg" alt="噩梦妖怪来了"></div>
+      <div class="text-box">
+        <span class="p-no">第 5 页</span>
+        <h2>噩梦妖怪来了</h2>
+        <p class="quote">趁美梦仙子不在，一个圆滚滚的小妖怪从窗外悄悄探进半个脑袋——是噩梦妖怪！它抱着深紫色的噩梦泡泡，只是想找人玩。它鼓起腮帮子，「呼——」吹出一串噩梦泡泡，飘向睡着的两位小公主。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-06.jpg" alt="姐姐的噩梦"></div>
+      <div class="text-box">
+        <span class="p-no">第 6 页</span>
+        <h2>姐姐的噩梦</h2>
+        <p class="quote">蔷薇公主梦见，她最心爱的花园变得黑漆漆的，玫瑰花一朵朵蔫了，她怎么浇水也救不回来。她着急地蹲在花坛前，眼眶都红了。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-07.jpg" alt="妹妹的噩梦"></div>
+      <div class="text-box">
+        <span class="p-no">第 7 页</span>
+        <h2>妹妹的噩梦</h2>
+        <p class="quote">玫瑰公主也做起噩梦。她梦见自己一个人在黑漆漆的走廊里，找不到姐姐，也找不到回家的路。她攥紧小拳头，眼泪在眼眶里打转，大声喊：「姐姐——！」</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-08.jpg" alt="惊醒呼救"></div>
+      <div class="text-box">
+        <span class="p-no">第 8 页</span>
+        <h2>惊醒呼救</h2>
+        <p class="quote">「啊——！」两位小公主同时惊醒，紧紧抱在一起，大声喊：「爸爸！妈妈！有妖怪！」窗外，噩梦妖怪自己先吓了一跳，缩成一团，小翅膀直发抖：「哇呜……我、我不是故意的……」</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-09.jpg" alt="召唤美梦仙子"></div>
+      <div class="text-box">
+        <span class="p-no">第 9 页</span>
+        <h2>召唤美梦仙子</h2>
+        <p class="quote">国王和王后听到呼救声，赶紧跑进卧室。王后从衣领上摘下亮晶晶的星光哨子，轻轻一吹——「叮——！」一道星光冲出窗户，飞向月亮。这是召唤美梦仙子的信号！</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-10.jpg" alt="仙子赶到"></div>
+      <div class="text-box">
+        <span class="p-no">第 10 页</span>
+        <h2>仙子赶到</h2>
+        <p class="quote">美梦仙子听见召唤，举着星光魔法棒，从月光里飞回来了！星光像小流星一样洒下来，黑漆漆的卧室一下子变得亮堂堂、暖融融。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-11.jpg" alt="变甜甜的梦"></div>
+      <div class="text-box">
+        <span class="p-no">第 11 页</span>
+        <h2>变甜甜的梦</h2>
+        <p class="quote">美梦仙子轻轻举起魔法棒，点了点那些噩梦泡泡。「啵——」深紫色的泡泡一个接一个变成粉色的甜甜梦泡泡，飘回两位小公主的梦里。噩梦妖怪看得眼睛都亮了：「哇——好、好漂亮！」</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-12.jpg" alt="甜甜的梦"></div>
+      <div class="text-box">
+        <span class="p-no">第 12 页</span>
+        <h2>甜甜的梦</h2>
+        <p class="quote">两位小公主重新睡着了。这一次，她们梦见开满花的花园、追着蝴蝶跑，还有小小的月光摇篮。窗边，噩梦妖怪和美梦仙子并排坐在一起，守护着甜甜的梦。噩梦妖怪小声说：「明天……我还来，只做好梦，好不好？」美梦仙子笑着点点头：「好呀。」</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="ending">
+  <div class="wrap">
+    <p class="the-end">完</p>
+    <p>噩梦也可以变成甜甜的梦——只要有人温柔地陪着你，把「吓一跳」换成「一起玩」</p>
+  </div>
+</section>
+
+<footer>《美梦城堡的甜甜梦》· 系列第八篇 · 献给每个怕黑、也做着甜甜梦的小朋友</footer>
+
+</body>
+</html>

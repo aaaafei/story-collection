@@ -31,11 +31,20 @@
 | `underground-princess-lookback.jpg` | 地下公主 · 回眸半身（背对镜头回头笑） | 已生成 |
 | `underground-princess-happy.jpg` | 地下公主 · 开心拍手表情（笑眼弯弯） | 已生成 |
 | `underground-princess-magic.jpg` | 地下公主 · 施展星光屏障动作（双手上托、头顶星光环） | 已生成 |
+| `nightmare-monster-front.jpg` | 噩梦妖怪 · 正面全身（深紫毛球身体、圆润月牙角、怀抱噩梦泡泡） | 已生成 |
+| `nightmare-monster-bust.jpg` | 噩梦妖怪 · 半身特写 | 已生成 |
+| `nightmare-monster-side.jpg` | 噩梦妖怪 · 侧面全身 | 已生成 |
+| `nightmare-monster-back.jpg` | 噩梦妖怪 · 背面全身 | 已生成 |
+| `dream-fairy-front.jpg` | 美梦仙子 · 正面全身（浅粉长发、粉白纱裙、透明翅膀、星光魔法棒） | 已生成 |
+| `dream-fairy-bust.jpg` | 美梦仙子 · 半身特写 | 已生成 |
+| `dream-fairy-side.jpg` | 美梦仙子 · 侧面全身 | 已生成 |
+| `dream-fairy-back.jpg` | 美梦仙子 · 背面全身 | 已生成 |
 
 > 2026-09-13 更新：玫瑰公主发色调整为**浅黑色软卷发**（原蓝色软卷发），
 > `front` / `bust` 已按新形象重新生成；全角色补齐侧面、背面多角度标准照。
 > 2026-09-14 更新：新增地下公主四视角标准照（ep05 首登场角色）。
 > 2026-09-14 二次更新：为地下公主补充 3/4 侧面、回眸、开心拍手、星光魔法动作四张参考图，共 8 张。
+> 2026-09-16 更新：新增梦境搭档「噩梦妖怪」与「美梦仙子」各四视角标准照（front / bust / side / back），供后续梦境主题故事使用；人设见 `../character-bible.md`「梦境搭档」一节。
 
 ## 标准照怎么生成
 
