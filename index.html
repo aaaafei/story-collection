@@ -119,6 +119,48 @@
     cursor:wait;
   }
 
+  /* ===== 最新故事 ===== */
+  .latest-block{
+    margin-bottom:8px;
+  }
+  .latest-head{
+    text-align:center;
+    padding:4px 0 18px;
+  }
+  .latest-badge{
+    display:inline-block;
+    font-size:13px;
+    letter-spacing:2px;
+    color:#fff;
+    background:var(--mint-deep);
+    border-radius:999px;
+    padding:4px 18px;
+    margin-bottom:12px;
+  }
+  .latest-title{
+    font-family:var(--font-display);
+    font-size:clamp(30px,4.6vw,44px);
+    color:var(--mint-deep);
+    letter-spacing:5px;
+    margin-bottom:6px;
+    line-height:1.3;
+  }
+  .latest-desc{
+    font-size:15px;
+    color:var(--ink-soft);
+    letter-spacing:1px;
+  }
+  .latest-scroller{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:26px;
+  }
+  .card .when{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    letter-spacing:1px;
+  }
+
   /* ===== 系列分组标题 ===== */
   .series-block{
     margin-bottom:12px;
@@ -370,6 +412,18 @@
     .hero{padding:42px 0 24px;}
     .grid{gap:20px;}
     .other-head{margin-top:34px;}
+    .latest-scroller{
+      display:flex;
+      gap:14px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling:touch;
+      padding-bottom:8px;
+    }
+    .latest-scroller .card{
+      flex:0 0 86%;
+      scroll-snap-align:start;
+    }
   }
 
   @media print{
@@ -398,6 +452,9 @@
 <section class="shelf">
   <div class="wrap">
 
+    <!-- 最近收录（按 createdAt，正文仍按集数顺序） -->
+    <div id="latestMount"></div>
+
     <!-- 各连载系列（由 JS 按 seriesCatalog 动态渲染） -->
     <div id="seriesMount"></div>
 
@@ -423,7 +480,7 @@
         <li>目录约定：连载放 <code>series/&lt;系列slug&gt;/epNN-主题/</code>；单本放 <code>oneshots/&lt;书名slug&gt;/</code>。新系列可复制 <code>series/_template/</code>。</li>
         <li>在对应文件夹放好 <code>index.html</code> 与 <code>assets/</code>；系列分册的角色设定写在该系列根目录的 <code>character-bible.md</code> / <code>refs/</code>。</li>
         <li>高清图放入该册 <code>assets/src/</code> 后，在仓库根目录执行 <code>python tools/optimize_images.py &lt;绘本目录&gt;</code>，生成网页内页与 <code>cover.jpg</code>（说明见 <code>tools/README.md</code>）。</li>
-        <li>打开根目录 <code>stories.json</code>：在 <code>stories</code> 数组里复制一条记录；封面请用 <code>.../assets/cover.jpg</code>。</li>
+        <li>打开根目录 <code>stories.json</code>：在 <code>stories</code> 数组里复制一条记录；封面请用 <code>.../assets/cover.jpg</code>。加上 <code>createdAt</code>（如 <code>2026-09-25T08:30:00+08:00</code>）。页顶「最新故事」取最近 3 本；系列正文仍按集数从早到晚排。</li>
         <li>连载故事加上 <code>"series": "中文系列名"</code>，并在同文件的 <code>seriesCatalog</code> 登记该系列（名称需一致）；单本不要填 <code>series</code>。</li>
         <li>通过 Nginx 等 HTTPS 方式访问本站（不要用双击本地文件预览），保存后点「强制刷新」，新卡片会出现在对应分区。</li>
         <li>本站为轻量 PWA：可用浏览器「安装应用 / 添加到主屏幕」；不做离线缓存，上架故事流程不变。</li>
@@ -441,6 +498,8 @@
   var seriesCatalog = [];
   var stories = [];
 
+  var LATEST_COUNT = 3;
+  var latestMount = document.getElementById("latestMount");
   var seriesMount = document.getElementById("seriesMount");
   var otherHead = document.getElementById("otherHead");
   var grid = document.getElementById("storyGrid");
@@ -448,14 +507,39 @@
   var emptyHint = document.getElementById("emptyHint");
   var badge = document.getElementById("countBadge");
 
+  function storyTime(s){
+    var t = Date.parse(s.createdAt || "");
+    return isNaN(t) ? 0 : t;
+  }
+
+  function formatCreated(iso){
+    var d = new Date(iso || "");
+    if(!iso || isNaN(d.getTime())) return "";
+    return "收录于 " + (d.getMonth() + 1) + "月" + d.getDate() + "日";
+  }
+
+  function byCreatedAsc(a, b){
+    return storyTime(a) - storyTime(b);
+  }
+
+  function byEpisodeAsc(a, b){
+    return (a.episode || 0) - (b.episode || 0);
+  }
+
   function cardHTML(s){
     var locked = !s.link;
     var tags = (s.tags || []).map(function(t){ return "<span>" + t + "</span>"; }).join("");
+    var seriesLabel = "";
+    if(s.series){
+      seriesLabel = s.episode ? "第" + s.episode + "集" : "系列故事";
+    }
+    var when = formatCreated(s.createdAt);
     var body =
       '<div class="cover"><img src="' + s.cover + '" alt="' + s.title + '" loading="lazy"></div>' +
       '<div class="info">' +
-        (s.series ? '<span class="series-tag">系列故事</span>' : "") +
+        (seriesLabel ? '<span class="series-tag">' + seriesLabel + '</span>' : "") +
         '<h2>' + s.title + '</h2>' +
+        (when ? '<p class="when">' + when + '</p>' : "") +
         '<p>' + s.desc + '</p>' +
         '<div class="tags">' + tags + '</div>' +
         (locked
@@ -465,6 +549,17 @@
     return locked
       ? '<div class="card card-locked">' + body + '</div>'
       : '<a class="card" href="' + s.link + '">' + body + '</a>';
+  }
+
+  function latestBlockHTML(books){
+    return '<div class="latest-block">' +
+      '<div class="latest-head">' +
+        '<span class="latest-badge">新上架</span>' +
+        '<h2 class="latest-title">最新故事</h2>' +
+        '<p class="latest-desc">按收录时间，新的排在前面</p>' +
+      '</div>' +
+      '<div class="latest-scroller">' + books.map(cardHTML).join("") + '</div>' +
+    '</div>';
   }
 
   function seriesBlockHTML(meta, books){
@@ -481,6 +576,7 @@
 
   function showLoadError(msg){
     badge.textContent = "目录加载失败";
+    latestMount.innerHTML = "";
     seriesMount.innerHTML = "";
     otherHead.hidden = true;
     grid.innerHTML = "";
@@ -491,6 +587,13 @@
 
   function render(){
     badge.textContent = "已收录 " + stories.length + " 个故事";
+    var latest = stories.slice().sort(function(a, b){
+      var diff = storyTime(b) - storyTime(a);
+      if(diff) return diff;
+      return (b.episode || 0) - (a.episode || 0);
+    }).slice(0, LATEST_COUNT);
+    latestMount.innerHTML = latest.length ? latestBlockHTML(latest) : "";
+
     empty.hidden = stories.length > 0;
     empty.querySelector(".big").textContent = "书架还空空的";
     emptyHint.textContent = "添加第一个故事，让书架热闹起来吧！";
@@ -501,6 +604,7 @@
     var html = "";
     seriesCatalog.forEach(function(meta){
       var books = stories.filter(function(s){ return s.series === meta.name; });
+      books.sort(byEpisodeAsc);
       if(books.length) html += seriesBlockHTML(meta, books);
     });
 
@@ -512,12 +616,14 @@
     });
     orphanNames.forEach(function(name){
       var books = stories.filter(function(s){ return s.series === name; });
+      books.sort(byEpisodeAsc);
       html += seriesBlockHTML({ name: name, badge: "连载中", desc: "", accent: "lavender" }, books);
     });
 
     seriesMount.innerHTML = html;
 
     var oneshots = stories.filter(function(s){ return !s.series; });
+    oneshots.sort(byCreatedAsc);
     otherHead.hidden = oneshots.length === 0;
     grid.innerHTML = oneshots.map(cardHTML).join("");
   }
