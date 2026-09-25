@@ -127,6 +127,45 @@
       "link": "series/rose-princess/ep09-mermaid-show/index.html"
     },
     {
+      "series": "蔷薇公主系列",
+      "episode": 10,
+      "cover": "series/rose-princess/ep10-courage-gem/assets/cover.jpg",
+      "title": "鹿角灯下的勇气宝石",
+      "desc": "系列第十篇：星期五，蔷薇公主盼着放学，好和玫瑰公主挑战彩虹高台。妹妹套着脚蹼，姐姐戴好头盔和护膝。她们互相等待、一起攀登，姐姐绊倒后，妹妹先问疼不疼再扶她起来。鹿角灯下，爸爸妈妈送来一颗勇气宝石。",
+      "tags": [
+        "安全准备",
+        "互相帮助",
+        "温柔治愈"
+      ],
+      "link": "series/rose-princess/ep10-courage-gem/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 11,
+      "cover": "series/rose-princess/ep11-nightmare-fairy/assets/cover.jpg",
+      "title": "噩梦妖怪和美梦仙子",
+      "desc": "系列第十一篇：夜里，噩梦妖怪抱着泡泡溜进蔷薇公主和玫瑰公主的梦里，一声“哇呜”把星星都吓跑了。姐妹俩没有赶走它，而是发现它也怕黑。美梦仙子赶来，大家把噩梦泡泡变成甜甜梦泡泡。",
+      "tags": [
+        "不怕黑",
+        "勇敢求助",
+        "温柔交友"
+      ],
+      "link": "series/rose-princess/ep11-nightmare-fairy/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 12,
+      "cover": "series/rose-princess/ep12-dice/assets/cover.jpg",
+      "title": "奇奇怪怪的骰子",
+      "desc": "系列第十二篇：手工作业要做一颗骰子，原来的骰子却找不到了。南瓜一直滚，面包太软，长萝卜搭不高。姐妹俩发现骰子需要六个平平的面，请大人把白萝卜修成小方块，再用纸盒做成可以一直玩的骰子，食材都回到了厨房。",
+      "tags": [
+        "认识形状",
+        "试错合作",
+        "珍惜食物"
+      ],
+      "link": "series/rose-princess/ep12-dice/index.html"
+    },
+    {
       "cover": "oneshots/labu-princess/assets/cover.jpg",
       "title": "拉不下公主",
       "desc": "屁屁城堡里住着最爱偷懒的拉不下公主，挑食不喝水，肚子怪怪的！屁屁小精灵飞来支招：喝水水、吃果蔬、蹦跳跳，一起捉弄懒粑粑！",

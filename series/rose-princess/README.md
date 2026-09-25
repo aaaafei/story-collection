@@ -31,6 +31,11 @@ series/rose-princess/
 | 5 | [`ep05-underground-lamp/`](ep05-underground-lamp/) | 地下城堡的神灯奇遇 |
 | 6 | [`ep06-star-seeds/`](ep06-star-seeds/) | 捣乱的星种子 |
 | 7 | [`ep07-kindergarten/`](ep07-kindergarten/) | 小玫瑰接姐姐放学（小宝贝形态首秀 · 魔法幼儿园） |
+| 8 | [`ep08-dream-castle/`](ep08-dream-castle/) | 美梦城堡的甜甜梦 |
+| 9 | [`ep09-mermaid-show/`](ep09-mermaid-show/) | 去看人鱼公主 |
+| 10 | [`ep10-courage-gem/`](ep10-courage-gem/) | 鹿角灯下的勇气宝石 |
+| 11 | [`ep11-nightmare-fairy/`](ep11-nightmare-fairy/) | 噩梦妖怪和美梦仙子 |
+| 12 | [`ep12-dice/`](ep12-dice/) | 奇奇怪怪的骰子 |
 | … | `epNN-.../` | 后续新故事（序号连续） |
 
 ## 快速开始（生成一张新图）
