@@ -150,10 +150,19 @@
     color:var(--ink-soft);
     letter-spacing:1px;
   }
-  .latest-scroller{
-    display:grid;
-    grid-template-columns:repeat(3,minmax(0,1fr));
+  .latest-scroller,
+  .shelf-row{
+    display:flex;
     gap:26px;
+    overflow-x:auto;
+    scroll-snap-type:x mandatory;
+    -webkit-overflow-scrolling:touch;
+    padding-bottom:10px;
+  }
+  .latest-scroller .card,
+  .shelf-row .card{
+    flex:0 0 300px;
+    scroll-snap-align:start;
   }
   .card .when{
     font-size:12.5px;
@@ -412,23 +421,19 @@
     .hero{padding:42px 0 24px;}
     .grid{gap:20px;}
     .other-head{margin-top:34px;}
-    .latest-scroller{
-      display:flex;
-      gap:14px;
-      overflow-x:auto;
-      scroll-snap-type:x mandatory;
-      -webkit-overflow-scrolling:touch;
-      padding-bottom:8px;
-    }
-    .latest-scroller .card{
+    .latest-scroller,
+    .shelf-row{gap:14px;}
+    .latest-scroller .card,
+    .shelf-row .card{
       flex:0 0 86%;
-      scroll-snap-align:start;
     }
   }
 
   @media print{
     .howto,footer,.refresh-btn{display:none;}
     body{background:#fff;}
+    .latest-scroller,.shelf-row{display:grid;grid-template-columns:repeat(2,1fr);overflow:visible;}
+    .latest-scroller .card,.shelf-row .card{flex:none;}
     .card{box-shadow:none;break-inside:avoid;}
     *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
   }
@@ -462,7 +467,7 @@
     <div class="other-head" id="otherHead" hidden>
       <h2 class="other-title">独立故事</h2>
     </div>
-    <div class="grid" id="storyGrid"></div>
+    <div class="shelf-row" id="storyGrid"></div>
 
     <div class="empty" id="emptyState" hidden>
       <p class="big">书架还空空的</p>
@@ -570,7 +575,7 @@
         '<h2 class="series-title">' + meta.name + '</h2>' +
         (meta.desc ? '<p class="series-desc">' + meta.desc + '</p>' : "") +
       '</div>' +
-      '<div class="grid">' + books.map(cardHTML).join("") + '</div>' +
+      '<div class="shelf-row">' + books.map(cardHTML).join("") + '</div>' +
     '</div>';
   }
 
