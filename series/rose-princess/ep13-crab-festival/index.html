@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>螃蟹节的小人鱼宝宝 · 儿童绘本</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --paper:#FFFDF7;
+    --pink:#FFD9E5;
+    --pink-deep:#F59AB8;
+    --pink-soft:#FFECF2;
+    --blue:#CDEAF8;
+    --blue-deep:#7FB8D9;
+    --blue-soft:#E9F6FD;
+    --lavender:#E9DDF6;
+    --lavender-deep:#B49AE0;
+    --lavender-soft:#F3ECFB;
+    --mint:#D9F2DE;
+    --mint-deep:#7FB88E;
+    --mint-soft:#EFFAF2;
+    --night-deep:#6E7FB8;
+    --night-soft:#ECEEFA;
+    --ink:#5B4A43;
+    --ink-soft:#8A7368;
+    --radius-lg:34px;
+    --radius-md:22px;
+    --font-display:'ZCOOL KuaiLe','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+    --font-body:'Noto Sans SC','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(1200px 600px at 15% -5%, #FFE9F1 0%, transparent 60%),
+      radial-gradient(1000px 500px at 90% 8%, #E1F4FC 0%, transparent 55%),
+      radial-gradient(900px 500px at 50% 110%, #F0EAF9 0%, transparent 55%);
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px;}
+
+  .back-home{
+    position:fixed;
+    top:16px;left:16px;
+    z-index:50;
+    font-family:var(--font-display);
+    font-size:14px;
+    letter-spacing:1px;
+    color:var(--pink-deep);
+    background:rgba(255,255,255,.92);
+    border:2px solid #F8C7D8;
+    border-radius:999px;
+    padding:7px 18px;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(245,154,184,.28);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .back-home:hover{transform:translateX(-3px);box-shadow:0 10px 24px rgba(245,154,184,.38);}
+
+  .hero{
+    position:relative;
+    padding:52px 0 40px;
+    text-align:center;
+  }
+  .hero .page-tag{
+    display:inline-block;
+    font-family:var(--font-display);
+    font-size:15px;
+    letter-spacing:3px;
+    color:var(--pink-deep);
+    background:var(--pink-soft);
+    border:2px dashed #F8C7D8;
+    border-radius:999px;
+    padding:6px 20px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(38px,7vw,66px);
+    color:var(--pink-deep);
+    text-shadow:0 6px 0 #fff, 0 10px 24px rgba(245,154,184,.35);
+    letter-spacing:4px;
+    line-height:1.2;
+    margin-bottom:10px;
+  }
+  .hero .subtitle{
+    font-size:clamp(16px,2.6vw,21px);
+    color:var(--blue-deep);
+    font-weight:500;
+    letter-spacing:2px;
+    margin-bottom:8px;
+  }
+  .hero .meta-line{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+    margin:16px 0 26px;
+  }
+  .hero .meta-line span{
+    font-size:13.5px;color:var(--ink-soft);
+    background:#fff;border:1.5px solid #F2E4DA;
+    border-radius:999px;padding:5px 15px;
+  }
+  .hero .cover-frame{
+    position:relative;
+    max-width:760px;margin:0 auto;
+    border-radius:var(--radius-lg);
+    padding:14px;
+    background:linear-gradient(160deg,#fff 0%,var(--pink-soft) 100%);
+    box-shadow:0 22px 60px rgba(245,154,184,.26);
+  }
+  .hero .cover-frame img{
+    display:block;width:100%;height:auto;
+    border-radius:calc(var(--radius-lg) - 10px);
+    cursor:zoom-in;
+  }
+  .hero .cover-line{
+    max-width:700px;margin:26px auto 0;
+    font-family:var(--font-display);
+    font-size:clamp(19px,3vw,24px);
+    color:var(--pink-deep);
+    letter-spacing:1px;
+  }
+
+  .characters{
+    padding:44px 0 8px;
+  }
+  .section-title{
+    text-align:center;
+    font-family:var(--font-display);
+    font-size:clamp(26px,4vw,34px);
+    color:var(--ink);
+    margin-bottom:8px;
+    letter-spacing:2px;
+  }
+  .section-note{
+    text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:24px;
+  }
+  .char-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;
+  }
+  .char-card{
+    background:var(--paper);
+    border-radius:var(--radius-md);
+    padding:26px 24px;
+    border:2px solid #F4E7DE;
+    position:relative;
+    overflow:hidden;
+  }
+  .char-card.c1{background:linear-gradient(160deg,#fff,var(--pink-soft));}
+  .char-card.c2{background:linear-gradient(160deg,#fff,var(--blue-soft));}
+  .char-card.c3{background:linear-gradient(160deg,#fff,var(--lavender-soft));}
+  .char-card.c4{background:linear-gradient(160deg,#fff,var(--mint-soft));}
+  .char-card h3{
+    font-family:var(--font-display);
+    font-size:22px;letter-spacing:2px;margin-bottom:10px;
+  }
+  .char-card.c1 h3{color:var(--pink-deep);}
+  .char-card.c2 h3{color:var(--blue-deep);}
+  .char-card.c3 h3{color:var(--lavender-deep);}
+  .char-card.c4 h3{color:var(--mint-deep);}
+  .char-card p{font-size:15px;color:var(--ink-soft);}
+  .char-card .badge{
+    display:inline-block;font-size:12px;color:#fff;
+    border-radius:999px;padding:3px 12px;margin-bottom:10px;letter-spacing:1px;
+  }
+  .char-card.c1 .badge{background:var(--pink-deep);}
+  .char-card.c2 .badge{background:var(--blue-deep);}
+  .char-card.c3 .badge{background:var(--lavender-deep);}
+  .char-card.c4 .badge{background:var(--mint-deep);}
+
+  .story{
+    padding:44px 0 10px;
+  }
+  .story .intro{
+    text-align:center;font-size:15px;color:var(--ink-soft);margin-bottom:30px;
+  }
+  .page{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    gap:26px;
+    align-items:center;
+    background:var(--paper);
+    border-radius:var(--radius-lg);
+    padding:26px;
+    margin-bottom:30px;
+    border:2px solid #F4E7DE;
+    box-shadow:0 14px 34px rgba(245,154,184,.14);
+    position:relative;
+  }
+  .page .img-box{
+    border-radius:calc(var(--radius-md) - 6px);
+    overflow:hidden;
+    background:var(--pink-soft);
+    line-height:0;
+    cursor:zoom-in;
+  }
+  .page .img-box img{
+    display:block;width:100%;height:auto;
+    transition:transform .5s ease;
+    cursor:zoom-in;
+  }
+  .page .img-box:hover img{transform:scale(1.03);}
+  .page .text-box{
+    padding:6px 10px;
+    position:relative;
+  }
+  .page .text-box .p-no{
+    font-family:var(--font-display);
+    font-size:14px;letter-spacing:2px;
+    display:inline-block;
+    border-radius:999px;padding:4px 16px;margin-bottom:14px;
+  }
+  .page .text-box h2{
+    font-family:var(--font-display);
+    font-size:clamp(24px,3.4vw,30px);
+    letter-spacing:1px;
+    margin-bottom:14px;
+    line-height:1.4;
+  }
+  .page .text-box .quote{
+    font-size:clamp(16.5px,2.4vw,19px);
+    color:var(--ink);
+    line-height:2;
+    position:relative;
+    padding-left:20px;
+    border-left:5px solid var(--pink);
+    border-radius:2px;
+  }
+  .page:nth-of-type(even) .p-no,.page:nth-of-type(even) h2{color:var(--blue-deep);}
+  .page:nth-of-type(even) .p-no{background:var(--blue-soft);border:1.5px solid #C2E2F4;}
+  .page:nth-of-type(even) .quote{border-left-color:var(--blue);}
+  .page:nth-of-type(odd) .p-no,.page:nth-of-type(odd) h2{color:var(--pink-deep);}
+  .page:nth-of-type(odd) .p-no{background:var(--pink-soft);border:1.5px solid #F8C7D8;}
+  .page:nth-of-type(odd) .quote{border-left-color:var(--pink);}
+
+  .ending{
+    text-align:center;
+    padding:40px 0 56px;
+  }
+  .ending .the-end{
+    font-family:var(--font-display);
+    font-size:clamp(34px,6vw,52px);
+    color:var(--pink-deep);
+    letter-spacing:10px;
+    text-shadow:0 4px 0 #fff, 0 8px 20px rgba(245,154,184,.3);
+    margin-bottom:10px;
+  }
+  .ending p{color:var(--ink-soft);font-size:15px;}
+
+  footer{
+    text-align:center;padding:22px 0 34px;
+    font-size:13px;color:#B49C91;
+    letter-spacing:1px;
+  }
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero{animation:riseIn .7s ease both;}
+  .characters{animation:riseIn .7s .12s ease both;}
+  .story{animation:riseIn .7s .22s ease both;}
+  .ending{animation:riseIn .7s .3s ease both;}
+
+  .lightbox{
+    position:fixed;inset:0;z-index:200;
+    display:flex;align-items:center;justify-content:center;
+    padding:72px 88px 86px;
+    background:rgba(91,74,67,.78);
+    backdrop-filter:blur(10px);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .28s ease, visibility .28s ease;
+  }
+  .lightbox.is-open{
+    opacity:1;visibility:visible;pointer-events:auto;
+  }
+  .lightbox-stage{
+    margin:0;max-width:min(1100px,100%);
+    text-align:center;
+  }
+  .lightbox-stage img{
+    display:block;
+    max-width:100%;
+    max-height:calc(100vh - 170px);
+    width:auto;height:auto;margin:0 auto;
+    border-radius:22px;
+    box-shadow:0 22px 60px rgba(0,0,0,.28);
+    background:#fff;
+  }
+  .lightbox-stage figcaption{
+    margin-top:14px;
+    font-family:var(--font-display);
+    font-size:clamp(15px,2.2vw,18px);
+    color:#fff;
+    letter-spacing:1px;
+    text-shadow:0 2px 10px rgba(91,74,67,.4);
+  }
+  .lightbox-btn{
+    position:absolute;
+    border:2px solid #F8C7D8;
+    background:rgba(255,255,255,.94);
+    color:var(--pink-deep);
+    cursor:pointer;
+    box-shadow:0 8px 22px rgba(245,154,184,.32);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    font-family:var(--font-display);
+  }
+  .lightbox-btn:hover{
+    transform:scale(1.06);
+    box-shadow:0 12px 26px rgba(245,154,184,.42);
+    background:#fff;
+  }
+  .lightbox-btn:focus-visible{
+    outline:3px solid #fff;
+    outline-offset:3px;
+  }
+  .lightbox-close{
+    top:18px;right:18px;
+    width:46px;height:46px;
+    border-radius:50%;
+    font-size:28px;line-height:1;
+  }
+  .lightbox-nav{
+    top:50%;
+    width:52px;height:52px;
+    border-radius:50%;
+    font-size:34px;line-height:1;
+    transform:translateY(-50%);
+  }
+  .lightbox-nav:hover{transform:translateY(-50%) scale(1.06);}
+  .lightbox-prev{left:18px;}
+  .lightbox-next{right:18px;}
+  .lightbox-counter{
+    position:absolute;left:0;right:0;bottom:22px;
+    text-align:center;
+    font-size:14px;letter-spacing:2px;
+    color:#fff;
+  }
+  body.lightbox-lock{overflow:hidden;}
+
+  @media (max-width:820px){
+    .page{grid-template-columns:1fr;padding:20px;}
+    .page .text-box{padding:6px 4px 2px;}
+    .wrap{padding:0 16px;}
+    .hero{padding:38px 0 28px;}
+    .lightbox{padding:70px 16px 78px;}
+    .lightbox-nav{width:44px;height:44px;font-size:28px;}
+    .lightbox-prev{left:8px;}
+    .lightbox-next{right:8px;}
+    .lightbox-stage img{max-height:calc(100vh - 190px);border-radius:16px;}
+  }
+
+  @media print{
+    .hero .cover-frame{box-shadow:none;}
+    .page,.char-card{box-shadow:none;break-inside:avoid;}
+    .page{grid-template-columns:1fr 1fr;page-break-inside:avoid;}
+    footer,.lightbox,.back-home{display:none;}
+    body{background:#fff;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<a class="back-home" href="../../../index.html">← 返回故事目录</a>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="page-tag">系列故事 · 第十三篇</span>
+    <h1>螃蟹节的小人鱼宝宝</h1>
+    <p class="subtitle">海底节日 · 等待新生命 · 适合自己的食物</p>
+    <div class="meta-line">
+      <span>适读年龄 3-6 岁</span>
+      <span>螃蟹节</span>
+      <span>当姐姐</span>
+      <span>水彩画风</span>
+    </div>
+    <div class="cover-frame">
+      <img src="assets/page-01.jpg" alt="封面：螃蟹节到了">
+    </div>
+    <p class="cover-line">今天是海底王国一年一度的螃蟹节。 红灯笼像小螃蟹一样摇呀摇，整条珊瑚街都香喷喷的。</p>
+  </div>
+</header>
+
+<section class="characters">
+  <div class="wrap">
+    <h2 class="section-title">认识角色</h2>
+    <p class="section-note">人鱼姐姐盼着和宝宝见面，蔷薇公主和玫瑰公主带着礼物来帮忙</p>
+    <div class="char-grid">
+      <div class="char-card c2">
+        <span class="badge">姐姐 · 主角</span>
+        <h3>小人鱼姐姐</h3>
+        <p>她盼着宝宝出生，轻轻伸出手指，让弟弟握住。她还认真地说：现在还不能吃螃蟹。</p>
+      </div>
+
+      <div class="char-card c4">
+        <span class="badge">宝宝 · 新朋友</span>
+        <h3>小人鱼宝宝</h3>
+        <p>螃蟹节这天，他在泡泡里哭出第一声，喝着甜甜的奶，成了海底王国最小的客人。</p>
+      </div>
+
+      <div class="char-card c3">
+        <span class="badge">妈妈</span>
+        <h3>人鱼妈妈</h3>
+        <p>她在家休息，等宝宝出生，又把鲜美的大闸蟹和软软的南瓜小星星分给大家。</p>
+      </div>
+
+      <div class="char-card c1">
+        <span class="badge">客人 · 好朋友</span>
+        <h3>蔷薇公主和玫瑰公主</h3>
+        <p>她们送来螃蟹节礼物，陪小人鱼姐姐照顾妈妈，也各自吃着适合自己的食物。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap">
+    <p class="intro">翻开故事，跟着小人鱼一家过一个香喷喷的螃蟹节</p>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-02.jpg" alt="妈妈在家休息"></div>
+      <div class="text-box">
+        <span class="p-no">第 2 页</span>
+        <h2>妈妈在家休息</h2>
+        <p class="quote">可是，人鱼妈妈没有去参加庆典。<br>她轻轻摸着圆圆的肚子，里面住着一个快要出生的小宝宝。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-03.jpg" alt="今天会见面吗"></div>
+      <div class="text-box">
+        <span class="p-no">第 3 页</span>
+        <h2>今天会见面吗</h2>
+        <p class="quote">小人鱼姐姐趴在妈妈身边，兴奋地问：<br>“妈妈，宝宝今天会出来和我见面吗？”</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-04.jpg" alt="我要当姐姐啦"></div>
+      <div class="text-box">
+        <span class="p-no">第 4 页</span>
+        <h2>我要当姐姐啦</h2>
+        <p class="quote">“也许会哦。”人鱼妈妈温柔地笑了。<br>小人鱼姐姐立刻游来游去：“我要当姐姐啦！我要当姐姐啦！”</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-05.jpg" alt="客人来了"></div>
+      <div class="text-box">
+        <span class="p-no">第 5 页</span>
+        <h2>客人来了</h2>
+        <p class="quote">这时，门外传来“咚咚咚”的敲门声。<br>蔷薇公主和玫瑰公主来看望人鱼妈妈了。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-06.jpg" alt="螃蟹节礼物"></div>
+      <div class="text-box">
+        <span class="p-no">第 6 页</span>
+        <h2>螃蟹节礼物</h2>
+        <p class="quote">她们还带来了一只漂亮的大篮子。<br>篮子里装着螃蟹节最受欢迎的礼物——几只肥肥的大闸蟹。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-07.jpg" alt="节日祝福"></div>
+      <div class="text-box">
+        <span class="p-no">第 7 页</span>
+        <h2>节日祝福</h2>
+        <p class="quote">“祝你们螃蟹节快乐！”<br>蔷薇公主把篮子递给小人鱼姐姐，玫瑰公主也开心地拍了拍小手。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-08.jpg" alt="宝宝等不及了"></div>
+      <div class="text-box">
+        <span class="p-no">第 8 页</span>
+        <h2>宝宝等不及了</h2>
+        <p class="quote">突然，人鱼妈妈捂住肚子，轻轻叫了一声：<br>“哎呀，宝宝好像等不及了。”<br>大家一下子安静下来。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-09.jpg" alt="一起照顾妈妈"></div>
+      <div class="text-box">
+        <span class="p-no">第 9 页</span>
+        <h2>一起照顾妈妈</h2>
+        <p class="quote">小人鱼姐姐握住妈妈的手。<br>蔷薇公主拿来软软的靠枕，玫瑰公主乖乖坐在一旁等待。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-10.jpg" alt="泡泡里的哭声"></div>
+      <div class="text-box">
+        <span class="p-no">第 10 页</span>
+        <h2>泡泡里的哭声</h2>
+        <p class="quote">不一会儿，一串亮晶晶的泡泡从贝壳床边升了起来。<br>泡泡中传来一声小小的——“哇！”</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-11.jpg" alt="宝宝出生啦"></div>
+      <div class="text-box">
+        <span class="p-no">第 11 页</span>
+        <h2>宝宝出生啦</h2>
+        <p class="quote">小人鱼宝宝出生啦！<br>宝宝小小的、软软的，尾巴像一片刚刚展开的花瓣。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-12.jpg" alt="姐姐的手指"></div>
+      <div class="text-box">
+        <span class="p-no">第 12 页</span>
+        <h2>姐姐的手指</h2>
+        <p class="quote">“我是姐姐啦！”<br>小人鱼姐姐轻轻碰了碰宝宝的小手。宝宝握住她的一根手指，不肯松开。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-13.jpg" alt="香喷喷的大闸蟹"></div>
+      <div class="text-box">
+        <span class="p-no">第 13 页</span>
+        <h2>香喷喷的大闸蟹</h2>
+        <p class="quote">到了晚餐时间，香喷喷的大闸蟹端上了桌。<br>小人鱼姐姐吸了吸鼻子：“好香呀！”</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-14.jpg" alt="现在还不能吃"></div>
+      <div class="text-box">
+        <span class="p-no">第 14 页</span>
+        <h2>现在还不能吃</h2>
+        <p class="quote">刚出生的小人鱼宝宝只能喝奶，还不能吃螃蟹。<br>玫瑰公主年纪也太小了，也不能吃螃蟹。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-15.jpg" alt="适合自己的食物"></div>
+      <div class="text-box">
+        <span class="p-no">第 15 页</span>
+        <h2>适合自己的食物</h2>
+        <p class="quote">蔷薇公主安慰她们：“别着急，等你们再长大一点，就能尝一尝啦！”<br>人鱼妈妈还为玫瑰公主准备了软软的南瓜小星星。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-16.jpg" alt="大家的晚餐"></div>
+      <div class="text-box">
+        <span class="p-no">第 16 页</span>
+        <h2>大家的晚餐</h2>
+        <p class="quote">人鱼妈妈、蔷薇公主和小人鱼姐姐一起品尝了鲜美的大闸蟹。<br>玫瑰公主吃着南瓜小星星，小人鱼宝宝喝着甜甜的奶。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-17.jpg" alt="都很好吃"></div>
+      <div class="text-box">
+        <span class="p-no">第 17 页</span>
+        <h2>都很好吃</h2>
+        <p class="quote">“螃蟹真美味！”<br>“南瓜小星星也很好吃！”<br>大家吃着适合自己的食物，都笑得很开心。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-18.jpg" alt="一起长大一点"></div>
+      <div class="text-box">
+        <span class="p-no">第 18 页</span>
+        <h2>一起长大一点</h2>
+        <p class="quote">窗外，螃蟹灯笼轻轻摇晃。<br>今年的螃蟹节，海底王国多了一位小小的新客人，也多了一位幸福的姐姐。<br>晚安，小人鱼宝宝。明年的螃蟹节，我们再一起长大一点吧。</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="ending">
+  <div class="wrap">
+    <p class="the-end">完</p>
+    <p>螃蟹灯笼轻轻摇。宝宝出生啦，姐姐笑开了花。大闸蟹留给长大的人，小宝宝先喝甜甜的奶。明年的螃蟹节，我们再一起长大一点。</p>
+  </div>
+</section>
+
+<footer>《螃蟹节的小人鱼宝宝》· 系列第十三篇 · 献给每个盼着当哥哥姐姐、也懂得吃适合自己的食物的小朋友</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="查看插画">
+  <button class="lightbox-btn lightbox-close" type="button" aria-label="关闭">×</button>
+  <button class="lightbox-btn lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
+  <figure class="lightbox-stage">
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button class="lightbox-btn lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
+  <p class="lightbox-counter" aria-live="polite"></p>
+</div>
+
+<script>
+(function () {
+  const images = Array.from(document.querySelectorAll('.cover-frame img, .page .img-box img'));
+  const lightbox = document.getElementById('lightbox');
+  const stageImg = lightbox.querySelector('.lightbox-stage img');
+  const caption = lightbox.querySelector('figcaption');
+  const counter = lightbox.querySelector('.lightbox-counter');
+  const btnClose = lightbox.querySelector('.lightbox-close');
+  const btnPrev = lightbox.querySelector('.lightbox-prev');
+  const btnNext = lightbox.querySelector('.lightbox-next');
+  let index = 0;
+  let lastFocus = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  function show(i) {
+    index = (i + images.length) % images.length;
+    const srcImg = images[index];
+    stageImg.src = srcImg.currentSrc || srcImg.src;
+    stageImg.alt = srcImg.alt || '';
+    caption.textContent = srcImg.alt || '';
+    counter.textContent = (index + 1) + ' / ' + images.length;
+  }
+
+  function openAt(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lightbox-lock');
+    btnClose.focus();
+  }
+
+  function close() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-lock');
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  images.forEach(function (img, i) {
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', '放大查看：' + (img.alt || '插画'));
+    img.addEventListener('click', function () { openAt(i); });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openAt(i);
+      }
+    });
+  });
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', function () { show(index - 1); });
+  btnNext.addEventListener('click', function () { show(index + 1); });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) close();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+  });
+
+  lightbox.addEventListener('touchstart', function (e) {
+    if (!e.changedTouches[0]) return;
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', function (e) {
+    if (!e.changedTouches[0]) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+    if (dx < 0) show(index + 1);
+    else show(index - 1);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

@@ -178,6 +178,34 @@
       "link": "series/rose-princess/ep12-dice/index.html"
     },
     {
+      "series": "蔷薇公主系列",
+      "episode": 13,
+      "createdAt": "2026-09-25T22:16:40+08:00",
+      "cover": "series/rose-princess/ep13-crab-festival/assets/cover.jpg",
+      "title": "螃蟹节的小人鱼宝宝",
+      "desc": "系列第十三篇：螃蟹节到了，人鱼妈妈在家休息。小人鱼姐姐盼着和宝宝见面，蔷薇公主和玫瑰公主送来礼物。宝宝出生后，大家吃着适合自己的食物，一起慢慢长大。",
+      "tags": [
+        "节日温情",
+        "当姐姐",
+        "适合自己的食物"
+      ],
+      "link": "series/rose-princess/ep13-crab-festival/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 14,
+      "createdAt": "2026-09-26T23:16:33+08:00",
+      "cover": "series/rose-princess/ep14-thorn-cinema/assets/cover.jpg",
+      "title": "穿过荆棘墙去看电影",
+      "desc": "系列第十四篇：蔷薇公主和玫瑰公主约人鱼一家去王冠电影院。路上采了草莓，又遇到渴了的荆棘墙。大家退到安全的地方，用水珠帮助荆棘开出花，正好赶上电影开演。",
+      "tags": [
+        "一起出门",
+        "遵守约定",
+        "善意帮助"
+      ],
+      "link": "series/rose-princess/ep14-thorn-cinema/index.html"
+    },
+    {
       "cover": "oneshots/labu-princess/assets/cover.jpg",
       "createdAt": "2026-09-09T22:49:24+08:00",
       "title": "拉不下公主",

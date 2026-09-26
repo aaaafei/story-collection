@@ -36,6 +36,8 @@ series/rose-princess/
 | 10 | [`ep10-courage-gem/`](ep10-courage-gem/) | 鹿角灯下的勇气宝石 |
 | 11 | [`ep11-nightmare-fairy/`](ep11-nightmare-fairy/) | 噩梦妖怪和美梦仙子 |
 | 12 | [`ep12-dice/`](ep12-dice/) | 奇奇怪怪的骰子 |
+| 13 | [`ep13-crab-festival/`](ep13-crab-festival/) | 螃蟹节的小人鱼宝宝 |
+| 14 | [`ep14-thorn-cinema/`](ep14-thorn-cinema/) | 穿过荆棘墙去看电影 |
 | … | `epNN-.../` | 后续新故事（序号连续） |
 
 ## 快速开始（生成一张新图）
