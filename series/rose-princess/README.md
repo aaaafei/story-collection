@@ -38,6 +38,7 @@ series/rose-princess/
 | 12 | [`ep12-dice/`](ep12-dice/) | 奇奇怪怪的骰子 |
 | 13 | [`ep13-crab-festival/`](ep13-crab-festival/) | 螃蟹节的小人鱼宝宝 |
 | 14 | [`ep14-thorn-cinema/`](ep14-thorn-cinema/) | 穿过荆棘墙去看电影 |
+| 15 | [`ep15-golden-tail/`](ep15-golden-tail/) | 金尾巴美人鱼的窗外世界 |
 | … | `epNN-.../` | 后续新故事（序号连续） |
 
 ## 快速开始（生成一张新图）

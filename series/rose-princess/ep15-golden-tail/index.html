@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>金尾巴美人鱼的窗外世界 · 儿童绘本</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --paper:#FFFDF7;
+    --pink:#FFD9E5;
+    --pink-deep:#F59AB8;
+    --pink-soft:#FFECF2;
+    --blue:#CDEAF8;
+    --blue-deep:#7FB8D9;
+    --blue-soft:#E9F6FD;
+    --lavender:#E9DDF6;
+    --lavender-deep:#B49AE0;
+    --lavender-soft:#F3ECFB;
+    --mint:#D9F2DE;
+    --mint-deep:#7FB88E;
+    --mint-soft:#EFFAF2;
+    --night-deep:#6E7FB8;
+    --night-soft:#ECEEFA;
+    --ink:#5B4A43;
+    --ink-soft:#8A7368;
+    --radius-lg:34px;
+    --radius-md:22px;
+    --font-display:'ZCOOL KuaiLe','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+    --font-body:'Noto Sans SC','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(1200px 600px at 15% -5%, #FFE9F1 0%, transparent 60%),
+      radial-gradient(1000px 500px at 90% 8%, #E1F4FC 0%, transparent 55%),
+      radial-gradient(900px 500px at 50% 110%, #F0EAF9 0%, transparent 55%);
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px;}
+
+  .back-home{
+    position:fixed;
+    top:16px;left:16px;
+    z-index:50;
+    font-family:var(--font-display);
+    font-size:14px;
+    letter-spacing:1px;
+    color:var(--pink-deep);
+    background:rgba(255,255,255,.92);
+    border:2px solid #F8C7D8;
+    border-radius:999px;
+    padding:7px 18px;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(245,154,184,.28);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .back-home:hover{transform:translateX(-3px);box-shadow:0 10px 24px rgba(245,154,184,.38);}
+
+  .hero{
+    position:relative;
+    padding:52px 0 40px;
+    text-align:center;
+  }
+  .hero .page-tag{
+    display:inline-block;
+    font-family:var(--font-display);
+    font-size:15px;
+    letter-spacing:3px;
+    color:var(--pink-deep);
+    background:var(--pink-soft);
+    border:2px dashed #F8C7D8;
+    border-radius:999px;
+    padding:6px 20px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(38px,7vw,66px);
+    color:var(--pink-deep);
+    text-shadow:0 6px 0 #fff, 0 10px 24px rgba(245,154,184,.35);
+    letter-spacing:4px;
+    line-height:1.2;
+    margin-bottom:10px;
+  }
+  .hero .subtitle{
+    font-size:clamp(16px,2.6vw,21px);
+    color:var(--blue-deep);
+    font-weight:500;
+    letter-spacing:2px;
+    margin-bottom:8px;
+  }
+  .hero .meta-line{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+    margin:16px 0 26px;
+  }
+  .hero .meta-line span{
+    font-size:13.5px;color:var(--ink-soft);
+    background:#fff;border:1.5px solid #F2E4DA;
+    border-radius:999px;padding:5px 15px;
+  }
+  .hero .cover-frame{
+    position:relative;
+    max-width:760px;margin:0 auto;
+    border-radius:var(--radius-lg);
+    padding:14px;
+    background:linear-gradient(160deg,#fff 0%,var(--pink-soft) 100%);
+    box-shadow:0 22px 60px rgba(245,154,184,.26);
+  }
+  .hero .cover-frame img{
+    display:block;width:100%;height:auto;
+    border-radius:calc(var(--radius-lg) - 10px);
+    cursor:zoom-in;
+  }
+  .hero .cover-line{
+    max-width:700px;margin:26px auto 0;
+    font-family:var(--font-display);
+    font-size:clamp(19px,3vw,24px);
+    color:var(--pink-deep);
+    letter-spacing:1px;
+  }
+
+  .characters{
+    padding:44px 0 8px;
+  }
+  .section-title{
+    text-align:center;
+    font-family:var(--font-display);
+    font-size:clamp(26px,4vw,34px);
+    color:var(--ink);
+    margin-bottom:8px;
+    letter-spacing:2px;
+  }
+  .section-note{
+    text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:24px;
+  }
+  .char-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;
+  }
+  .char-card{
+    background:var(--paper);
+    border-radius:var(--radius-md);
+    padding:26px 24px;
+    border:2px solid #F4E7DE;
+    position:relative;
+    overflow:hidden;
+  }
+  .char-card.c1{background:linear-gradient(160deg,#fff,var(--pink-soft));}
+  .char-card.c2{background:linear-gradient(160deg,#fff,var(--blue-soft));}
+  .char-card.c3{background:linear-gradient(160deg,#fff,var(--lavender-soft));}
+  .char-card.c4{background:linear-gradient(160deg,#fff,var(--mint-soft));}
+  .char-card h3{
+    font-family:var(--font-display);
+    font-size:22px;letter-spacing:2px;margin-bottom:10px;
+  }
+  .char-card.c1 h3{color:var(--pink-deep);}
+  .char-card.c2 h3{color:var(--blue-deep);}
+  .char-card.c3 h3{color:var(--lavender-deep);}
+  .char-card.c4 h3{color:var(--mint-deep);}
+  .char-card p{font-size:15px;color:var(--ink-soft);}
+  .char-card .badge{
+    display:inline-block;font-size:12px;color:#fff;
+    border-radius:999px;padding:3px 12px;margin-bottom:10px;letter-spacing:1px;
+  }
+  .char-card.c1 .badge{background:var(--pink-deep);}
+  .char-card.c2 .badge{background:var(--blue-deep);}
+  .char-card.c3 .badge{background:var(--lavender-deep);}
+  .char-card.c4 .badge{background:var(--mint-deep);}
+
+  .story{
+    padding:44px 0 10px;
+  }
+  .story .intro{
+    text-align:center;font-size:15px;color:var(--ink-soft);margin-bottom:30px;
+  }
+  .page{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    gap:26px;
+    align-items:center;
+    background:var(--paper);
+    border-radius:var(--radius-lg);
+    padding:26px;
+    margin-bottom:30px;
+    border:2px solid #F4E7DE;
+    box-shadow:0 14px 34px rgba(245,154,184,.14);
+    position:relative;
+  }
+  .page .img-box{
+    border-radius:calc(var(--radius-md) - 6px);
+    overflow:hidden;
+    background:var(--pink-soft);
+    line-height:0;
+    cursor:zoom-in;
+  }
+  .page .img-box img{
+    display:block;width:100%;height:auto;
+    transition:transform .5s ease;
+    cursor:zoom-in;
+  }
+  .page .img-box:hover img{transform:scale(1.03);}
+  .page .text-box{
+    padding:6px 10px;
+    position:relative;
+  }
+  .page .text-box .p-no{
+    font-family:var(--font-display);
+    font-size:14px;letter-spacing:2px;
+    display:inline-block;
+    border-radius:999px;padding:4px 16px;margin-bottom:14px;
+  }
+  .page .text-box h2{
+    font-family:var(--font-display);
+    font-size:clamp(24px,3.4vw,30px);
+    letter-spacing:1px;
+    margin-bottom:14px;
+    line-height:1.4;
+  }
+  .page .text-box .quote{
+    font-size:clamp(16.5px,2.4vw,19px);
+    color:var(--ink);
+    line-height:2;
+    position:relative;
+    padding-left:20px;
+    border-left:5px solid var(--pink);
+    border-radius:2px;
+  }
+  .page:nth-of-type(even) .p-no,.page:nth-of-type(even) h2{color:var(--blue-deep);}
+  .page:nth-of-type(even) .p-no{background:var(--blue-soft);border:1.5px solid #C2E2F4;}
+  .page:nth-of-type(even) .quote{border-left-color:var(--blue);}
+  .page:nth-of-type(odd) .p-no,.page:nth-of-type(odd) h2{color:var(--pink-deep);}
+  .page:nth-of-type(odd) .p-no{background:var(--pink-soft);border:1.5px solid #F8C7D8;}
+  .page:nth-of-type(odd) .quote{border-left-color:var(--pink);}
+
+  .ending{
+    text-align:center;
+    padding:40px 0 56px;
+  }
+  .ending .the-end{
+    font-family:var(--font-display);
+    font-size:clamp(34px,6vw,52px);
+    color:var(--pink-deep);
+    letter-spacing:10px;
+    text-shadow:0 4px 0 #fff, 0 8px 20px rgba(245,154,184,.3);
+    margin-bottom:10px;
+  }
+  .ending p{color:var(--ink-soft);font-size:15px;}
+
+  footer{
+    text-align:center;padding:22px 0 34px;
+    font-size:13px;color:#B49C91;
+    letter-spacing:1px;
+  }
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero{animation:riseIn .7s ease both;}
+  .characters{animation:riseIn .7s .12s ease both;}
+  .story{animation:riseIn .7s .22s ease both;}
+  .ending{animation:riseIn .7s .3s ease both;}
+
+  .lightbox{
+    position:fixed;inset:0;z-index:200;
+    display:flex;align-items:center;justify-content:center;
+    padding:72px 88px 86px;
+    background:rgba(91,74,67,.78);
+    backdrop-filter:blur(10px);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .28s ease, visibility .28s ease;
+  }
+  .lightbox.is-open{
+    opacity:1;visibility:visible;pointer-events:auto;
+  }
+  .lightbox-stage{
+    margin:0;max-width:min(1100px,100%);
+    text-align:center;
+  }
+  .lightbox-stage img{
+    display:block;
+    max-width:100%;
+    max-height:calc(100vh - 170px);
+    width:auto;height:auto;margin:0 auto;
+    border-radius:22px;
+    box-shadow:0 22px 60px rgba(0,0,0,.28);
+    background:#fff;
+  }
+  .lightbox-stage figcaption{
+    margin-top:14px;
+    font-family:var(--font-display);
+    font-size:clamp(15px,2.2vw,18px);
+    color:#fff;
+    letter-spacing:1px;
+    text-shadow:0 2px 10px rgba(91,74,67,.4);
+  }
+  .lightbox-btn{
+    position:absolute;
+    border:2px solid #F8C7D8;
+    background:rgba(255,255,255,.94);
+    color:var(--pink-deep);
+    cursor:pointer;
+    box-shadow:0 8px 22px rgba(245,154,184,.32);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    font-family:var(--font-display);
+  }
+  .lightbox-btn:hover{
+    transform:scale(1.06);
+    box-shadow:0 12px 26px rgba(245,154,184,.42);
+    background:#fff;
+  }
+  .lightbox-btn:focus-visible{
+    outline:3px solid #fff;
+    outline-offset:3px;
+  }
+  .lightbox-close{
+    top:18px;right:18px;
+    width:46px;height:46px;
+    border-radius:50%;
+    font-size:28px;line-height:1;
+  }
+  .lightbox-nav{
+    top:50%;
+    width:52px;height:52px;
+    border-radius:50%;
+    font-size:34px;line-height:1;
+    transform:translateY(-50%);
+  }
+  .lightbox-nav:hover{transform:translateY(-50%) scale(1.06);}
+  .lightbox-prev{left:18px;}
+  .lightbox-next{right:18px;}
+  .lightbox-counter{
+    position:absolute;left:0;right:0;bottom:22px;
+    text-align:center;
+    font-size:14px;letter-spacing:2px;
+    color:#fff;
+  }
+  body.lightbox-lock{overflow:hidden;}
+
+  @media (max-width:820px){
+    .page{grid-template-columns:1fr;padding:20px;}
+    .page .text-box{padding:6px 4px 2px;}
+    .wrap{padding:0 16px;}
+    .hero{padding:38px 0 28px;}
+    .lightbox{padding:70px 16px 78px;}
+    .lightbox-nav{width:44px;height:44px;font-size:28px;}
+    .lightbox-prev{left:8px;}
+    .lightbox-next{right:8px;}
+    .lightbox-stage img{max-height:calc(100vh - 190px);border-radius:16px;}
+  }
+
+  @media print{
+    .hero .cover-frame{box-shadow:none;}
+    .page,.char-card{box-shadow:none;break-inside:avoid;}
+    .page{grid-template-columns:1fr 1fr;page-break-inside:avoid;}
+    footer,.lightbox,.back-home{display:none;}
+    body{background:#fff;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+<body>
+
+<a class="back-home" href="../../../index.html">← 返回故事目录</a>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="page-tag">系列故事 · 第十五篇</span>
+    <h1>金尾巴美人鱼的窗外世界</h1>
+    <p class="subtitle">走出小天地 · 耐心陪伴 · 迈出第一步</p>
+    <div class="meta-line">
+      <span>适读年龄 3-6 岁</span>
+      <span>认识新朋友</span>
+      <span>云海城堡</span>
+      <span>水彩画风</span>
+    </div>
+    <div class="cover-frame">
+      <img src="assets/page-01.jpg" alt="封面：最美丽的美人鱼">
+    </div>
+    <p class="cover-line">蔷薇公主和玫瑰公主听说，大海里住着一位最美丽的美人鱼。她有闪闪发光的金色鱼尾，头上戴着漂亮的王冠。</p>
+  </div>
+</header>
+
+<section class="characters">
+  <div class="wrap">
+    <h2 class="section-title">认识角色</h2>
+    <p class="section-note">姐妹俩乘潜水艇去寻找传说，再陪着害羞的朋友打开窗户</p>
+    <div class="char-grid">
+      <div class="char-card c1">
+        <span class="badge">姐姐 · 主角</span>
+        <h3>蔷薇公主</h3>
+        <p>她驾驶粉蓝色小潜水艇出发寻找，不催促害羞的朋友，伸出手陪她迈出第一步。</p>
+      </div>
+
+      <div class="char-card c2">
+        <span class="badge">妹妹 · 主角</span>
+        <h3>玫瑰公主</h3>
+        <p>她好奇美人鱼为什么不出来，在飘窗外托起大泡泡，把躲在窗帘后的笑脸逗出来。</p>
+      </div>
+
+      <div class="char-card c3">
+        <span class="badge">新朋友</span>
+        <h3>金尾巴美人鱼</h3>
+        <p>她有柔和的金色鱼尾和圆润王冠。一开始躲在飘窗后面，后来自己把窗户打开。</p>
+      </div>
+
+      <div class="char-card c4">
+        <span class="badge">海底的家人</span>
+        <h3>人鱼妈妈一家</h3>
+        <p>人鱼妈妈取出寻路珍珠，金色光线指向海面。小人鱼姐姐猜到，她也许并不住在海底。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap">
+    <p class="intro">翻开故事，跟着姐妹俩从海底找到漂浮的云海城堡</p>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-02.jpg" alt="谁也没见过她"></div>
+      <div class="text-box">
+        <span class="p-no">第 2 页</span>
+        <h2>谁也没见过她</h2>
+        <p class="quote">可是，谁也没有真正见过她。<br>大家只听说，她总坐在城堡的飘窗上，从来不愿意出来玩。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-03.jpg" alt="出发去寻找"></div>
+      <div class="text-box">
+        <span class="p-no">第 3 页</span>
+        <h2>出发去寻找</h2>
+        <p class="quote">“她为什么不出来呢？”玫瑰公主很好奇。<br>姐妹俩带上点心和贝壳风铃，驾驶粉蓝色小潜水艇驶进大海。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-04.jpg" alt="海底没有她"></div>
+      <div class="text-box">
+        <span class="p-no">第 4 页</span>
+        <h2>海底没有她</h2>
+        <p class="quote">她们穿过珊瑚森林，绕过摇摆的海草，还寻找了几座贝壳城堡，却始终没有看见金色鱼尾。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-05.jpg" alt="遇见人鱼一家"></div>
+      <div class="text-box">
+        <span class="p-no">第 5 页</span>
+        <h2>遇见人鱼一家</h2>
+        <p class="quote">潜水艇来到人鱼妈妈的贝壳小屋。<br>人鱼妈妈、小人鱼姐姐和小人鱼宝宝热情地迎接了她们。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-06.jpg" alt="奇怪的传说"></div>
+      <div class="text-box">
+        <span class="p-no">第 6 页</span>
+        <h2>奇怪的传说</h2>
+        <p class="quote">人鱼妈妈摇摇头：“我游遍了附近的海底，从没见过这样的城堡。”<br>小人鱼姐姐猜测：“也许她并不住在海底？”</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-07.jpg" alt="寻找魔法"></div>
+      <div class="text-box">
+        <span class="p-no">第 7 页</span>
+        <h2>寻找魔法</h2>
+        <p class="quote">人鱼妈妈取出一颗寻路珍珠，轻轻念起魔法。<br>一道金色光线穿过海水，斜斜地指向遥远的海面。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-08.jpg" alt="追着金光前进"></div>
+      <div class="text-box">
+        <span class="p-no">第 8 页</span>
+        <h2>追着金光前进</h2>
+        <p class="quote">姐妹俩驾驶潜水艇追随金光，穿过亮晶晶的水母隧道，又从喷出彩虹水柱的大鲸鱼身边经过。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-09.jpg" alt="海面上的城堡"></div>
+      <div class="text-box">
+        <span class="p-no">第 9 页</span>
+        <h2>海面上的城堡</h2>
+        <p class="quote">潜水艇浮出海面。阳光落在波浪上，一座忽隐忽现的城堡渐渐显现——<br>它竟然漂浮在大海上方！</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-10.jpg" alt="飘窗后的金色尾巴"></div>
+      <div class="text-box">
+        <span class="p-no">第 10 页</span>
+        <h2>飘窗后的金色尾巴</h2>
+        <p class="quote">城堡最高处有一扇圆圆的飘窗。<br>窗帘轻轻晃动，一条闪闪发光的金色鱼尾，忽然躲到了窗帘后面。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-11.jpg" alt="她有一点害怕"></div>
+      <div class="text-box">
+        <span class="p-no">第 11 页</span>
+        <h2>她有一点害怕</h2>
+        <p class="quote">蔷薇公主和玫瑰公主向她挥手，邀请她一起玩。<br>金尾巴美人鱼小声说：“外面的世界太大了，我有一点害怕。”</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-12.jpg" alt="我们就在这里陪你"></div>
+      <div class="text-box">
+        <span class="p-no">第 12 页</span>
+        <h2>我们就在这里陪你</h2>
+        <p class="quote">姐妹俩没有催促她，而是在飘窗外吹响贝壳风铃，玩起轻飘飘的泡泡游戏。<br>金尾巴美人鱼躲在窗帘后面，悄悄露出了笑脸。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-13.jpg" alt="迈出第一步"></div>
+      <div class="text-box">
+        <span class="p-no">第 13 页</span>
+        <h2>迈出第一步</h2>
+        <p class="quote">她先打开窗户，接着伸出手，最后鼓起勇气，坐进了姐妹俩的透明泡泡船。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-14.jpg" alt="窗外的美丽世界"></div>
+      <div class="text-box">
+        <span class="p-no">第 14 页</span>
+        <h2>窗外的美丽世界</h2>
+        <p class="quote">她们飞过软绵绵的云朵，看鲸鱼喷出彩虹，还潜入海底拜访了人鱼妈妈一家。<br>金尾巴美人鱼第一次发现，外面的世界并不可怕。</p>
+      </div>
+    </article>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-15.jpg" alt="打开的窗户"></div>
+      <div class="text-box">
+        <span class="p-no">第 15 页</span>
+        <h2>打开的窗户</h2>
+        <p class="quote">傍晚，金尾巴美人鱼回到城堡。夕阳照亮了她的金色鱼尾，也照亮了她开心的笑脸。<br>从那以后，她依然喜欢坐在飘窗上——但窗户总是开着，因为她随时准备出去找朋友玩。</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="ending">
+  <div class="wrap">
+    <p class="the-end">完</p>
+    <p>金色鱼尾很美，勇敢开心的笑容更美。不催促害羞的朋友，陪着她打开窗户，外面的世界就不再那么可怕。</p>
+  </div>
+</section>
+
+<footer>《金尾巴美人鱼的窗外世界》· 系列第十五篇 · 献给每个愿意陪着害羞的朋友，一起迈出第一步的小朋友</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="查看插画">
+  <button class="lightbox-btn lightbox-close" type="button" aria-label="关闭">×</button>
+  <button class="lightbox-btn lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
+  <figure class="lightbox-stage">
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button class="lightbox-btn lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
+  <p class="lightbox-counter" aria-live="polite"></p>
+</div>
+
+<script>
+(function () {
+  const images = Array.from(document.querySelectorAll('.cover-frame img, .page .img-box img'));
+  const lightbox = document.getElementById('lightbox');
+  const stageImg = lightbox.querySelector('.lightbox-stage img');
+  const caption = lightbox.querySelector('figcaption');
+  const counter = lightbox.querySelector('.lightbox-counter');
+  const btnClose = lightbox.querySelector('.lightbox-close');
+  const btnPrev = lightbox.querySelector('.lightbox-prev');
+  const btnNext = lightbox.querySelector('.lightbox-next');
+  let index = 0;
+  let lastFocus = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  function show(i) {
+    index = (i + images.length) % images.length;
+    const srcImg = images[index];
+    stageImg.src = srcImg.currentSrc || srcImg.src;
+    stageImg.alt = srcImg.alt || '';
+    caption.textContent = srcImg.alt || '';
+    counter.textContent = (index + 1) + ' / ' + images.length;
+  }
+
+  function openAt(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lightbox-lock');
+    btnClose.focus();
+  }
+
+  function close() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-lock');
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  images.forEach(function (img, i) {
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', '放大查看：' + (img.alt || '插画'));
+    img.addEventListener('click', function () { openAt(i); });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openAt(i);
+      }
+    });
+  });
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', function () { show(index - 1); });
+  btnNext.addEventListener('click', function () { show(index + 1); });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) close();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+  });
+
+  lightbox.addEventListener('touchstart', function (e) {
+    if (!e.changedTouches[0]) return;
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', function (e) {
+    if (!e.changedTouches[0]) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+    if (dx < 0) show(index + 1);
+    else show(index - 1);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
