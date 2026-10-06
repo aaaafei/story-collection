@@ -51,3 +51,5 @@ python tools/optimize_images.py --all
 2. 新建 `epNN-主题/` 放入绘本与高清图  
 3. 运行 `python tools/optimize_images.py <该册路径>`  
 4. 在根目录 `stories.json` 登记（`cover` 用 `assets/cover.jpg`）
+
+也可以在本机运行 `python tools/sync_server.py`，用 `http://127.0.0.1:8765/` 打开首页，点「同步新故事」从 Notion 拉取尚未收录的系列分册。配置见 [`tools/README.md`](tools/README.md)。

@@ -118,6 +118,111 @@
     opacity:.7;
     cursor:wait;
   }
+  .hero .sync-btn{
+    border-color:#B7E0C4;
+    color:var(--mint-deep);
+  }
+  .hero .sync-btn:hover{
+    background:var(--mint);
+    border-color:var(--mint-deep);
+  }
+
+  .sync-modal{
+    position:fixed;inset:0;z-index:80;
+    display:flex;align-items:center;justify-content:center;
+    padding:22px;
+    background:rgba(91,74,67,.46);
+    backdrop-filter:blur(8px);
+  }
+  .sync-modal[hidden]{display:none;}
+  .sync-dialog{
+    width:min(560px,100%);
+    max-height:min(86vh,720px);
+    overflow:auto;
+    background:var(--paper);
+    border:2px solid #F4E7DE;
+    border-radius:var(--radius-lg);
+    box-shadow:0 22px 50px rgba(91,74,67,.22);
+    padding:26px 26px 22px;
+  }
+  .sync-dialog h2{
+    font-family:var(--font-display);
+    font-size:28px;
+    letter-spacing:2px;
+    color:var(--mint-deep);
+    margin-bottom:8px;
+  }
+  .sync-dialog .sync-lead{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin-bottom:16px;
+  }
+  .sync-series{
+    display:flex;flex-direction:column;gap:10px;
+    margin-bottom:16px;
+  }
+  .sync-series label{
+    display:flex;align-items:flex-start;gap:10px;
+    padding:12px 14px;
+    border:1.5px solid #F4E7DE;
+    border-radius:16px;
+    cursor:pointer;
+    background:#fff;
+  }
+  .sync-series label.is-disabled{
+    opacity:.55;cursor:not-allowed;
+  }
+  .sync-series .name{
+    font-family:var(--font-display);
+    font-size:18px;
+    letter-spacing:1px;
+  }
+  .sync-series .meta{
+    font-size:13px;color:var(--ink-soft);
+  }
+  .sync-preview{
+    margin:4px 0 14px;
+    padding:12px 14px;
+    background:var(--mint-soft);
+    border-radius:16px;
+    font-size:14px;
+  }
+  .sync-preview[hidden],
+  .sync-log[hidden]{display:none;}
+  .sync-preview ul{margin:8px 0 0 18px;}
+  .sync-log{
+    margin:0 0 14px;
+    padding:12px 14px;
+    max-height:180px;
+    overflow:auto;
+    background:#F7F1EA;
+    border-radius:12px;
+    font-size:12.5px;
+    line-height:1.7;
+    white-space:pre-wrap;
+    color:var(--ink-soft);
+  }
+  .sync-error{color:#C45C6A;font-size:14px;margin-bottom:12px;}
+  .sync-actions{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;
+  }
+  .sync-actions button{
+    appearance:none;
+    font-family:var(--font-body);
+    font-size:14px;
+    border-radius:999px;
+    padding:7px 16px;
+    cursor:pointer;
+    border:1.5px solid #E4D2C6;
+    background:#fff;
+    color:var(--ink);
+  }
+  .sync-actions .primary{
+    border-color:#8FCBA4;
+    background:var(--mint);
+    color:#2F6B45;
+  }
+  .sync-actions button:disabled{opacity:.55;cursor:wait;}
 
   /* ===== 最新故事 ===== */
   .latest-block{
@@ -430,7 +535,7 @@
   }
 
   @media print{
-    .howto,footer,.refresh-btn{display:none;}
+    .howto,footer,.refresh-btn,.sync-modal{display:none;}
     body{background:#fff;}
     .latest-scroller,.shelf-row{display:grid;grid-template-columns:repeat(2,1fr);overflow:visible;}
     .latest-scroller .card,.shelf-row .card{flex:none;}
@@ -449,6 +554,7 @@
     <div class="hero-actions">
       <span class="count-badge" id="countBadge">已收录 0 个故事</span>
       <button type="button" class="refresh-btn" id="refreshBtn" title="绕过缓存，强制重新加载本页">强制刷新</button>
+      <button type="button" class="refresh-btn sync-btn" id="syncBtn" title="从 Notion 查找并制作尚未收录的系列故事">同步新故事</button>
     </div>
   </div>
 </header>
@@ -487,12 +593,29 @@
         <li>高清图放入该册 <code>assets/src/</code> 后，在仓库根目录执行 <code>python tools/optimize_images.py &lt;绘本目录&gt;</code>，生成网页内页与 <code>cover.jpg</code>（说明见 <code>tools/README.md</code>）。</li>
         <li>打开根目录 <code>stories.json</code>：在 <code>stories</code> 数组里复制一条记录；封面请用 <code>.../assets/cover.jpg</code>。加上 <code>createdAt</code>（如 <code>2026-09-25T08:30:00+08:00</code>）。页顶「最新故事」取最近 3 本；系列正文仍按集数从早到晚排。</li>
         <li>连载故事加上 <code>"series": "中文系列名"</code>，并在同文件的 <code>seriesCatalog</code> 登记该系列（名称需一致）；单本不要填 <code>series</code>。</li>
+        <li>本机可点页顶「同步新故事」：先运行 <code>python tools/sync_server.py</code>，用弹出的本地地址打开本站，选择系列后会查找 Notion 里还没收录的分册并生成文件。需要在 <code>tools/.env</code> 配置 Notion 集成令牌。</li>
         <li>通过 Nginx 等 HTTPS 方式访问本站（不要用双击本地文件预览），保存后点「强制刷新」，新卡片会出现在对应分区。</li>
         <li>本站为轻量 PWA：可用浏览器「安装应用 / 添加到主屏幕」；不做离线缓存，上架故事流程不变。</li>
       </ol>
     </details>
   </div>
 </section>
+
+<div class="sync-modal" id="syncModal" hidden>
+  <div class="sync-dialog" role="dialog" aria-modal="true" aria-labelledby="syncTitle">
+    <h2 id="syncTitle">同步新故事</h2>
+    <p class="sync-lead">选择要检查的系列。助手会去 Notion 对应目录里找还没收录的分册，再下载插画、生成绘本页面并登记到书架。</p>
+    <div class="sync-series" id="syncSeriesList"></div>
+    <div class="sync-error" id="syncError" hidden></div>
+    <div class="sync-preview" id="syncPreview" hidden></div>
+    <pre class="sync-log" id="syncLog" hidden></pre>
+    <div class="sync-actions">
+      <button type="button" id="syncCloseBtn">关闭</button>
+      <button type="button" id="syncFindBtn" class="primary">查找新故事</button>
+      <button type="button" id="syncRunBtn" class="primary" hidden>开始制作</button>
+    </div>
+  </div>
+</div>
 
 <footer>故事收藏屋 · 每一个故事都是小小世界</footer>
 
@@ -665,6 +788,199 @@
 
   document.getElementById("refreshBtn").addEventListener("click", forceRefresh);
   loadCatalog();
+
+  (function setupSync(){
+    var modal = document.getElementById("syncModal");
+    var listEl = document.getElementById("syncSeriesList");
+    var errorEl = document.getElementById("syncError");
+    var previewEl = document.getElementById("syncPreview");
+    var logEl = document.getElementById("syncLog");
+    var findBtn = document.getElementById("syncFindBtn");
+    var runBtn = document.getElementById("syncRunBtn");
+    var closeBtn = document.getElementById("syncCloseBtn");
+    var syncBtn = document.getElementById("syncBtn");
+    var previewPayload = null;
+    var busy = false;
+
+    function apiUrl(path){
+      return new URL(path, window.location.href).toString();
+    }
+
+    function showError(msg){
+      errorEl.hidden = !msg;
+      errorEl.textContent = msg || "";
+    }
+
+    function selectedIds(){
+      return Array.prototype.map.call(
+        listEl.querySelectorAll('input[type="checkbox"]:checked:not(:disabled)'),
+        function(el){ return el.value; }
+      );
+    }
+
+    function renderSeries(rows, tokenOk, hint){
+      if(!rows || !rows.length){
+        listEl.innerHTML = "<p class=\"meta\">还没有登记系列。</p>";
+        return;
+      }
+      listEl.innerHTML = rows.map(function(row){
+        var ready = !!(row.notionPage);
+        return '<label class="' + (ready ? "" : "is-disabled") + '">' +
+          '<input type="checkbox" value="' + row.id + '"' + (ready ? " checked" : " disabled") + '>' +
+          '<span><span class="name">' + row.name + '</span>' +
+          '<div class="meta">已收录 ' + (row.episodeCount || 0) + ' 册' +
+          (row.latestEpisode ? " · 最新第" + row.latestEpisode + "集" : "") +
+          (ready ? "" : " · 未配置 Notion 页面") +
+          "</div></span></label>";
+      }).join("");
+      if(!tokenOk && hint) showError(hint);
+    }
+
+    function setBusy(on, label){
+      busy = on;
+      findBtn.disabled = on;
+      runBtn.disabled = on;
+      if(label) findBtn.textContent = label;
+      if(!on) findBtn.textContent = "查找新故事";
+    }
+
+    function openModal(){
+      previewPayload = null;
+      previewEl.hidden = true;
+      logEl.hidden = true;
+      logEl.textContent = "";
+      runBtn.hidden = true;
+      showError("");
+      modal.hidden = false;
+      setBusy(true, "连接中…");
+      fetch(apiUrl("api/sync/status"), { cache: "no-store" })
+        .then(function(res){
+          if(!res.ok) throw new Error("HTTP " + res.status);
+          return res.json();
+        })
+        .then(function(data){
+          renderSeries(data.series || [], data.notionConfigured, data.hint);
+          setBusy(false);
+        })
+        .catch(function(){
+          setBusy(false);
+          listEl.innerHTML = "";
+          showError("还没有连上本机同步助手。请先在仓库根目录运行 python tools/sync_server.py，然后用 http://127.0.0.1:8765/ 打开本站再试。");
+        });
+    }
+
+    function post(path, body){
+      return fetch(apiUrl(path), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body || {})
+      }).then(function(res){
+        return res.json().then(function(data){
+          if(!res.ok || data.ok === false){
+            throw new Error(data.error || ("请求失败 " + res.status));
+          }
+          return data;
+        });
+      });
+    }
+
+    function renderPreview(rows){
+      var cards = [];
+      (rows || []).forEach(function(row){
+        if(row.error){
+          cards.push("<p>" + row.name + "：" + row.error + "</p>");
+          return;
+        }
+        var fresh = row.newEpisodes || [];
+        if(!fresh.length){
+          cards.push("<p>" + row.name + "：Notion 里没有比现有目录更新的分册。</p>");
+          return;
+        }
+        cards.push("<p><strong>" + row.name + "</strong> 找到 " + fresh.length + " 本新故事：</p><ul>" +
+          fresh.map(function(ep){
+            return "<li>第" + ep.episode + "集 · " + ep.title + "</li>";
+          }).join("") + "</ul>");
+      });
+      previewEl.innerHTML = cards.join("") || "没有可同步的内容。";
+      previewEl.hidden = false;
+      var hasNew = (rows || []).some(function(row){ return (row.newEpisodes || []).length; });
+      runBtn.hidden = !hasNew;
+    }
+
+    function findStories(){
+      var ids = selectedIds();
+      if(!ids.length){
+        showError("请先选择一个系列。");
+        return;
+      }
+      showError("");
+      setBusy(true, "查找中…");
+      post("api/sync/preview", { seriesIds: ids })
+        .then(function(data){
+          previewPayload = data.series || [];
+          if(data.log && data.log.length){
+            logEl.hidden = false;
+            logEl.textContent = data.log.join("\n");
+          }
+          renderPreview(previewPayload);
+          setBusy(false);
+        })
+        .catch(function(err){
+          setBusy(false);
+          showError(err.message || "查找失败");
+        });
+    }
+
+    function runSync(){
+      var ids = selectedIds();
+      if(!ids.length){
+        showError("请先选择一个系列。");
+        return;
+      }
+      showError("");
+      setBusy(true, "制作中…");
+      runBtn.hidden = true;
+      logEl.hidden = false;
+      logEl.textContent = "开始从 Notion 制作新故事…";
+      post("api/sync", { seriesIds: ids })
+        .then(function(data){
+          var lines = (data.log || []).slice();
+          (data.imported || []).forEach(function(item){
+            lines.push("已收录：第" + item.episode + "集《" + item.title + "》");
+          });
+          (data.skipped || []).forEach(function(item){
+            lines.push("跳过：" + (item.title || "") + " " + (item.reason || ""));
+          });
+          (data.errors || []).forEach(function(item){
+            lines.push("失败：" + (item.title || "") + " " + (item.reason || ""));
+          });
+          if(!(data.imported || []).length && !(data.skipped || []).length && !(data.errors || []).length){
+            lines.push("没有需要制作的新故事。");
+          }
+          logEl.textContent = lines.join("\n");
+          setBusy(false);
+          if((data.imported || []).length){
+            loadCatalog();
+          }
+        })
+        .catch(function(err){
+          setBusy(false);
+          runBtn.hidden = false;
+          showError(err.message || "制作失败");
+        });
+    }
+
+    syncBtn.addEventListener("click", openModal);
+    closeBtn.addEventListener("click", function(){ if(!busy) modal.hidden = true; });
+    modal.addEventListener("click", function(e){
+      if(e.target === modal && !busy) modal.hidden = true;
+    });
+    findBtn.addEventListener("click", findStories);
+    runBtn.addEventListener("click", runSync);
+    document.addEventListener("keydown", function(e){
+      if(e.key === "Escape" && !modal.hidden && !busy) modal.hidden = true;
+    });
+  })();
 
   // 轻量 PWA：注册透传 SW（不缓存内容），便于「安装到主屏幕」
   if ("serviceWorker" in navigator) {

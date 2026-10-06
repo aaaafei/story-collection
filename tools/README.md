@@ -75,6 +75,34 @@ python tools/optimize_images.py --all --page-max 1400 --cover-max 800 --quality 
 5. 在根目录 `stories.json` 里登记，**封面路径用** `.../assets/cover.jpg`
 6. 部署后强制刷新首页
 
+## 从 Notion 同步新故事
+
+首页的「同步新故事」会调用本机助手：查找 Notion 系列页里还没收录的 `EP##` 分册，下载插画，生成 `index.html` / `prompts.md`，并写入 `stories.json`。
+
+```powershell
+cd D:\workspace\story-collection
+copy tools\.env.example tools\.env
+# 编辑 tools/.env，填入 Notion 内部集成令牌
+python tools/sync_server.py
+```
+
+浏览器打开 http://127.0.0.1:8765/ ，点「同步新故事」。
+
+也可以直接跑命令行：
+
+```powershell
+python tools/sync_from_notion.py --preview --series rose-princess
+python tools/sync_from_notion.py --series rose-princess
+```
+
+### 令牌怎么拿
+
+1. 打开 [Notion Integrations](https://www.notion.so/my-integrations) 新建内部集成，复制 Secret  
+2. 在 Notion 把 `story` 页面（以及系列子页面）Share 给这个集成  
+3. 把令牌写入 `tools/.env` 的 `NOTION_TOKEN=`
+
+系列要在 `stories.json` 的 `seriesCatalog` 里填写 `notionPage`（Notion 系列目录页链接）。
+
 ## 与首页的关系
 
 `stories.json` 示例：

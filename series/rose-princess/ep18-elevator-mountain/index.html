@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>奇怪的电梯山 · 儿童绘本</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --paper:#FFFDF7;
+    --pink:#FFD9E5;
+    --pink-deep:#F59AB8;
+    --pink-soft:#FFECF2;
+    --blue:#CDEAF8;
+    --blue-deep:#7FB8D9;
+    --blue-soft:#E9F6FD;
+    --lavender:#E9DDF6;
+    --lavender-deep:#B49AE0;
+    --lavender-soft:#F3ECFB;
+    --mint:#D9F2DE;
+    --mint-deep:#7FB88E;
+    --mint-soft:#EFFAF2;
+    --night-deep:#6E7FB8;
+    --night-soft:#ECEEFA;
+    --ink:#5B4A43;
+    --ink-soft:#8A7368;
+    --radius-lg:34px;
+    --radius-md:22px;
+    --font-display:'ZCOOL KuaiLe','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+    --font-body:'Noto Sans SC','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(1200px 600px at 15% -5%, #FFE9F1 0%, transparent 60%),
+      radial-gradient(1000px 500px at 90% 8%, #E1F4FC 0%, transparent 55%),
+      radial-gradient(900px 500px at 50% 110%, #F0EAF9 0%, transparent 55%);
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px;}
+
+  .back-home{
+    position:fixed;
+    top:16px;left:16px;
+    z-index:50;
+    font-family:var(--font-display);
+    font-size:14px;
+    letter-spacing:1px;
+    color:var(--pink-deep);
+    background:rgba(255,255,255,.92);
+    border:2px solid #F8C7D8;
+    border-radius:999px;
+    padding:7px 18px;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(245,154,184,.28);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .back-home:hover{transform:translateX(-3px);box-shadow:0 10px 24px rgba(245,154,184,.38);}
+
+  .hero{
+    position:relative;
+    padding:52px 0 40px;
+    text-align:center;
+  }
+  .hero .page-tag{
+    display:inline-block;
+    font-family:var(--font-display);
+    font-size:15px;
+    letter-spacing:3px;
+    color:var(--pink-deep);
+    background:var(--pink-soft);
+    border:2px dashed #F8C7D8;
+    border-radius:999px;
+    padding:6px 20px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(38px,7vw,66px);
+    color:var(--pink-deep);
+    text-shadow:0 6px 0 #fff, 0 10px 24px rgba(245,154,184,.35);
+    letter-spacing:4px;
+    line-height:1.2;
+    margin-bottom:10px;
+  }
+  .hero .subtitle{
+    font-size:clamp(16px,2.6vw,21px);
+    color:var(--blue-deep);
+    font-weight:500;
+    letter-spacing:2px;
+    margin-bottom:8px;
+  }
+  .hero .meta-line{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+    margin:16px 0 26px;
+  }
+  .hero .meta-line span{
+    font-size:13.5px;color:var(--ink-soft);
+    background:#fff;border:1.5px solid #F2E4DA;
+    border-radius:999px;padding:5px 15px;
+  }
+  .hero .cover-frame{
+    position:relative;
+    max-width:760px;margin:0 auto;
+    border-radius:var(--radius-lg);
+    padding:14px;
+    background:linear-gradient(160deg,#fff 0%,var(--pink-soft) 100%);
+    box-shadow:0 22px 60px rgba(245,154,184,.26);
+  }
+  .hero .cover-frame img{
+    display:block;width:100%;height:auto;
+    border-radius:calc(var(--radius-lg) - 10px);
+    cursor:zoom-in;
+  }
+  .hero .cover-line{
+    max-width:700px;margin:26px auto 0;
+    font-family:var(--font-display);
+    font-size:clamp(19px,3vw,24px);
+    color:var(--pink-deep);
+    letter-spacing:1px;
+  }
+
+  .characters{
+    padding:44px 0 8px;
+  }
+  .section-title{
+    text-align:center;
+    font-family:var(--font-display);
+    font-size:clamp(26px,4vw,34px);
+    color:var(--ink);
+    margin-bottom:8px;
+    letter-spacing:2px;
+  }
+  .section-note{
+    text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:24px;
+  }
+  .char-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;
+  }
+  .char-card{
+    background:var(--paper);
+    border-radius:var(--radius-md);
+    padding:26px 24px;
+    border:2px solid #F4E7DE;
+    position:relative;
+    overflow:hidden;
+  }
+  .char-card.c1{background:linear-gradient(160deg,#fff,var(--pink-soft));}
+  .char-card.c2{background:linear-gradient(160deg,#fff,var(--blue-soft));}
+  .char-card.c3{background:linear-gradient(160deg,#fff,var(--lavender-soft));}
+  .char-card.c4{background:linear-gradient(160deg,#fff,var(--mint-soft));}
+  .char-card h3{
+    font-family:var(--font-display);
+    font-size:22px;letter-spacing:2px;margin-bottom:10px;
+  }
+  .char-card.c1 h3{color:var(--pink-deep);}
+  .char-card.c2 h3{color:var(--blue-deep);}
+  .char-card.c3 h3{color:var(--lavender-deep);}
+  .char-card.c4 h3{color:var(--mint-deep);}
+  .char-card p{font-size:15px;color:var(--ink-soft);}
+  .char-card .badge{
+    display:inline-block;font-size:12px;color:#fff;
+    border-radius:999px;padding:3px 12px;margin-bottom:10px;letter-spacing:1px;
+  }
+  .char-card.c1 .badge{background:var(--pink-deep);}
+  .char-card.c2 .badge{background:var(--blue-deep);}
+  .char-card.c3 .badge{background:var(--lavender-deep);}
+  .char-card.c4 .badge{background:var(--mint-deep);}
+
+  .story{
+    padding:44px 0 10px;
+  }
+  .story .intro{
+    text-align:center;font-size:15px;color:var(--ink-soft);margin-bottom:30px;
+  }
+  .page{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    gap:26px;
+    align-items:center;
+    background:var(--paper);
+    border-radius:var(--radius-lg);
+    padding:26px;
+    margin-bottom:30px;
+    border:2px solid #F4E7DE;
+    box-shadow:0 14px 34px rgba(245,154,184,.14);
+    position:relative;
+  }
+  .page .img-box{
+    border-radius:calc(var(--radius-md) - 6px);
+    overflow:hidden;
+    background:var(--pink-soft);
+    line-height:0;
+    cursor:zoom-in;
+  }
+  .page .img-box img{
+    display:block;width:100%;height:auto;
+    transition:transform .5s ease;
+    cursor:zoom-in;
+  }
+  .page .img-box:hover img{transform:scale(1.03);}
+  .page .text-box{
+    padding:6px 10px;
+    position:relative;
+  }
+  .page .text-box .p-no{
+    font-family:var(--font-display);
+    font-size:14px;letter-spacing:2px;
+    display:inline-block;
+    border-radius:999px;padding:4px 16px;margin-bottom:14px;
+  }
+  .page .text-box h2{
+    font-family:var(--font-display);
+    font-size:clamp(24px,3.4vw,30px);
+    letter-spacing:1px;
+    margin-bottom:14px;
+    line-height:1.4;
+  }
+  .page .text-box .quote{
+    font-size:clamp(16.5px,2.4vw,19px);
+    color:var(--ink);
+    line-height:2;
+    position:relative;
+    padding-left:20px;
+    border-left:5px solid var(--pink);
+    border-radius:2px;
+  }
+  .page:nth-of-type(even) .p-no,.page:nth-of-type(even) h2{color:var(--blue-deep);}
+  .page:nth-of-type(even) .p-no{background:var(--blue-soft);border:1.5px solid #C2E2F4;}
+  .page:nth-of-type(even) .quote{border-left-color:var(--blue);}
+  .page:nth-of-type(odd) .p-no,.page:nth-of-type(odd) h2{color:var(--pink-deep);}
+  .page:nth-of-type(odd) .p-no{background:var(--pink-soft);border:1.5px solid #F8C7D8;}
+  .page:nth-of-type(odd) .quote{border-left-color:var(--pink);}
+
+  .ending{
+    text-align:center;
+    padding:40px 0 56px;
+  }
+  .ending .the-end{
+    font-family:var(--font-display);
+    font-size:clamp(34px,6vw,52px);
+    color:var(--pink-deep);
+    letter-spacing:10px;
+    text-shadow:0 4px 0 #fff, 0 8px 20px rgba(245,154,184,.3);
+    margin-bottom:10px;
+  }
+  .ending p{color:var(--ink-soft);font-size:15px;}
+
+  footer{
+    text-align:center;padding:22px 0 34px;
+    font-size:13px;color:#B49C91;
+    letter-spacing:1px;
+  }
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero{animation:riseIn .7s ease both;}
+  .characters{animation:riseIn .7s .12s ease both;}
+  .story{animation:riseIn .7s .22s ease both;}
+  .ending{animation:riseIn .7s .3s ease both;}
+
+  .lightbox{
+    position:fixed;inset:0;z-index:200;
+    display:flex;align-items:center;justify-content:center;
+    padding:72px 88px 86px;
+    background:rgba(91,74,67,.78);
+    backdrop-filter:blur(10px);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .28s ease, visibility .28s ease;
+  }
+  .lightbox.is-open{
+    opacity:1;visibility:visible;pointer-events:auto;
+  }
+  .lightbox-stage{
+    margin:0;max-width:min(1100px,100%);
+    text-align:center;
+  }
+  .lightbox-stage img{
+    display:block;
+    max-width:100%;
+    max-height:calc(100vh - 170px);
+    width:auto;height:auto;margin:0 auto;
+    border-radius:22px;
+    box-shadow:0 22px 60px rgba(0,0,0,.28);
+    background:#fff;
+  }
+  .lightbox-stage figcaption{
+    margin-top:14px;
+    font-family:var(--font-display);
+    font-size:clamp(15px,2.2vw,18px);
+    color:#fff;
+    letter-spacing:1px;
+    text-shadow:0 2px 10px rgba(91,74,67,.4);
+  }
+  .lightbox-btn{
+    position:absolute;
+    border:2px solid #F8C7D8;
+    background:rgba(255,255,255,.94);
+    color:var(--pink-deep);
+    cursor:pointer;
+    box-shadow:0 8px 22px rgba(245,154,184,.32);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    font-family:var(--font-display);
+  }
+  .lightbox-btn:hover{
+    transform:scale(1.06);
+    box-shadow:0 12px 26px rgba(245,154,184,.42);
+    background:#fff;
+  }
+  .lightbox-btn:focus-visible{
+    outline:3px solid #fff;
+    outline-offset:3px;
+  }
+  .lightbox-close{
+    top:18px;right:18px;
+    width:46px;height:46px;
+    border-radius:50%;
+    font-size:28px;line-height:1;
+  }
+  .lightbox-nav{
+    top:50%;
+    width:52px;height:52px;
+    border-radius:50%;
+    font-size:34px;line-height:1;
+    transform:translateY(-50%);
+  }
+  .lightbox-nav:hover{transform:translateY(-50%) scale(1.06);}
+  .lightbox-prev{left:18px;}
+  .lightbox-next{right:18px;}
+  .lightbox-counter{
+    position:absolute;left:0;right:0;bottom:22px;
+    text-align:center;
+    font-size:14px;letter-spacing:2px;
+    color:#fff;
+  }
+  body.lightbox-lock{overflow:hidden;}
+
+  @media (max-width:820px){
+    .page{grid-template-columns:1fr;padding:20px;}
+    .page .text-box{padding:6px 4px 2px;}
+    .wrap{padding:0 16px;}
+    .hero{padding:38px 0 28px;}
+    .lightbox{padding:70px 16px 78px;}
+    .lightbox-nav{width:44px;height:44px;font-size:28px;}
+    .lightbox-prev{left:8px;}
+    .lightbox-next{right:8px;}
+    .lightbox-stage img{max-height:calc(100vh - 190px);border-radius:16px;}
+  }
+
+  @media print{
+    .hero .cover-frame{box-shadow:none;}
+    .page,.char-card{box-shadow:none;break-inside:avoid;}
+    .page{grid-template-columns:1fr 1fr;page-break-inside:avoid;}
+    footer,.lightbox,.back-home{display:none;}
+    body{background:#fff;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+
+<body>
+
+<a class="back-home" href="../../../index.html">← 返回故事目录</a>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="page-tag">系列故事 · 第十八篇</span>
+    <h1>奇怪的电梯山</h1>
+    <p class="subtitle">调皮搞笑与登山安全绘本</p>
+    <div class="meta-line">
+      <span>适读年龄 3-6 岁</span>
+      <span>温馨日常</span>
+      <span>系列连载</span>
+      <span>水彩画风</span>
+    </div>
+    <div class="cover-frame">
+      <img src="assets/page-01.jpg" alt="封面：奇怪的电梯山">
+    </div>
+    <p class="cover-line">“快点开！快点开！电梯山要被别人爬完啦！”<br>去郊游的路上，车厢里就像装了一只小喇叭。<br>玫瑰公主坐在安全座椅上，小短腿在半空中扑腾得像两只欢快的小鸭子。</p>
+  </div>
+</header>
+
+<section class="characters">
+  <div class="wrap">
+    <h2 class="section-title">认识角色</h2>
+    <p class="section-note">调皮搞笑与登山安全绘本</p>
+    <div class="char-grid">
+      <div class="char-card c1">
+        <span class="badge">姐姐 · 主角</span>
+        <h3>蔷薇公主</h3>
+        <p>粉色长发的姐姐，温柔又勇敢，常常带着妹妹一起出门。</p>
+      </div>
+      <div class="char-card c2">
+        <span class="badge">妹妹 · 主角</span>
+        <h3>玫瑰公主</h3>
+        <p>蓝色头发的妹妹，调皮热心，遇到事会大声说出来。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap">
+    <p class="intro">调皮搞笑与登山安全绘本</p>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-02.jpg" alt="车里的小喇叭"></div>
+      <div class="text-box">
+        <span class="p-no">第 1 页</span>
+        <h2>车里的小喇叭</h2>
+        <p class="quote">“快点开！快点开！电梯山要被别人爬完啦！”<br>去郊游的路上，车厢里就像装了一只小喇叭。<br>玫瑰公主坐在安全座椅上，小短腿在半空中扑腾得像两只欢快的小鸭子。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-03.jpg" alt="嘴巴拉链“哧——”"></div>
+      <div class="text-box">
+        <span class="p-no">第 2 页</span>
+        <h2>嘴巴拉链“哧——”</h2>
+        <p class="quote">妈妈从前排转过身，用手指捏成小夹子，在玫瑰的嘴唇前轻轻一滑：<br>“哧——嘴巴拉链拉上，安静五分钟，电梯山才会出现哦。”<br>玫瑰公主赶紧把两腮鼓得圆滚滚的，像只快憋不住气的小金鱼。<br>旁边的蔷薇公主捂着嘴偷笑起来。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-04.jpg" alt="山脚下的奇观"></div>
+      <div class="text-box">
+        <span class="p-no">第 3 页</span>
+        <h2>山脚下的奇观</h2>
+        <p class="quote">哇！大山终于到了！<br>左边，是一层层灰白色的石台阶，穿过绿油油的树林；<br>右边，竟然是一长串露天的手扶电梯，金属踏板在阳光下银光闪闪，一直通往云朵飘浮的半山腰！</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-05.jpg" alt="谁准备好了？"></div>
+      <div class="text-box">
+        <span class="p-no">第 4 页</span>
+        <h2>谁准备好了？</h2>
+        <p class="quote">蔷薇公主穿着粉色轻便运动服，弯下腰认真系好运动鞋带，还喝了一大口水壶里的温水。<br>玫瑰公主却神气地抖了抖她的大长裙：<br>“我穿了最漂亮的泡泡袖长裙，还要坐电梯！我肯定比姐姐第一个到山顶！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-06.jpg" alt="小个子走右边"></div>
+      <div class="text-box">
+        <span class="p-no">第 5 页</span>
+        <h2>小个子走右边</h2>
+        <p class="quote">妈妈牵起玫瑰的小手：“小个子今天走右边。”<br>玫瑰公主得意地扭过头，冲着走向石阶小路的蔷薇公主吐了吐舌头、做了一个大鬼脸：<br>“姐姐慢慢走，我要飞上去啦！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-07.jpg" alt="台阶自己升起来了"></div>
+      <div class="text-box">
+        <span class="p-no">第 6 页</span>
+        <h2>台阶自己升起来了</h2>
+        <p class="quote">玫瑰踩上平平的金属踏板。<br>嗡——金属踏板慢慢向上滑动，接着一层层升成了移动的小台阶！<br>“哇，台阶长高啦！”玫瑰兴奋得抬起一只小脚想在上面跳舞。<br>妈妈赶紧扶住她的胳膊：“两脚站稳在黄线框里，扶好黑色的扶手带，千万不能乱动哦！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-08.jpg" alt="隔着扶手的鬼脸"></div>
+      <div class="text-box">
+        <span class="p-no">第 7 页</span>
+        <h2>隔着扶手的鬼脸</h2>
+        <p class="quote">扶梯平稳地向上运行，小树从两边轻轻后退。<br>玫瑰两手扶着扶手带探出小脑袋，看到不远处的石阶上，蔷薇公主正握着登山杖一步一步往上登。<br>玫瑰把小鼻子使劲推成小猪拱，做了个大猪头鬼脸：“姐姐，你太慢啦！”<br>蔷薇擦了擦额头的汗，笑着冲她挥挥手。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-09.jpg" alt="小跑车的“刹车失灵”"></div>
+      <div class="text-box">
+        <span class="p-no">第 8 页</span>
+        <h2>小跑车的“刹车失灵”</h2>
+        <p class="quote">“不行，我要再快一点！”玫瑰在匀速上行的扶梯上迈开大步想小跑超车。<br>哪知道右脚小皮鞋啪嗒一下，正好踩住了自己拖在地上的天蓝蕾丝大裙摆！<br>前脚迈不开，后脚踩着扯不动，两条小短腿瞬间被长裙裹成了一个圆滚滚的小粽子！<br>玫瑰在移动台阶上像小跳蛙一样并着腿一蹦一跳：“哎呀呀！刹车失灵啦！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-10.jpg" alt="裙摆大危机！"></div>
+      <div class="text-box">
+        <span class="p-no">第 9 页</span>
+        <h2>裙摆大危机！</h2>
+        <p class="quote">“快看两边的小毛刷和黄色警示线，长裙绝对不能卷进去！”妈妈护住她提醒道。<br>玫瑰吓得赶紧把整条宽大的天蓝色长裙全提起来，层层卷成了一个圆滚滚的大西瓜抱在胸口！<br>她露出一双穿白袜子的小细腿，端端正正并拢踩在黄色安全框正中间，紧紧抿着嘴巴一动不敢动。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-11.jpg" alt="像企鹅一样换乘"></div>
+      <div class="text-box">
+        <span class="p-no">第 10 页</span>
+        <h2>像企鹅一样换乘</h2>
+        <p class="quote">到了半山腰的转乘平台，需要从第一段扶梯走到第二段。<br>玫瑰胸前紧紧抱着沉甸甸的大裙子，遮住了大半个视线。<br>她只能左右晃晃悠悠，迈着八字小碎步，像只笨拙的小胖企鹅一样一点一点往前挪动，额头上全是大汗珠。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-12.jpg" alt="追上来的登山健将"></div>
+      <div class="text-box">
+        <span class="p-no">第 11 页</span>
+        <h2>追上来的登山健将</h2>
+        <p class="quote">噔、噔、噔！<br>旁边传来了轻快清脆的脚步声。<br>穿粉色运动服的蔷薇公主步伐稳健，手拿登山杖轻松地登上了换乘平台，正笑眯眯地仰头喝水：“玫瑰，抱着大西瓜散步累不累呀？”<br>玫瑰瞪大眼睛，气喘吁吁地愣在原地：“姐……姐姐怎么走得这么快？！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-13.jpg" alt="黄色梳齿大跨步"></div>
+      <div class="text-box">
+        <span class="p-no">第 12 页</span>
+        <h2>黄色梳齿大跨步</h2>
+        <p class="quote">终于快到山顶啦！前方的台阶正平平收进地面的黄色梳齿板里。<br>“到出口啦，迈大步跨出去！”妈妈提醒。<br>玫瑰抱着胸前沉重的大裙子，闭上眼睛像受惊的小青蛙一样使劲一跳！<br>啪嗒！皮鞋底太滑，落地瞬间身子猛地往前一倾，两手松开裙子在空中胡乱划拉：“哇啊——要摔倒啦！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-14.jpg" alt="稳稳的怀抱"></div>
+      <div class="text-box">
+        <span class="p-no">第 13 页</span>
+        <h2>稳稳的怀抱</h2>
+        <p class="quote">呼——两只温暖的小手稳稳接住了玫瑰！<br>蔷薇公主早已在草坪前等着妹妹，微笑着把她抱了个满怀：<br>“接住小飞侠啦！看，我书包里还特意给你带了备用运动短裤和透气运动鞋哦！”<br>玫瑰摸摸小鼻子，破涕为笑。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-15.jpg" alt="下次我也穿运动鞋！云yu w w w y"></div>
+      <div class="text-box">
+        <span class="p-no">第 14 页</span>
+        <h2>下次我也穿运动鞋！云yu w w w y</h2>
+        <p class="quote">换上轻便运动短裤和防滑运动鞋的玫瑰公主，兴奋地单脚独立高高踢着小脚丫！<br>姐妹俩站在灿烂阳光洒满的山顶观景台上欢呼，山风吹拂着她们的发梢。<br>玫瑰大声宣布：“坐电梯虽然好玩，但下次登山——我一定要和姐姐穿一模一样的运动鞋，自己一步一步跑上来！”<br>第14页｜下次我也穿运动鞋！<br>爬山需要合适轻便的准备，脚踏实地比投机取巧更稳健；家人相互关照的温暖，让每次登顶都充满欢笑。</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="ending">
+  <div class="wrap">
+    <p class="the-end">完</p>
+    <p>手扶梯，依山建，<br>黄线里头站中间。<br>不打闹，不蹦跳，<br>扶好扶手带更稳健。<br>拖地长裙易裹腿，<br>轻便球鞋健步欢。<br>量力而行做准备，<br>姐妹携手到山巅！</p>
+  </div>
+</section>
+
+<footer>《奇怪的电梯山》· 系列第十八篇 · 蔷薇公主系列</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="查看插画">
+  <button class="lightbox-btn lightbox-close" type="button" aria-label="关闭">×</button>
+  <button class="lightbox-btn lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
+  <figure class="lightbox-stage">
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button class="lightbox-btn lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
+  <p class="lightbox-counter" aria-live="polite"></p>
+</div>
+
+<script>
+(function () {
+  const images = Array.from(document.querySelectorAll('.cover-frame img, .page .img-box img'));
+  const lightbox = document.getElementById('lightbox');
+  const stageImg = lightbox.querySelector('.lightbox-stage img');
+  const caption = lightbox.querySelector('figcaption');
+  const counter = lightbox.querySelector('.lightbox-counter');
+  const btnClose = lightbox.querySelector('.lightbox-close');
+  const btnPrev = lightbox.querySelector('.lightbox-prev');
+  const btnNext = lightbox.querySelector('.lightbox-next');
+  let index = 0;
+  let lastFocus = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  function show(i) {
+    index = (i + images.length) % images.length;
+    const srcImg = images[index];
+    stageImg.src = srcImg.currentSrc || srcImg.src;
+    stageImg.alt = srcImg.alt || '';
+    caption.textContent = srcImg.alt || '';
+    counter.textContent = (index + 1) + ' / ' + images.length;
+  }
+
+  function openAt(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lightbox-lock');
+    btnClose.focus();
+  }
+
+  function close() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-lock');
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  images.forEach(function (img, i) {
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', '放大查看：' + (img.alt || '插画'));
+    img.addEventListener('click', function () { openAt(i); });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openAt(i);
+      }
+    });
+  });
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', function () { show(index - 1); });
+  btnNext.addEventListener('click', function () { show(index + 1); });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) close();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+  });
+
+  lightbox.addEventListener('touchstart', function (e) {
+    if (!e.changedTouches[0]) return;
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', function (e) {
+    if (!e.changedTouches[0]) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+    if (dx < 0) show(index + 1);
+    else show(index - 1);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

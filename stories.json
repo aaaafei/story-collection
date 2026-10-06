@@ -1,11 +1,15 @@
 {
+  "notion": {
+    "parentPage": "https://app.notion.com/p/3dd69d5fcf5a8023aea9c88de48fd3b2"
+  },
   "seriesCatalog": [
     {
       "id": "rose-princess",
       "name": "蔷薇公主系列",
       "badge": "连载中",
       "desc": "种花诞生的姐妹花故事，点击封面开始阅读",
-      "accent": "pink"
+      "accent": "pink",
+      "notionPage": "https://app.notion.com/p/3dd69d5fcf5a80719c4adfae9b2b06f3"
     }
   ],
   "stories": [
@@ -232,6 +236,45 @@
         "可以休息"
       ],
       "link": "series/rose-princess/ep16-happy-inspector/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 17,
+      "createdAt": "2026-10-06T23:28:15+08:00",
+      "cover": "series/rose-princess/ep17-bubble-champion/assets/cover.jpg",
+      "title": "人鱼宝宝的泡泡冠军",
+      "desc": "系列第十七篇：蔷薇和玫瑰来到海底世界，邀请小人鱼姐姐一起出门玩。门刚打开，三位好朋友就开心地挥起了手。",
+      "tags": [
+        "温馨日常",
+        "系列连载"
+      ],
+      "link": "series/rose-princess/ep17-bubble-champion/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 18,
+      "createdAt": "2026-10-06T23:29:19+08:00",
+      "cover": "series/rose-princess/ep18-elevator-mountain/assets/cover.jpg",
+      "title": "奇怪的电梯山",
+      "desc": "系列第十八篇：“快点开！快点开！电梯山要被别人爬完啦！”去郊游的路上，车厢里就像装了一只小喇叭。玫瑰公主坐在安全座椅上，小短腿在半空中扑腾得像两只欢快的小鸭子。",
+      "tags": [
+        "温馨日常",
+        "系列连载"
+      ],
+      "link": "series/rose-princess/ep18-elevator-mountain/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 19,
+      "createdAt": "2026-10-06T23:30:36+08:00",
+      "cover": "series/rose-princess/ep19-treasure-studio/assets/cover.jpg",
+      "title": "人鱼妈妈去宝藏照相馆",
+      "desc": "系列第十九篇：小潜水艇停在贝壳小屋门口。蔷薇和玫瑰带来一张照片。照片里，蓬蓬裙转呀转，小皮鞋亮闪闪。人鱼妈妈捧着照片，眼睛也亮了。",
+      "tags": [
+        "温馨日常",
+        "系列连载"
+      ],
+      "link": "series/rose-princess/ep19-treasure-studio/index.html"
     },
     {
       "cover": "oneshots/labu-princess/assets/cover.jpg",

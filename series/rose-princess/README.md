@@ -40,6 +40,9 @@ series/rose-princess/
 | 14 | [`ep14-thorn-cinema/`](ep14-thorn-cinema/) | 穿过荆棘墙去看电影 |
 | 15 | [`ep15-golden-tail/`](ep15-golden-tail/) | 金尾巴美人鱼的窗外世界 |
 | 16 | [`ep16-happy-inspector/`](ep16-happy-inspector/) | 开心检察官的最后一枚印章 |
+| 17 | [`ep17-bubble-champion/`](ep17-bubble-champion/) | 人鱼宝宝的泡泡冠军 |
+| 18 | [`ep18-elevator-mountain/`](ep18-elevator-mountain/) | 奇怪的电梯山 |
+| 19 | [`ep19-treasure-studio/`](ep19-treasure-studio/) | 人鱼妈妈去宝藏照相馆 |
 | … | `epNN-.../` | 后续新故事（序号连续） |
 
 ## 快速开始（生成一张新图）
