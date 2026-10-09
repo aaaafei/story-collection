@@ -151,11 +151,34 @@ esac
 
 # 用户名写在 URL 里，密码由 GIT_ASKPASS 提供，避免令牌出现在远程 URL 中。
 # 关闭 credential.helper，避免误用 GitHub 的凭据去推 Gitee。
+# Gitee 的 HTTP/2 偶发 SSL timeout，强制 HTTP/1.1 并做有限次重试。
 PUSH_URL="https://${GITEE_USER}@${GITEE_HTTPS_URL#https://}"
 echo "sync_to_gitee: 推送 HEAD:${DEST} → ${GITEE_HTTPS_URL}"
+
+push_once() {
+  git -c credential.helper= -c http.version=HTTP/1.1 push --follow-tags "$@"
+}
+
+push_with_retry() {
+  local attempt=1
+  local max=3
+  while true; do
+    if push_once "$@"; then
+      return 0
+    fi
+    if [ "$attempt" -ge "$max" ]; then
+      echo "sync_to_gitee: 推送失败（已重试 $max 次）" >&2
+      return 1
+    fi
+    echo "sync_to_gitee: 推送失败，${attempt}/${max}，3 秒后重试..." >&2
+    attempt=$((attempt + 1))
+    sleep 3
+  done
+}
+
 if [ "${DEST#refs/tags/}" != "$DEST" ]; then
-  git -c credential.helper= push --follow-tags "$PUSH_URL" "$DEST"
+  push_with_retry "$PUSH_URL" "$DEST"
 else
-  git -c credential.helper= push --follow-tags "$PUSH_URL" "HEAD:${DEST}"
+  push_with_retry "$PUSH_URL" "HEAD:${DEST}"
 fi
 echo "sync_to_gitee: 完成"
