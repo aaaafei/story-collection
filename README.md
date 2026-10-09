@@ -23,7 +23,7 @@
 
 详细约定见 [`series/README.md`](series/README.md)。  
 图片优化（手机网页用图）见 [`tools/README.md`](tools/README.md)。  
-推送到 GitHub 后会由 Action 自动镜像到 Gitee；本地也可 `bash tools/sync_to_gitee.sh`。详见 [`tools/README.md`](tools/README.md#同步到-gitee)。
+推送到 GitHub 后由 Action 镜像到 Gitee（需仓库 Secret `GITEE_TOKEN`）；本地 / Cursor 也可 `bash tools/sync_to_gitee.sh`。详见 [`tools/README.md`](tools/README.md#同步到-gitee)。
 
 ## 本地预览
 

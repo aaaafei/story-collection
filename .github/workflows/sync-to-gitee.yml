@@ -22,4 +22,10 @@ jobs:
       - name: Push to Gitee
         env:
           GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
-        run: bash tools/sync_to_gitee.sh --ref "${{ github.ref }}"
+          GITEE_PRIVATE_TOKEN: ${{ secrets.GITEE_PRIVATE_TOKEN }}
+        run: |
+          if [ -z "${GITEE_TOKEN:-}" ] && [ -z "${GITEE_PRIVATE_TOKEN:-}" ]; then
+            echo "::warning::GitHub Actions 里没有 GITEE_TOKEN。把网页上已配置的同一个 Gitee 令牌添加到本仓库 Settings → Secrets → Actions（名称必须是 GITEE_TOKEN）后，推送就会自动同步。Cursor / 本地请用环境变量或 tools/.env，运行 bash tools/sync_to_gitee.sh。"
+            exit 0
+          fi
+          bash tools/sync_to_gitee.sh --ref "${{ github.ref }}"
