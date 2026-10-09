@@ -1,0 +1,25 @@
+# 代码推送到 GitHub 后，镜像同步到 Gitee。
+# 使用仓库 / Cursor 网页已配置的 GITEE_TOKEN（Gitee 私人令牌）。
+name: Sync to Gitee
+
+on:
+  push:
+  workflow_dispatch:
+
+concurrency:
+  group: sync-to-gitee-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Push to Gitee
+        env:
+          GITEE_TOKEN: ${{ secrets.GITEE_TOKEN }}
+        run: bash tools/sync_to_gitee.sh --ref "${{ github.ref }}"

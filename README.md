@@ -10,8 +10,9 @@
 ├── manifest.webmanifest    # 轻量 PWA 清单（scope=/story/）
 ├── sw.js                   # 网络透传 SW（不缓存内容，仅便于安装）
 ├── icons/                  # PWA 图标
-├── tools/                  # 本地工具（图片优化等）
+├── tools/                  # 本地工具（图片优化、Gitee 同步等）
 │   ├── optimize_images.py
+│   ├── sync_to_gitee.sh    # 提交/推送后同步到 Gitee
 │   └── README.md
 ├── series/                 # 连载系列
 │   ├── _template/          # 新系列脚手架
@@ -21,7 +22,8 @@
 ```
 
 详细约定见 [`series/README.md`](series/README.md)。  
-图片优化（手机网页用图）见 [`tools/README.md`](tools/README.md)。
+图片优化（手机网页用图）见 [`tools/README.md`](tools/README.md)。  
+推送到 GitHub 后会由 Action 自动镜像到 Gitee；本地也可 `bash tools/sync_to_gitee.sh`。详见 [`tools/README.md`](tools/README.md#同步到-gitee)。
 
 ## 本地预览
 
