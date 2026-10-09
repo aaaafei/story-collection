@@ -45,6 +45,7 @@ SLUG_PHRASES = (
     ("人鱼宝宝的泡泡冠军", "bubble-champion"),
     ("奇怪的电梯山", "elevator-mountain"),
     ("人鱼妈妈去宝藏照相馆", "treasure-studio"),
+    ("今天轮到我们长鱼尾", "fish-tails"),
     ("开心检察官的最后一枚印章", "happy-inspector"),
     ("金尾巴美人鱼的窗外世界", "golden-tail"),
     ("穿过荆棘墙去看电影", "thorn-cinema"),

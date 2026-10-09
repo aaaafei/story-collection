@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>今天轮到我们长鱼尾 · 儿童绘本</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --paper:#FFFDF7;
+    --pink:#FFD9E5;
+    --pink-deep:#F59AB8;
+    --pink-soft:#FFECF2;
+    --blue:#CDEAF8;
+    --blue-deep:#7FB8D9;
+    --blue-soft:#E9F6FD;
+    --lavender:#E9DDF6;
+    --lavender-deep:#B49AE0;
+    --lavender-soft:#F3ECFB;
+    --mint:#D9F2DE;
+    --mint-deep:#7FB88E;
+    --mint-soft:#EFFAF2;
+    --night-deep:#6E7FB8;
+    --night-soft:#ECEEFA;
+    --ink:#5B4A43;
+    --ink-soft:#8A7368;
+    --radius-lg:34px;
+    --radius-md:22px;
+    --font-display:'ZCOOL KuaiLe','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+    --font-body:'Noto Sans SC','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(1200px 600px at 15% -5%, #FFE9F1 0%, transparent 60%),
+      radial-gradient(1000px 500px at 90% 8%, #E1F4FC 0%, transparent 55%),
+      radial-gradient(900px 500px at 50% 110%, #F0EAF9 0%, transparent 55%);
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px;}
+
+  .back-home{
+    position:fixed;
+    top:16px;left:16px;
+    z-index:50;
+    font-family:var(--font-display);
+    font-size:14px;
+    letter-spacing:1px;
+    color:var(--pink-deep);
+    background:rgba(255,255,255,.92);
+    border:2px solid #F8C7D8;
+    border-radius:999px;
+    padding:7px 18px;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(245,154,184,.28);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .back-home:hover{transform:translateX(-3px);box-shadow:0 10px 24px rgba(245,154,184,.38);}
+
+  .hero{
+    position:relative;
+    padding:52px 0 40px;
+    text-align:center;
+  }
+  .hero .page-tag{
+    display:inline-block;
+    font-family:var(--font-display);
+    font-size:15px;
+    letter-spacing:3px;
+    color:var(--pink-deep);
+    background:var(--pink-soft);
+    border:2px dashed #F8C7D8;
+    border-radius:999px;
+    padding:6px 20px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(38px,7vw,66px);
+    color:var(--pink-deep);
+    text-shadow:0 6px 0 #fff, 0 10px 24px rgba(245,154,184,.35);
+    letter-spacing:4px;
+    line-height:1.2;
+    margin-bottom:10px;
+  }
+  .hero .subtitle{
+    font-size:clamp(16px,2.6vw,21px);
+    color:var(--blue-deep);
+    font-weight:500;
+    letter-spacing:2px;
+    margin-bottom:8px;
+  }
+  .hero .meta-line{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+    margin:16px 0 26px;
+  }
+  .hero .meta-line span{
+    font-size:13.5px;color:var(--ink-soft);
+    background:#fff;border:1.5px solid #F2E4DA;
+    border-radius:999px;padding:5px 15px;
+  }
+  .hero .cover-frame{
+    position:relative;
+    max-width:760px;margin:0 auto;
+    border-radius:var(--radius-lg);
+    padding:14px;
+    background:linear-gradient(160deg,#fff 0%,var(--pink-soft) 100%);
+    box-shadow:0 22px 60px rgba(245,154,184,.26);
+  }
+  .hero .cover-frame img{
+    display:block;width:100%;height:auto;
+    border-radius:calc(var(--radius-lg) - 10px);
+    cursor:zoom-in;
+  }
+  .hero .cover-line{
+    max-width:700px;margin:26px auto 0;
+    font-family:var(--font-display);
+    font-size:clamp(19px,3vw,24px);
+    color:var(--pink-deep);
+    letter-spacing:1px;
+  }
+
+  .characters{
+    padding:44px 0 8px;
+  }
+  .section-title{
+    text-align:center;
+    font-family:var(--font-display);
+    font-size:clamp(26px,4vw,34px);
+    color:var(--ink);
+    margin-bottom:8px;
+    letter-spacing:2px;
+  }
+  .section-note{
+    text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:24px;
+  }
+  .char-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;
+  }
+  .char-card{
+    background:var(--paper);
+    border-radius:var(--radius-md);
+    padding:26px 24px;
+    border:2px solid #F4E7DE;
+    position:relative;
+    overflow:hidden;
+  }
+  .char-card.c1{background:linear-gradient(160deg,#fff,var(--pink-soft));}
+  .char-card.c2{background:linear-gradient(160deg,#fff,var(--blue-soft));}
+  .char-card.c3{background:linear-gradient(160deg,#fff,var(--lavender-soft));}
+  .char-card.c4{background:linear-gradient(160deg,#fff,var(--mint-soft));}
+  .char-card h3{
+    font-family:var(--font-display);
+    font-size:22px;letter-spacing:2px;margin-bottom:10px;
+  }
+  .char-card.c1 h3{color:var(--pink-deep);}
+  .char-card.c2 h3{color:var(--blue-deep);}
+  .char-card.c3 h3{color:var(--lavender-deep);}
+  .char-card.c4 h3{color:var(--mint-deep);}
+  .char-card p{font-size:15px;color:var(--ink-soft);}
+  .char-card .badge{
+    display:inline-block;font-size:12px;color:#fff;
+    border-radius:999px;padding:3px 12px;margin-bottom:10px;letter-spacing:1px;
+  }
+  .char-card.c1 .badge{background:var(--pink-deep);}
+  .char-card.c2 .badge{background:var(--blue-deep);}
+  .char-card.c3 .badge{background:var(--lavender-deep);}
+  .char-card.c4 .badge{background:var(--mint-deep);}
+
+  .story{
+    padding:44px 0 10px;
+  }
+  .story .intro{
+    text-align:center;font-size:15px;color:var(--ink-soft);margin-bottom:30px;
+  }
+  .page{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    gap:26px;
+    align-items:center;
+    background:var(--paper);
+    border-radius:var(--radius-lg);
+    padding:26px;
+    margin-bottom:30px;
+    border:2px solid #F4E7DE;
+    box-shadow:0 14px 34px rgba(245,154,184,.14);
+    position:relative;
+  }
+  .page .img-box{
+    border-radius:calc(var(--radius-md) - 6px);
+    overflow:hidden;
+    background:var(--pink-soft);
+    line-height:0;
+    cursor:zoom-in;
+  }
+  .page .img-box img{
+    display:block;width:100%;height:auto;
+    transition:transform .5s ease;
+    cursor:zoom-in;
+  }
+  .page .img-box:hover img{transform:scale(1.03);}
+  .page .text-box{
+    padding:6px 10px;
+    position:relative;
+  }
+  .page .text-box .p-no{
+    font-family:var(--font-display);
+    font-size:14px;letter-spacing:2px;
+    display:inline-block;
+    border-radius:999px;padding:4px 16px;margin-bottom:14px;
+  }
+  .page .text-box h2{
+    font-family:var(--font-display);
+    font-size:clamp(24px,3.4vw,30px);
+    letter-spacing:1px;
+    margin-bottom:14px;
+    line-height:1.4;
+  }
+  .page .text-box .quote{
+    font-size:clamp(16.5px,2.4vw,19px);
+    color:var(--ink);
+    line-height:2;
+    position:relative;
+    padding-left:20px;
+    border-left:5px solid var(--pink);
+    border-radius:2px;
+  }
+  .page:nth-of-type(even) .p-no,.page:nth-of-type(even) h2{color:var(--blue-deep);}
+  .page:nth-of-type(even) .p-no{background:var(--blue-soft);border:1.5px solid #C2E2F4;}
+  .page:nth-of-type(even) .quote{border-left-color:var(--blue);}
+  .page:nth-of-type(odd) .p-no,.page:nth-of-type(odd) h2{color:var(--pink-deep);}
+  .page:nth-of-type(odd) .p-no{background:var(--pink-soft);border:1.5px solid #F8C7D8;}
+  .page:nth-of-type(odd) .quote{border-left-color:var(--pink);}
+
+  .ending{
+    text-align:center;
+    padding:40px 0 56px;
+  }
+  .ending .the-end{
+    font-family:var(--font-display);
+    font-size:clamp(34px,6vw,52px);
+    color:var(--pink-deep);
+    letter-spacing:10px;
+    text-shadow:0 4px 0 #fff, 0 8px 20px rgba(245,154,184,.3);
+    margin-bottom:10px;
+  }
+  .ending p{color:var(--ink-soft);font-size:15px;}
+
+  footer{
+    text-align:center;padding:22px 0 34px;
+    font-size:13px;color:#B49C91;
+    letter-spacing:1px;
+  }
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero{animation:riseIn .7s ease both;}
+  .characters{animation:riseIn .7s .12s ease both;}
+  .story{animation:riseIn .7s .22s ease both;}
+  .ending{animation:riseIn .7s .3s ease both;}
+
+  .lightbox{
+    position:fixed;inset:0;z-index:200;
+    display:flex;align-items:center;justify-content:center;
+    padding:72px 88px 86px;
+    background:rgba(91,74,67,.78);
+    backdrop-filter:blur(10px);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .28s ease, visibility .28s ease;
+  }
+  .lightbox.is-open{
+    opacity:1;visibility:visible;pointer-events:auto;
+  }
+  .lightbox-stage{
+    margin:0;max-width:min(1100px,100%);
+    text-align:center;
+  }
+  .lightbox-stage img{
+    display:block;
+    max-width:100%;
+    max-height:calc(100vh - 170px);
+    width:auto;height:auto;margin:0 auto;
+    border-radius:22px;
+    box-shadow:0 22px 60px rgba(0,0,0,.28);
+    background:#fff;
+  }
+  .lightbox-stage figcaption{
+    margin-top:14px;
+    font-family:var(--font-display);
+    font-size:clamp(15px,2.2vw,18px);
+    color:#fff;
+    letter-spacing:1px;
+    text-shadow:0 2px 10px rgba(91,74,67,.4);
+  }
+  .lightbox-btn{
+    position:absolute;
+    border:2px solid #F8C7D8;
+    background:rgba(255,255,255,.94);
+    color:var(--pink-deep);
+    cursor:pointer;
+    box-shadow:0 8px 22px rgba(245,154,184,.32);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    font-family:var(--font-display);
+  }
+  .lightbox-btn:hover{
+    transform:scale(1.06);
+    box-shadow:0 12px 26px rgba(245,154,184,.42);
+    background:#fff;
+  }
+  .lightbox-btn:focus-visible{
+    outline:3px solid #fff;
+    outline-offset:3px;
+  }
+  .lightbox-close{
+    top:18px;right:18px;
+    width:46px;height:46px;
+    border-radius:50%;
+    font-size:28px;line-height:1;
+  }
+  .lightbox-nav{
+    top:50%;
+    width:52px;height:52px;
+    border-radius:50%;
+    font-size:34px;line-height:1;
+    transform:translateY(-50%);
+  }
+  .lightbox-nav:hover{transform:translateY(-50%) scale(1.06);}
+  .lightbox-prev{left:18px;}
+  .lightbox-next{right:18px;}
+  .lightbox-counter{
+    position:absolute;left:0;right:0;bottom:22px;
+    text-align:center;
+    font-size:14px;letter-spacing:2px;
+    color:#fff;
+  }
+  body.lightbox-lock{overflow:hidden;}
+
+  @media (max-width:820px){
+    .page{grid-template-columns:1fr;padding:20px;}
+    .page .text-box{padding:6px 4px 2px;}
+    .wrap{padding:0 16px;}
+    .hero{padding:38px 0 28px;}
+    .lightbox{padding:70px 16px 78px;}
+    .lightbox-nav{width:44px;height:44px;font-size:28px;}
+    .lightbox-prev{left:8px;}
+    .lightbox-next{right:8px;}
+    .lightbox-stage img{max-height:calc(100vh - 190px);border-radius:16px;}
+  }
+
+  @media print{
+    .hero .cover-frame{box-shadow:none;}
+    .page,.char-card{box-shadow:none;break-inside:avoid;}
+    .page{grid-template-columns:1fr 1fr;page-break-inside:avoid;}
+    footer,.lightbox,.back-home{display:none;}
+    body{background:#fff;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+
+<body>
+
+<a class="back-home" href="../../../index.html">← 返回故事目录</a>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="page-tag">系列故事 · 第二十篇</span>
+    <h1>今天轮到我们长鱼尾</h1>
+    <p class="subtitle">蔷薇公主系列 · 轻松调皮的鱼尾假日</p>
+    <div class="meta-line">
+      <span>适读年龄 3-6 岁</span>
+      <span>轻松调皮</span>
+      <span>变身冒险</span>
+      <span>水彩画风</span>
+    </div>
+    <div class="cover-frame">
+      <img src="assets/page-01.jpg" alt="封面：封面">
+    </div>
+    <p class="cover-line">玫瑰想念人鱼一家了。蔷薇摊开小手，寻路宝珠亮起来。“带我们去找朋友吧！”</p>
+  </div>
+</header>
+
+<section class="characters">
+  <div class="wrap">
+    <h2 class="section-title">认识角色</h2>
+    <p class="section-note">翻开故事，轻松调皮的鱼尾假日</p>
+    <div class="char-grid">
+      <div class="char-card c1">
+        <span class="badge">姐姐 · 主角</span>
+        <h3>蔷薇公主</h3>
+        <p>粉色长发的姐姐，温柔又勇敢，常常带着妹妹一起出门。</p>
+      </div>
+      <div class="char-card c2">
+        <span class="badge">妹妹 · 主角</span>
+        <h3>玫瑰公主</h3>
+        <p>蓝色头发的妹妹，调皮热心，遇到事会大声说出来。</p>
+      </div>
+      <div class="char-card c3">
+        <span class="badge">大人</span>
+        <h3>人鱼妈妈</h3>
+        <p>温柔的人鱼妈妈，有时也会累，需要安静休息。</p>
+      </div>
+      <div class="char-card c4">
+        <span class="badge">好朋友</span>
+        <h3>小人鱼姐姐</h3>
+        <p>人鱼家的姐姐，喜欢和蔷薇、玫瑰一起冒险。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap">
+    <p class="intro">翻开故事，轻松调皮的鱼尾假日</p>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-02.jpg" alt="宝珠，带我们去！"></div>
+      <div class="text-box">
+        <span class="p-no">第 1 页</span>
+        <h2>宝珠，带我们去！</h2>
+        <p class="quote">玫瑰想念人鱼一家了。<br>蔷薇摊开小手，<br>寻路宝珠亮起来。<br>“带我们去找朋友吧！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-03.jpg" alt="潜水艇今天休息"></div>
+      <div class="text-box">
+        <span class="p-no">第 2 页</span>
+        <h2>潜水艇今天休息</h2>
+        <p class="quote">到了海边，玫瑰挥挥手：<br>“小潜水艇，<br>今天你休息！”<br>蔷薇笑眯眯：<br>“今天，我们自己游！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-04.jpg" alt="两条新鱼尾"></div>
+      <div class="text-box">
+        <span class="p-no">第 3 页</span>
+        <h2>两条新鱼尾</h2>
+        <p class="quote">粉色花瓣星光转呀转。<br>脚丫变成了两条小鱼尾！<br>玫瑰低头看看：<br>“我的脚趾头，<br>一个也没带来！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-05.jpg" alt="尾巴不是脚丫"></div>
+      <div class="text-box">
+        <span class="p-no">第 4 页</span>
+        <h2>尾巴不是脚丫</h2>
+        <p class="quote">玫瑰想迈出一步，<br>小尾巴却只翘了一下。<br>“姐姐，我不会走啦！”<br>“今天不用走，<br>今天要游。”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-06.jpg" alt="两条小鱼出发啦"></div>
+      <div class="text-box">
+        <span class="p-no">第 5 页</span>
+        <h2>两条小鱼出发啦</h2>
+        <p class="quote">宝珠慢慢向前飘。<br>姐妹俩牵手，轻轻摆尾。<br>玫瑰得意地喊：<br>“请让一让，<br>两条公主鱼来啦！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-07.jpg" alt="门口的新客人"></div>
+      <div class="text-box">
+        <span class="p-no">第 6 页</span>
+        <h2>门口的新客人</h2>
+        <p class="quote">贝壳门打开了。<br>妈妈看看蔷薇，<br>又看看玫瑰。<br>“哎呀！今天来的，<br>怎么是两位人鱼公主？”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-08.jpg" alt="我们的贴纸小老师"></div>
+      <div class="text-box">
+        <span class="p-no">第 7 页</span>
+        <h2>我们的贴纸小老师</h2>
+        <p class="quote">蔷薇打开魔法小册子。<br>“我跟贴纸学会了<br>鱼尾魔法！”<br>玫瑰指着另一页：<br>“我学的是公主裙魔法！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-09.jpg" alt="换我教你们啦"></div>
+      <div class="text-box">
+        <span class="p-no">第 8 页</span>
+        <h2>换我教你们啦</h2>
+        <p class="quote">妈妈笑着说：<br>“上次你们教我走路，<br>今天我教你们游泳！”<br>小人鱼姐姐帮忙数：<br>“一下，两下！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-10.jpg" alt="谁在水里跑步？"></div>
+      <div class="text-box">
+        <span class="p-no">第 9 页</span>
+        <h2>谁在水里跑步？</h2>
+        <p class="quote">玫瑰的小尾巴一摆一摆，<br>两只手却甩呀甩。<br>姐姐笑弯了腰：<br>“你是在游泳，<br>还是在水里跑步呀？”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-11.jpg" alt="小尾巴刹车"></div>
+      <div class="text-box">
+        <span class="p-no">第 10 页</span>
+        <h2>小尾巴刹车</h2>
+        <p class="quote">蔷薇会往前游了，<br>却还不会停。<br>妈妈稳稳接住她。<br>蔷薇笑着抱住妈妈：<br>“那我先停在你这里！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-12.jpg" alt="妈妈的新问题"></div>
+      <div class="text-box">
+        <span class="p-no">第 11 页</span>
+        <h2>妈妈的新问题</h2>
+        <p class="quote">妈妈摸摸自己的鱼尾。<br>“今天不变脚，<br>也能穿公主裙吗？”<br>玫瑰点点头：<br>“能！给尾巴留个位置！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-13.jpg" alt="会飘的裙摆"></div>
+      <div class="text-box">
+        <span class="p-no">第 12 页</span>
+        <h2>会飘的裙摆</h2>
+        <p class="quote">蓝色花瓣星光落下来。<br>妈妈穿上淡紫色短纱裙。<br>她转完了，裙摆还在飘。<br>“咦，<br>它还想再转一会儿！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-14.jpg" alt="宝宝找妈妈"></div>
+      <div class="text-box">
+        <span class="p-no">第 13 页</span>
+        <h2>宝宝找妈妈</h2>
+        <p class="quote">妈妈拉起薄薄的纱披肩。<br>“妈妈在哪里？”<br>宝宝伸出小手，<br>轻轻一掀。<br>“呀！”<br>“找到啦！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-15.jpg" alt="摆尾巴，不迈脚"></div>
+      <div class="text-box">
+        <span class="p-no">第 14 页</span>
+        <h2>摆尾巴，不迈脚</h2>
+        <p class="quote">妈妈摆尾，大家摆尾。<br>轮到玫瑰，她喊：<br>“抬起左脚——”<br>说完，自己先笑了。<br>“忘啦！<br>今天谁也没有左脚！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-16.jpg" alt="下次带什么来？"></div>
+      <div class="text-box">
+        <span class="p-no">第 15 页</span>
+        <h2>下次带什么来？</h2>
+        <p class="quote">门口，姐姐问：<br>“下次带脚来，<br>还是带尾巴来？”<br>玫瑰认真想了想：<br>“看我们想走着玩，<br>还是游着玩！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-17.jpg" alt="脚趾回来啦"></div>
+      <div class="text-box">
+        <span class="p-no">第 16 页</span>
+        <h2>脚趾回来啦</h2>
+        <p class="quote">回到岸边，<br>鱼尾变回脚丫。<br>玫瑰走了两步，<br>又扭扭屁股。<br>“你在做什么呀？”<br>“哎呀，我还在摆尾巴！”</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="ending">
+  <div class="wrap">
+    <p class="the-end">完</p>
+    <p>“哎呀，我还在摆尾巴！”</p>
+  </div>
+</section>
+
+<footer>《今天轮到我们长鱼尾》· 系列第二十篇 · 蔷薇公主系列</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="查看插画">
+  <button class="lightbox-btn lightbox-close" type="button" aria-label="关闭">×</button>
+  <button class="lightbox-btn lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
+  <figure class="lightbox-stage">
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button class="lightbox-btn lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
+  <p class="lightbox-counter" aria-live="polite"></p>
+</div>
+
+<script>
+(function () {
+  const images = Array.from(document.querySelectorAll('.cover-frame img, .page .img-box img'));
+  const lightbox = document.getElementById('lightbox');
+  const stageImg = lightbox.querySelector('.lightbox-stage img');
+  const caption = lightbox.querySelector('figcaption');
+  const counter = lightbox.querySelector('.lightbox-counter');
+  const btnClose = lightbox.querySelector('.lightbox-close');
+  const btnPrev = lightbox.querySelector('.lightbox-prev');
+  const btnNext = lightbox.querySelector('.lightbox-next');
+  let index = 0;
+  let lastFocus = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  function show(i) {
+    index = (i + images.length) % images.length;
+    const srcImg = images[index];
+    stageImg.src = srcImg.currentSrc || srcImg.src;
+    stageImg.alt = srcImg.alt || '';
+    caption.textContent = srcImg.alt || '';
+    counter.textContent = (index + 1) + ' / ' + images.length;
+  }
+
+  function openAt(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lightbox-lock');
+    btnClose.focus();
+  }
+
+  function close() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-lock');
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  images.forEach(function (img, i) {
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', '放大查看：' + (img.alt || '插画'));
+    img.addEventListener('click', function () { openAt(i); });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openAt(i);
+      }
+    });
+  });
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', function () { show(index - 1); });
+  btnNext.addEventListener('click', function () { show(index + 1); });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) close();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+  });
+
+  lightbox.addEventListener('touchstart', function (e) {
+    if (!e.changedTouches[0]) return;
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', function (e) {
+    if (!e.changedTouches[0]) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+    if (dx < 0) show(index + 1);
+    else show(index - 1);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>

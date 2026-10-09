@@ -43,6 +43,7 @@ series/rose-princess/
 | 17 | [`ep17-bubble-champion/`](ep17-bubble-champion/) | 人鱼宝宝的泡泡冠军 |
 | 18 | [`ep18-elevator-mountain/`](ep18-elevator-mountain/) | 奇怪的电梯山 |
 | 19 | [`ep19-treasure-studio/`](ep19-treasure-studio/) | 人鱼妈妈去宝藏照相馆 |
+| 20 | [`ep20-fish-tails/`](ep20-fish-tails/) | 今天轮到我们长鱼尾 |
 | … | `epNN-.../` | 后续新故事（序号连续） |
 
 ## 快速开始（生成一张新图）
