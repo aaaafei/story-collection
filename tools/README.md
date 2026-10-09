@@ -103,6 +103,22 @@ python tools/sync_from_notion.py --series rose-princess
 
 系列要在 `stories.json` 的 `seriesCatalog` 里填写 `notionPage`（Notion 系列目录页链接）。
 
+## 同步到 Gitee
+
+镜像仓库：<https://gitee.com/aaaafei/story-collection.git>
+
+代码进入 GitHub 后，`.github/workflows/sync-to-gitee.yml` 会把同一提交推到 Gitee（需在 GitHub 仓库 Secrets 里放同名 `GITEE_TOKEN`）。本地 / Cursor 提交后可用钩子或手动脚本，读取 Cursor Secrets 或 `tools/.env`。
+
+令牌用网页上已配置的 **GITEE_TOKEN**（Cursor Cloud Agents → Secrets；GitHub Action 则读仓库 Actions secret 同名），不要把令牌写进仓库。本地也可写在 `tools/.env`（已在 `.gitignore` 中）。
+
+```powershell
+# 手动同步当前分支
+bash tools/sync_to_gitee.sh
+
+# 本机启用 post-commit 钩子（每次 git commit 后自动推 Gitee）
+bash tools/sync_to_gitee.sh --install-hook
+```
+
 ## 与首页的关系
 
 `stories.json` 示例：

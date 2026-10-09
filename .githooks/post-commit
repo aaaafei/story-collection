@@ -1,0 +1,21 @@
+#!/bin/sh
+# 提交成功后把当前分支同步到 Gitee。
+# 启用：bash tools/sync_to_gitee.sh --install-hook
+# 跳过：GITEE_SYNC_SKIP=1 git commit ...
+
+if [ -n "$GITEE_SYNC_SKIP" ]; then
+  exit 0
+fi
+
+ROOT="$(git rev-parse --show-toplevel)"
+SYNC="$ROOT/tools/sync_to_gitee.sh"
+
+if [ ! -x "$SYNC" ]; then
+  chmod +x "$SYNC" 2>/dev/null || true
+fi
+
+# 未配置令牌时静默跳过；同步失败不撤回本次 commit。
+if ! "$SYNC" --quiet-if-unconfigured; then
+  echo "post-commit: Gitee 同步失败，本地提交仍保留。可稍后运行: bash tools/sync_to_gitee.sh" >&2
+fi
+exit 0
