@@ -44,6 +44,8 @@ series/rose-princess/
 | 18 | [`ep18-elevator-mountain/`](ep18-elevator-mountain/) | 奇怪的电梯山 |
 | 19 | [`ep19-treasure-studio/`](ep19-treasure-studio/) | 人鱼妈妈去宝藏照相馆 |
 | 20 | [`ep20-fish-tails/`](ep20-fish-tails/) | 今天轮到我们长鱼尾 |
+| 26 | [`ep26-smallest-princess/`](ep26-smallest-princess/) | 最小的公主，你藏在哪儿？ |
+| 27 | [`ep27-tiny-world/`](ep27-tiny-world/) | 小小世界，大家都变小啦！ |
 | … | `epNN-.../` | 后续新故事（序号连续） |
 
 ## 快速开始（生成一张新图）
