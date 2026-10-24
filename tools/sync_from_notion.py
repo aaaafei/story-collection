@@ -45,6 +45,8 @@ SLUG_PHRASES = (
     ("人鱼宝宝的泡泡冠军", "bubble-champion"),
     ("奇怪的电梯山", "elevator-mountain"),
     ("人鱼妈妈去宝藏照相馆", "treasure-studio"),
+    ("最小的公主，你藏在哪儿", "smallest-princess"),
+    ("小小世界，大家都变小啦", "tiny-world"),
     ("今天轮到我们长鱼尾", "fish-tails"),
     ("开心检察官的最后一枚印章", "happy-inspector"),
     ("金尾巴美人鱼的窗外世界", "golden-tail"),
@@ -74,6 +76,9 @@ KNOWN_CHARS = (
     ("小人鱼宝宝", "小朋友", "还很小的人鱼宝宝，常常跟着姐姐们一起玩。"),
     ("小人鱼姐姐", "好朋友", "人鱼家的姐姐，喜欢和蔷薇、玫瑰一起冒险。"),
     ("人鱼妈妈", "大人", "温柔的人鱼妈妈，有时也会累，需要安静休息。"),
+    ("爱洛", "好朋友", "金色长卷发、戴着小金冠的小公主，童话世界的好朋友。"),
+    ("蒂安娜", "新朋友", "小小世界的主人，穿着绿裙子，细心温柔，会小小魔法。"),
+    ("野餐篮", "本册登场", "长着两只小脚的柳编篮子，最爱帮忙装东西。"),
     ("开心检察官", "新朋友", "戴着小礼帽，拿着笑容放大镜，认真检查大家的心情。"),
     ("金尾巴美人鱼", "新朋友", "有金色鱼尾的美人鱼，一开始有点害羞。"),
     ("小风妖怪", "调皮朋友", "呼呼吹来的小风妖怪，捣蛋之后也会道歉。"),
@@ -568,7 +573,10 @@ def pick_characters(model):
     )
     picked = []
     for name, badge, desc in KNOWN_CHARS:
-        if name in blob:
+        aliases = [name]
+        if name.endswith("公主") and len(name) > 2:
+            aliases.append(name[:-2])
+        if any(alias and alias in blob for alias in aliases):
             picked.append({"name": name, "badge": badge, "desc": desc})
         if len(picked) >= 4:
             break
