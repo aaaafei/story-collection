@@ -292,31 +292,129 @@
     },
     {
       "series": "蔷薇公主系列",
+      "episode": 21,
+      "createdAt": "2026-10-12T21:58:11+08:00",
+      "cover": "series/rose-princess/ep21-birthday-cake/assets/cover.jpg",
+      "title": "生日蛋糕里冒出一个小公主",
+      "desc": "系列第二十一篇：蔷薇和玫瑰去城堡饭店给铃兰公主过生日。她们的蛋糕偷偷长出兔耳朵，寿星的高蛋糕里，还藏着一个爱捣蛋的小公主。",
+      "tags": [
+        "轻松搞怪",
+        "生日会",
+        "新朋友"
+      ],
+      "link": "series/rose-princess/ep21-birthday-cake/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 22,
+      "createdAt": "2026-10-14T20:50:24+08:00",
+      "cover": "series/rose-princess/ep22-fairy-gate/assets/cover.jpg",
+      "title": "童话大门后，爱洛在哪里？",
+      "desc": "系列第二十二篇：蔷薇和玫瑰念开门口诀走进童话世界，把帽子树认成了公主，又替蜗牛邮递员送回一张明信片。爱洛还没找到，下一站是会打哈欠的风车。",
+      "tags": [
+        "寻找爱洛",
+        "童话大门",
+        "轻松有趣"
+      ],
+      "link": "series/rose-princess/ep22-fairy-gate/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 23,
+      "createdAt": "2026-10-15T20:13:20+08:00",
+      "cover": "series/rose-princess/ep23-wardrobe/assets/cover.jpg",
+      "title": "找到爱洛！衣柜里的小公主",
+      "desc": "系列第二十三篇：蔷薇和玫瑰跟着风车去找爱洛。她们认错了稻草人和窗帘，最后在衣柜的裙子里找到了正在试衣服的爱洛。野餐篮却忽然长出小脚跑了。",
+      "tags": [
+        "找到爱洛",
+        "捉迷藏",
+        "试裙子"
+      ],
+      "link": "series/rose-princess/ep23-wardrobe/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 24,
+      "createdAt": "2026-10-17T17:30:14+08:00",
+      "cover": "series/rose-princess/ep24-picnic-basket/assets/cover.jpg",
+      "title": "野餐篮，你漏了一个！",
+      "desc": "系列第二十四篇：野餐篮长出两只小脚，带着爱洛溜进艾莎的冰雪世界，回来时却只接走了玫瑰。爱洛和玫瑰一起告诉它：你漏了一个！",
+      "tags": [
+        "野餐篮",
+        "慢慢走",
+        "未完待续"
+      ],
+      "link": "series/rose-princess/ep24-picnic-basket/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 25,
+      "createdAt": "2026-10-18T19:13:17+08:00",
+      "cover": "series/rose-princess/ep25-flowerpot-ride/assets/cover.jpg",
+      "title": "花盆也要搭便车！",
+      "desc": "系列第二十五篇：小花盆也长出了脚，偷偷钻进野餐篮。蔷薇把它一起带到冰雪城堡，艾莎让它变成亮晶晶的小雪花盆，大家终于坐在一起野餐。",
+      "tags": [
+        "花盆搭便车",
+        "冰雪野餐",
+        "本集完"
+      ],
+      "link": "series/rose-princess/ep25-flowerpot-ride/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
       "episode": 26,
-      "createdAt": "2026-10-24T21:37:00+08:00",
+      "createdAt": "2026-10-24T21:34:50+08:00",
       "cover": "series/rose-princess/ep26-smallest-princess/assets/cover.jpg",
       "title": "最小的公主，你藏在哪儿？",
-      "desc": "系列第二十六篇：“最小的公主，你藏在哪儿？”蔷薇踮起脚尖。玫瑰蹲下来找。爱洛捂着嘴笑。“她一定特别小！”",
+      "desc": "系列第二十六篇：谢过艾莎以后，蔷薇、玫瑰和爱洛想象小小的童话世界。她们带上饼干、漂亮裙子和水，野餐篮也踮起脚，一起准备出发。",
       "tags": [
         "小小世界",
-        "寻找朋友",
-        "系列连载"
+        "准备出发",
+        "想象冒险"
       ],
       "link": "series/rose-princess/ep26-smallest-princess/index.html"
     },
     {
       "series": "蔷薇公主系列",
       "episode": 27,
-      "createdAt": "2026-10-24T21:44:00+08:00",
+      "createdAt": "2026-10-24T21:34:51+08:00",
       "cover": "series/rose-princess/ep27-tiny-world/assets/cover.jpg",
       "title": "小小世界，大家都变小啦！",
-      "desc": "系列第二十七篇：“我们也要变小！”蔷薇伸出手。玫瑰闭上眼。爱洛踮起脚。最小的公主轻轻一挥手。",
+      "desc": "系列第二十七篇：三位公主请人鱼一家一起去小小世界。巨大的脚步惊动了蒂安娜，大家停下来道歉。蒂安娜征得同意后，才把大家变小，请他们进来野餐。",
       "tags": [
-        "小小世界",
-        "变小探险",
-        "系列连载"
+        "征得同意",
+        "小小魔法",
+        "做客"
       ],
       "link": "series/rose-princess/ep27-tiny-world/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 28,
+      "createdAt": "2026-11-02T21:39:30+08:00",
+      "cover": "series/rose-princess/ep28-magic-book/assets/cover.jpg",
+      "title": "魔法书，快把爱洛还回来！（上册）",
+      "desc": "系列第二十八篇：一本会眨眼的魔法书送来了艾莎、安娜和爱洛。毛茸茸的怪物却抱着爱洛跳回书里。蔷薇和玫瑰决定夹好书签，一起进书里把她找回来。",
+      "tags": [
+        "魔法书",
+        "上册",
+        "去找爱洛"
+      ],
+      "link": "series/rose-princess/ep28-magic-book/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 29,
+      "createdAt": "2026-11-08T07:38:16+08:00",
+      "cover": "series/rose-princess/ep29-quilt-adventure/assets/cover.jpg",
+      "title": "被子里的魔法书大冒险",
+      "desc": "系列第二十九篇：姐姐和弟弟钻进被子，碰到金色星星，走进另一本魔法书。他们和蔷薇、玫瑰一起找到被锁在花园里的爱洛，再悄悄回到自己的床上。",
+      "tags": [
+        "独立冒险",
+        "魔法书",
+        "姐弟寻友"
+      ],
+      "link": "series/rose-princess/ep29-quilt-adventure/index.html"
     },
     {
       "cover": "oneshots/labu-princess/assets/cover.jpg",
