@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
-"""核对更新密码后，在项目目录执行固定的 git pull --ff-only。"""
+"""核对网页校验密码后，在项目目录执行固定的 git pull --ff-only。
+
+网页传来的密码只和 UPDATE_PASSWORD 比较，用来挡住反复尝试。
+它不会写入环境变量，也不会当作 Git 的用户名或密码。
+Git 使用服务器上已经配置好的登录。
+"""
 from __future__ import print_function
 
 import hashlib
@@ -95,6 +100,7 @@ def redact(text):
 
 
 def _git_env():
+    """沿用服务器自己的 Git 登录，不把网页校验密码带进子进程。"""
     env = os.environ.copy()
     for key in SECRET_KEYS:
         env.pop(key, None)
@@ -115,7 +121,7 @@ def _run_git(root, args, timeout=120):
     except FileNotFoundError:
         raise UpdateError("服务器上找不到 git。请先安装 Git，并确认运行助手的账号能执行 git。", 500)
     except subprocess.TimeoutExpired:
-        raise UpdateError("拉取超时。请到服务器上看远程仓库是否需要重新登录。", 504)
+        raise UpdateError("拉取超时。网页里的密码只做校验，Git 使用服务器上已经配置的登录。请到服务器上查看这次拉取。", 504)
     stdout = proc.stdout.decode("utf-8", "replace")
     stderr = proc.stderr.decode("utf-8", "replace")
     return proc.returncode, redact(stdout), redact(stderr)

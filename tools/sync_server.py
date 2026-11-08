@@ -121,15 +121,17 @@ class SyncHandler(SimpleHTTPRequestHandler):
                 503,
                 {
                     "ok": False,
-                    "error": "服务器还没设置更新密码。请在 tools/.env 写入 UPDATE_PASSWORD=你的密码，保存后即可使用。",
+                    "error": "服务器还没设置校验密码。请在 tools/.env 写入 UPDATE_PASSWORD。这只用来挡住乱试，不是 Git 密码。",
                 },
                 cors=False,
             )
             return
         if not state:
             note_failure(key)
-            self._json(401, {"ok": False, "error": "密码不对。"}, cors=False)
+            self._json(401, {"ok": False, "error": "校验密码不对。"}, cors=False)
             return
+        # 校验到此结束。后面的 git pull 不接收这把密码，只用服务器上已有的 Git 登录。
+        del given
         if not _update_lock.acquire(blocking=False):
             self._json(409, {"ok": False, "error": "正在更新，请等这一次结束。"}, cors=False)
             return
@@ -250,7 +252,7 @@ def main():
     server = ThreadingHTTPServer((HOST, PORT), SyncHandler)
     print("故事收藏屋同步助手: http://%s:%s/" % (HOST, PORT), flush=True)
     print("首页可点「同步新故事」或「更新故事」。按 Ctrl+C 结束。", flush=True)
-    print("更新故事需要 tools/.env 里的 UPDATE_PASSWORD，助手只监听本机。", flush=True)
+    print("更新故事的 UPDATE_PASSWORD 只做校验，不会交给 Git。Git 登录用服务器上已有的配置。", flush=True)
     if not notion_token():
         print("尚未检测到 NOTION_TOKEN。可把令牌写在 tools/.env", flush=True)
     try:

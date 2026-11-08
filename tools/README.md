@@ -90,15 +90,15 @@ python tools/sync_server.py
 
 ## 网页上更新已提交的故事
 
-首页「更新故事」给已经部署在服务器上的站点用：故事先进入 Git，再由服务器把最新代码拉下来。网页只提交密码，助手核对 `tools/.env` 里的 `UPDATE_PASSWORD` 之后，在项目目录执行固定的 `git pull --ff-only`。密码不对、试太多次、工作区有未提交修改，都不会拉取。
+首页「更新故事」给已经部署在服务器上的站点用：故事先进入 Git，再由服务器用自己已经配置好的 Git 登录把最新代码拉下来。网页上要输入的是 `tools/.env` 里的 `UPDATE_PASSWORD`，这只是一把校验密码，用来避免别人反复尝试，不是 Git 的密码，也不会传给 Git。校验没通过、试太多次、工作区有未提交修改，都不会拉取。
 
 ```powershell
 # tools/.env
-UPDATE_PASSWORD=你自己的密码
+UPDATE_PASSWORD=一把只有自己知道的校验密码
 python tools/sync_server.py
 ```
 
-服务器上的这个目录必须已经是 Git 仓库，当前分支要跟踪远程（例如 `master` 跟踪 `origin/master`），并且 Git 能在不弹出登录框的情况下拉取。远程可以是 GitHub，也可以是 Gitee。助手只监听 `127.0.0.1`。
+服务器上的这个目录必须已经是 Git 仓库，当前分支要跟踪远程（例如 `master` 跟踪 `origin/master`），并且服务器上的 Git 登录已经配好，拉取时不需要再输入 Git 密码。远程可以是 GitHub，也可以是 Gitee。助手只监听 `127.0.0.1`。
 
 Nginx 需要把 `/story/api/` 转到这个助手，见 `deploy/nginx-story-collection.conf`。第一次装上这个按钮时，还得手动把服务器更新到包含该按钮的版本；之后就可以在网页上拉取。若这次拉取改了 `tools/*.py`，需要重启一次 `python tools/sync_server.py`。
 
