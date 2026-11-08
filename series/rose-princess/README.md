@@ -53,6 +53,7 @@ series/rose-princess/
 | 27 | [`ep27-tiny-world/`](ep27-tiny-world/) | 小小世界，大家都变小啦！ |
 | 28 | [`ep28-magic-book/`](ep28-magic-book/) | 魔法书，快把爱洛还回来！（上册） |
 | 29 | [`ep29-quilt-adventure/`](ep29-quilt-adventure/) | 被子里的魔法书大冒险 |
+| 30 | [`ep30-moonlight-strawberry/`](ep30-moonlight-strawberry/) | 爱洛和月光下的草莓 |
 | … | `epNN-.../` | 后续新故事（序号连续） |
 
 ## 快速开始（生成一张新图）

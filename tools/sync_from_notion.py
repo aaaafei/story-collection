@@ -62,6 +62,14 @@ SLUG_PHRASES = (
     ("奇奇怪怪的骰子", "dice"),
     ("噩梦妖怪和美梦仙子", "nightmare-fairy"),
     ("鹿角灯下的勇气宝石", "courage-gem"),
+    ("爱洛和月光下的草莓", "moonlight-strawberry"),
+    ("生日蛋糕里冒出一个小公主", "birthday-cake"),
+    ("童话大门后，爱洛在哪里", "fairy-gate"),
+    ("找到爱洛！衣柜里的小公主", "wardrobe"),
+    ("野餐篮，你漏了一个", "picnic-basket"),
+    ("花盆也要搭便车", "flowerpot-ride"),
+    ("魔法书，快把爱洛还回来", "magic-book"),
+    ("被子里的魔法书大冒险", "quilt-adventure"),
 )
 
 WORD_MAP = (
