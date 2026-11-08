@@ -291,6 +291,34 @@
       "link": "series/rose-princess/ep20-fish-tails/index.html"
     },
     {
+      "series": "蔷薇公主系列",
+      "episode": 26,
+      "createdAt": "2026-10-24T21:37:00+08:00",
+      "cover": "series/rose-princess/ep26-smallest-princess/assets/cover.jpg",
+      "title": "最小的公主，你藏在哪儿？",
+      "desc": "系列第二十六篇：“最小的公主，你藏在哪儿？”蔷薇踮起脚尖。玫瑰蹲下来找。爱洛捂着嘴笑。“她一定特别小！”",
+      "tags": [
+        "小小世界",
+        "寻找朋友",
+        "系列连载"
+      ],
+      "link": "series/rose-princess/ep26-smallest-princess/index.html"
+    },
+    {
+      "series": "蔷薇公主系列",
+      "episode": 27,
+      "createdAt": "2026-10-24T21:44:00+08:00",
+      "cover": "series/rose-princess/ep27-tiny-world/assets/cover.jpg",
+      "title": "小小世界，大家都变小啦！",
+      "desc": "系列第二十七篇：“我们也要变小！”蔷薇伸出手。玫瑰闭上眼。爱洛踮起脚。最小的公主轻轻一挥手。",
+      "tags": [
+        "小小世界",
+        "变小探险",
+        "系列连载"
+      ],
+      "link": "series/rose-princess/ep27-tiny-world/index.html"
+    },
+    {
       "cover": "oneshots/labu-princess/assets/cover.jpg",
       "createdAt": "2026-09-09T22:49:24+08:00",
       "title": "拉不下公主",
