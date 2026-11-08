@@ -417,6 +417,20 @@
       "link": "series/rose-princess/ep29-quilt-adventure/index.html"
     },
     {
+      "series": "蔷薇公主系列",
+      "episode": 30,
+      "createdAt": "2026-11-08T17:28:00+08:00",
+      "cover": "series/rose-princess/ep30-moonlight-strawberry/assets/cover.jpg",
+      "title": "爱洛和月光下的草莓",
+      "desc": "系列第三十篇：玫瑰和爱洛在海边变成公主鱼，去看望人鱼一家。她们摘下会发光的月光草莓，却发现爱洛不见了——后来在珊瑚洞里找到她，一起尝到了月光的味道。",
+      "tags": [
+        "月光草莓",
+        "人鱼冒险",
+        "温馨友情"
+      ],
+      "link": "series/rose-princess/ep30-moonlight-strawberry/index.html"
+    },
+    {
       "cover": "oneshots/labu-princess/assets/cover.jpg",
       "createdAt": "2026-09-09T22:49:24+08:00",
       "title": "拉不下公主",

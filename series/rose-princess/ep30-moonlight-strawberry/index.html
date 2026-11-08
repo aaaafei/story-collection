@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>爱洛和月光下的草莓 · 儿童绘本</title>
+<link rel="preconnect" href="https://miaoda.feishu.cn">
+<link rel="stylesheet" href="https://miaoda.feishu.cn/fonts/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+  :root{
+    --cream:#FFF8EF;
+    --paper:#FFFDF7;
+    --pink:#FFD9E5;
+    --pink-deep:#F59AB8;
+    --pink-soft:#FFECF2;
+    --blue:#CDEAF8;
+    --blue-deep:#7FB8D9;
+    --blue-soft:#E9F6FD;
+    --lavender:#E9DDF6;
+    --lavender-deep:#B49AE0;
+    --lavender-soft:#F3ECFB;
+    --mint:#D9F2DE;
+    --mint-deep:#7FB88E;
+    --mint-soft:#EFFAF2;
+    --night-deep:#6E7FB8;
+    --night-soft:#ECEEFA;
+    --ink:#5B4A43;
+    --ink-soft:#8A7368;
+    --radius-lg:34px;
+    --radius-md:22px;
+    --font-display:'ZCOOL KuaiLe','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+    --font-body:'Noto Sans SC','YouYuan','幼圆','Microsoft YaHei',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    background:var(--cream);
+    line-height:1.8;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  body::before{
+    content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;
+    background:
+      radial-gradient(1200px 600px at 15% -5%, #FFE9F1 0%, transparent 60%),
+      radial-gradient(1000px 500px at 90% 8%, #E1F4FC 0%, transparent 55%),
+      radial-gradient(900px 500px at 50% 110%, #F0EAF9 0%, transparent 55%);
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:0 22px;}
+
+  .back-home{
+    position:fixed;
+    top:16px;left:16px;
+    z-index:50;
+    font-family:var(--font-display);
+    font-size:14px;
+    letter-spacing:1px;
+    color:var(--pink-deep);
+    background:rgba(255,255,255,.92);
+    border:2px solid #F8C7D8;
+    border-radius:999px;
+    padding:7px 18px;
+    text-decoration:none;
+    box-shadow:0 6px 18px rgba(245,154,184,.28);
+    transition:transform .25s ease, box-shadow .25s ease;
+  }
+  .back-home:hover{transform:translateX(-3px);box-shadow:0 10px 24px rgba(245,154,184,.38);}
+
+  .hero{
+    position:relative;
+    padding:52px 0 40px;
+    text-align:center;
+  }
+  .hero .page-tag{
+    display:inline-block;
+    font-family:var(--font-display);
+    font-size:15px;
+    letter-spacing:3px;
+    color:var(--pink-deep);
+    background:var(--pink-soft);
+    border:2px dashed #F8C7D8;
+    border-radius:999px;
+    padding:6px 20px;
+    margin-bottom:18px;
+  }
+  .hero h1{
+    font-family:var(--font-display);
+    font-size:clamp(38px,7vw,66px);
+    color:var(--pink-deep);
+    text-shadow:0 6px 0 #fff, 0 10px 24px rgba(245,154,184,.35);
+    letter-spacing:4px;
+    line-height:1.2;
+    margin-bottom:10px;
+  }
+  .hero .subtitle{
+    font-size:clamp(16px,2.6vw,21px);
+    color:var(--blue-deep);
+    font-weight:500;
+    letter-spacing:2px;
+    margin-bottom:8px;
+  }
+  .hero .meta-line{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+    margin:16px 0 26px;
+  }
+  .hero .meta-line span{
+    font-size:13.5px;color:var(--ink-soft);
+    background:#fff;border:1.5px solid #F2E4DA;
+    border-radius:999px;padding:5px 15px;
+  }
+  .hero .cover-frame{
+    position:relative;
+    max-width:760px;margin:0 auto;
+    border-radius:var(--radius-lg);
+    padding:14px;
+    background:linear-gradient(160deg,#fff 0%,var(--pink-soft) 100%);
+    box-shadow:0 22px 60px rgba(245,154,184,.26);
+  }
+  .hero .cover-frame img{
+    display:block;width:100%;height:auto;
+    border-radius:calc(var(--radius-lg) - 10px);
+    cursor:zoom-in;
+  }
+  .hero .cover-line{
+    max-width:700px;margin:26px auto 0;
+    font-family:var(--font-display);
+    font-size:clamp(19px,3vw,24px);
+    color:var(--pink-deep);
+    letter-spacing:1px;
+  }
+
+  .characters{
+    padding:44px 0 8px;
+  }
+  .section-title{
+    text-align:center;
+    font-family:var(--font-display);
+    font-size:clamp(26px,4vw,34px);
+    color:var(--ink);
+    margin-bottom:8px;
+    letter-spacing:2px;
+  }
+  .section-note{
+    text-align:center;color:var(--ink-soft);font-size:15px;margin-bottom:24px;
+  }
+  .char-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;
+  }
+  .char-card{
+    background:var(--paper);
+    border-radius:var(--radius-md);
+    padding:26px 24px;
+    border:2px solid #F4E7DE;
+    position:relative;
+    overflow:hidden;
+  }
+  .char-card.c1{background:linear-gradient(160deg,#fff,var(--pink-soft));}
+  .char-card.c2{background:linear-gradient(160deg,#fff,var(--blue-soft));}
+  .char-card.c3{background:linear-gradient(160deg,#fff,var(--lavender-soft));}
+  .char-card.c4{background:linear-gradient(160deg,#fff,var(--mint-soft));}
+  .char-card h3{
+    font-family:var(--font-display);
+    font-size:22px;letter-spacing:2px;margin-bottom:10px;
+  }
+  .char-card.c1 h3{color:var(--pink-deep);}
+  .char-card.c2 h3{color:var(--blue-deep);}
+  .char-card.c3 h3{color:var(--lavender-deep);}
+  .char-card.c4 h3{color:var(--mint-deep);}
+  .char-card p{font-size:15px;color:var(--ink-soft);}
+  .char-card .badge{
+    display:inline-block;font-size:12px;color:#fff;
+    border-radius:999px;padding:3px 12px;margin-bottom:10px;letter-spacing:1px;
+  }
+  .char-card.c1 .badge{background:var(--pink-deep);}
+  .char-card.c2 .badge{background:var(--blue-deep);}
+  .char-card.c3 .badge{background:var(--lavender-deep);}
+  .char-card.c4 .badge{background:var(--mint-deep);}
+
+  .story{
+    padding:44px 0 10px;
+  }
+  .story .intro{
+    text-align:center;font-size:15px;color:var(--ink-soft);margin-bottom:30px;
+  }
+  .page{
+    display:grid;
+    grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);
+    gap:26px;
+    align-items:center;
+    background:var(--paper);
+    border-radius:var(--radius-lg);
+    padding:26px;
+    margin-bottom:30px;
+    border:2px solid #F4E7DE;
+    box-shadow:0 14px 34px rgba(245,154,184,.14);
+    position:relative;
+  }
+  .page .img-box{
+    border-radius:calc(var(--radius-md) - 6px);
+    overflow:hidden;
+    background:var(--pink-soft);
+    line-height:0;
+    cursor:zoom-in;
+  }
+  .page .img-box img{
+    display:block;width:100%;height:auto;
+    transition:transform .5s ease;
+    cursor:zoom-in;
+  }
+  .page .img-box:hover img{transform:scale(1.03);}
+  .page .text-box{
+    padding:6px 10px;
+    position:relative;
+  }
+  .page .text-box .p-no{
+    font-family:var(--font-display);
+    font-size:14px;letter-spacing:2px;
+    display:inline-block;
+    border-radius:999px;padding:4px 16px;margin-bottom:14px;
+  }
+  .page .text-box h2{
+    font-family:var(--font-display);
+    font-size:clamp(24px,3.4vw,30px);
+    letter-spacing:1px;
+    margin-bottom:14px;
+    line-height:1.4;
+  }
+  .page .text-box .quote{
+    font-size:clamp(16.5px,2.4vw,19px);
+    color:var(--ink);
+    line-height:2;
+    position:relative;
+    padding-left:20px;
+    border-left:5px solid var(--pink);
+    border-radius:2px;
+  }
+  .page:nth-of-type(even) .p-no,.page:nth-of-type(even) h2{color:var(--blue-deep);}
+  .page:nth-of-type(even) .p-no{background:var(--blue-soft);border:1.5px solid #C2E2F4;}
+  .page:nth-of-type(even) .quote{border-left-color:var(--blue);}
+  .page:nth-of-type(odd) .p-no,.page:nth-of-type(odd) h2{color:var(--pink-deep);}
+  .page:nth-of-type(odd) .p-no{background:var(--pink-soft);border:1.5px solid #F8C7D8;}
+  .page:nth-of-type(odd) .quote{border-left-color:var(--pink);}
+
+  .ending{
+    text-align:center;
+    padding:40px 0 56px;
+  }
+  .ending .the-end{
+    font-family:var(--font-display);
+    font-size:clamp(34px,6vw,52px);
+    color:var(--pink-deep);
+    letter-spacing:10px;
+    text-shadow:0 4px 0 #fff, 0 8px 20px rgba(245,154,184,.3);
+    margin-bottom:10px;
+  }
+  .ending p{color:var(--ink-soft);font-size:15px;}
+
+  footer{
+    text-align:center;padding:22px 0 34px;
+    font-size:13px;color:#B49C91;
+    letter-spacing:1px;
+  }
+
+  @keyframes riseIn{
+    from{opacity:0;transform:translateY(26px);}
+    to{opacity:1;transform:translateY(0);}
+  }
+  .hero{animation:riseIn .7s ease both;}
+  .characters{animation:riseIn .7s .12s ease both;}
+  .story{animation:riseIn .7s .22s ease both;}
+  .ending{animation:riseIn .7s .3s ease both;}
+
+  .lightbox{
+    position:fixed;inset:0;z-index:200;
+    display:flex;align-items:center;justify-content:center;
+    padding:72px 88px 86px;
+    background:rgba(91,74,67,.78);
+    backdrop-filter:blur(10px);
+    opacity:0;visibility:hidden;pointer-events:none;
+    transition:opacity .28s ease, visibility .28s ease;
+  }
+  .lightbox.is-open{
+    opacity:1;visibility:visible;pointer-events:auto;
+  }
+  .lightbox-stage{
+    margin:0;max-width:min(1100px,100%);
+    text-align:center;
+  }
+  .lightbox-stage img{
+    display:block;
+    max-width:100%;
+    max-height:calc(100vh - 170px);
+    width:auto;height:auto;margin:0 auto;
+    border-radius:22px;
+    box-shadow:0 22px 60px rgba(0,0,0,.28);
+    background:#fff;
+  }
+  .lightbox-stage figcaption{
+    margin-top:14px;
+    font-family:var(--font-display);
+    font-size:clamp(15px,2.2vw,18px);
+    color:#fff;
+    letter-spacing:1px;
+    text-shadow:0 2px 10px rgba(91,74,67,.4);
+  }
+  .lightbox-btn{
+    position:absolute;
+    border:2px solid #F8C7D8;
+    background:rgba(255,255,255,.94);
+    color:var(--pink-deep);
+    cursor:pointer;
+    box-shadow:0 8px 22px rgba(245,154,184,.32);
+    transition:transform .2s ease, box-shadow .2s ease, background .2s ease;
+    font-family:var(--font-display);
+  }
+  .lightbox-btn:hover{
+    transform:scale(1.06);
+    box-shadow:0 12px 26px rgba(245,154,184,.42);
+    background:#fff;
+  }
+  .lightbox-btn:focus-visible{
+    outline:3px solid #fff;
+    outline-offset:3px;
+  }
+  .lightbox-close{
+    top:18px;right:18px;
+    width:46px;height:46px;
+    border-radius:50%;
+    font-size:28px;line-height:1;
+  }
+  .lightbox-nav{
+    top:50%;
+    width:52px;height:52px;
+    border-radius:50%;
+    font-size:34px;line-height:1;
+    transform:translateY(-50%);
+  }
+  .lightbox-nav:hover{transform:translateY(-50%) scale(1.06);}
+  .lightbox-prev{left:18px;}
+  .lightbox-next{right:18px;}
+  .lightbox-counter{
+    position:absolute;left:0;right:0;bottom:22px;
+    text-align:center;
+    font-size:14px;letter-spacing:2px;
+    color:#fff;
+  }
+  body.lightbox-lock{overflow:hidden;}
+
+  @media (max-width:820px){
+    .page{grid-template-columns:1fr;padding:20px;}
+    .page .text-box{padding:6px 4px 2px;}
+    .wrap{padding:0 16px;}
+    .hero{padding:38px 0 28px;}
+    .lightbox{padding:70px 16px 78px;}
+    .lightbox-nav{width:44px;height:44px;font-size:28px;}
+    .lightbox-prev{left:8px;}
+    .lightbox-next{right:8px;}
+    .lightbox-stage img{max-height:calc(100vh - 190px);border-radius:16px;}
+  }
+
+  @media print{
+    .hero .cover-frame{box-shadow:none;}
+    .page,.char-card{box-shadow:none;break-inside:avoid;}
+    .page{grid-template-columns:1fr 1fr;page-break-inside:avoid;}
+    footer,.lightbox,.back-home{display:none;}
+    body{background:#fff;}
+    *{-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  }
+</style>
+</head>
+
+<body>
+
+<a class="back-home" href="../../../index.html">← 返回故事目录</a>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="page-tag">系列故事 · 第三十篇</span>
+    <h1>爱洛和月光下的草莓</h1>
+    <p class="subtitle">蔷薇公主系列 · 新故事</p>
+    <div class="meta-line">
+      <span>适读年龄 3-6 岁</span>
+      <span>新故事</span>
+      <span>水彩画风</span>
+    </div>
+    <div class="cover-frame">
+      <img src="assets/page-01.jpg" alt="封面：去看人鱼一家">
+    </div>
+    <p class="cover-line">这一天，玫瑰和爱洛来到海边，准备去看望人鱼一家。</p>
+  </div>
+</header>
+
+<section class="characters">
+  <div class="wrap">
+    <h2 class="section-title">认识角色</h2>
+    <p class="section-note">翻开故事，新故事</p>
+    <div class="char-grid">
+      <div class="char-card c1">
+        <span class="badge">姐姐 · 主角</span>
+        <h3>蔷薇公主</h3>
+        <p>粉色长发的姐姐，温柔又勇敢，常常带着妹妹一起出门。</p>
+      </div>
+      <div class="char-card c2">
+        <span class="badge">妹妹 · 主角</span>
+        <h3>玫瑰公主</h3>
+        <p>蓝色头发的妹妹，调皮热心，遇到事会大声说出来。</p>
+      </div>
+      <div class="char-card c3">
+        <span class="badge">好朋友</span>
+        <h3>爱洛</h3>
+        <p>金色长发的小公主，爱漂亮裙子，常常和蔷薇、玫瑰一起冒险。</p>
+      </div>
+      <div class="char-card c4">
+        <span class="badge">大人</span>
+        <h3>人鱼妈妈</h3>
+        <p>温柔的人鱼妈妈，有时也会累，需要安静休息。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="story">
+  <div class="wrap">
+    <p class="intro">翻开故事，新故事</p>
+
+    <article class="page">
+      <div class="img-box"><img src="assets/page-02.jpg" alt="鱼尾巴，变！"></div>
+      <div class="text-box">
+        <span class="p-no">第 2 页</span>
+        <h2>鱼尾巴，变！</h2>
+        <p class="quote">蔷薇轻轻挥手，花瓣星光绕着她们转了一圈。<br>“变！”<br>玫瑰的双脚变成了蓝色的小鱼尾，爱洛也有了一条亮晶晶的粉红色鱼尾巴。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-03.jpg" alt="公主鱼出发"></div>
+      <div class="text-box">
+        <span class="p-no">第 3 页</span>
+        <h2>公主鱼出发</h2>
+        <p class="quote">“我们是公主鱼啦！”玫瑰摆摆尾巴，一头扎进海水里。<br>爱洛跟在后面，蔷薇也来到了海里。人鱼姐姐和人鱼宝宝早就在等她们了。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-04.jpg" alt="泡泡和珊瑚"></div>
+      <div class="text-box">
+        <span class="p-no">第 4 页</span>
+        <h2>泡泡和珊瑚</h2>
+        <p class="quote">大家一起追泡泡、钻珊瑚，还玩起了摆尾巴比赛。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-05.jpg" alt="小陀螺"></div>
+      <div class="text-box">
+        <span class="p-no">第 5 页</span>
+        <h2>小陀螺</h2>
+        <p class="quote">人鱼宝宝的小尾巴摆得太快，转了一个圆圈，又转了一个圆圈，最后晕乎乎地扑进妈妈怀里。<br>“宝宝转成小陀螺啦！”玫瑰笑得咕噜噜吐出一串泡泡。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-06.jpg" alt="月亮出来了"></div>
+      <div class="text-box">
+        <span class="p-no">第 6 页</span>
+        <h2>月亮出来了</h2>
+        <p class="quote">玩着玩着，海面上的阳光慢慢变成了月光。<br>人鱼妈妈带大家回到贝壳屋，准备休息。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-07.jpg" alt="想起草莓"></div>
+      <div class="text-box">
+        <span class="p-no">第 7 页</span>
+        <h2>想起草莓</h2>
+        <p class="quote">玫瑰摸摸肚子，忽然想起了花园里的草莓。<br>“红红的草莓，咬一口，甜甜的……”她咽了咽口水，“我好想吃呀。”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-08.jpg" alt="宝宝也想吃"></div>
+      <div class="text-box">
+        <span class="p-no">第 8 页</span>
+        <h2>宝宝也想吃</h2>
+        <p class="quote">人鱼宝宝听见了，也伸出小手：“莓莓！想吃莓莓！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-09.jpg" alt="伤心的眼泪"></div>
+      <div class="text-box">
+        <span class="p-no">第 9 页</span>
+        <h2>伤心的眼泪</h2>
+        <p class="quote">可是，海底没有草莓。玫瑰越想越馋，人鱼宝宝也扁起了小嘴。<br>“呜呜，我想吃草莓……”玫瑰哭了。<br>“莓莓……呜呜……”人鱼宝宝也跟着哭了。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-10.jpg" alt="我去采草莓"></div>
+      <div class="text-box">
+        <span class="p-no">第 10 页</span>
+        <h2>我去采草莓</h2>
+        <p class="quote">人鱼妈妈抱起宝宝，蔷薇轻轻搂住玫瑰。<br>爱洛看着她们，说：“我去花园里采一些回来！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-11.jpg" alt="爱洛上岸"></div>
+      <div class="text-box">
+        <span class="p-no">第 11 页</span>
+        <h2>爱洛上岸</h2>
+        <p class="quote">她告诉大家要去哪里，就游到海边，上了岸。鱼尾巴变回双脚后，她提起岸边的小篮子，沿着小路往花园走去。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-12.jpg" alt="走过小木桥"></div>
+      <div class="text-box">
+        <span class="p-no">第 12 页</span>
+        <h2>走过小木桥</h2>
+        <p class="quote">路上有一座小木桥。爱洛走过桥，来到了草莓地。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-13.jpg" alt="黑黑的草莓地"></div>
+      <div class="text-box">
+        <span class="p-no">第 13 页</span>
+        <h2>黑黑的草莓地</h2>
+        <p class="quote">可是晚上太黑了，叶子黑黑的，草莓也藏在黑影里。<br>“草莓在哪里呢？”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-14.jpg" alt="小小的魔法光"></div>
+      <div class="text-box">
+        <span class="p-no">第 14 页</span>
+        <h2>小小的魔法光</h2>
+        <p class="quote">爱洛蹲下来，仔细找了找。她轻轻伸出手，让掌心亮起一团柔柔的魔法光。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-15.jpg" alt="草莓探出头"></div>
+      <div class="text-box">
+        <span class="p-no">第 15 页</span>
+        <h2>草莓探出头</h2>
+        <p class="quote">光亮不大，却照亮了脚边的草莓叶。一颗红草莓，从叶子底下探出了脑袋。<br>“找到啦！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-16.jpg" alt="装满小篮子"></div>
+      <div class="text-box">
+        <span class="p-no">第 16 页</span>
+        <h2>装满小篮子</h2>
+        <p class="quote">爱洛小心地摘下一颗，又摘下一颗，把它们轻轻放进篮子里。<br>等篮子里装满了红红的草莓，她提着篮子，沿原路往回走。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-17.jpg" alt="桥断了"></div>
+      <div class="text-box">
+        <span class="p-no">第 17 页</span>
+        <h2>桥断了</h2>
+        <p class="quote">走到小木桥边，爱洛愣住了。<br>桥中间断开了一大截，几块木板落在下面的小河里。她过不去了。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-18.jpg" alt="呼喊朋友"></div>
+      <div class="text-box">
+        <span class="p-no">第 18 页</span>
+        <h2>呼喊朋友</h2>
+        <p class="quote">爱洛抱紧草莓篮，站在桥边，大声喊：“蔷薇！玫瑰！人鱼姐姐！”<br>她又举起手，让掌心的魔法光在夜色里闪了闪。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-19.jpg" alt="大家来找爱洛"></div>
+      <div class="text-box">
+        <span class="p-no">第 19 页</span>
+        <h2>大家来找爱洛</h2>
+        <p class="quote">这时，蔷薇、玫瑰和人鱼姐姐正赶来找她。原来，玫瑰擦干眼泪后，有些担心爱洛，便和蔷薇、人鱼姐姐一起来到了海边。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-20.jpg" alt="看见光啦"></div>
+      <div class="text-box">
+        <span class="p-no">第 20 页</span>
+        <h2>看见光啦</h2>
+        <p class="quote">她们看见远处一闪一闪的光，也听见了爱洛的呼喊。<br>“爱洛，我们来啦！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-21.jpg" alt="来到断桥边"></div>
+      <div class="text-box">
+        <span class="p-no">第 21 页</span>
+        <h2>来到断桥边</h2>
+        <p class="quote">蔷薇和玫瑰在岸边变回双脚，跑到断桥的另一边。人鱼姐姐沿着小河游过来，停在桥下。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-22.jpg" alt="音符飘出来"></div>
+      <div class="text-box">
+        <span class="p-no">第 22 页</span>
+        <h2>音符飘出来</h2>
+        <p class="quote">“我们一起把桥修好吧！”人鱼姐姐说。<br>她轻轻唱出一个音符：“啦——”<br>蔷薇和玫瑰也跟着唱起来：“啦啦——”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-23.jpg" alt="音符修桥"></div>
+      <div class="text-box">
+        <span class="p-no">第 23 页</span>
+        <h2>音符修桥</h2>
+        <p class="quote">亮晶晶的音符飘向断桥。一颗、两颗、三颗……它们牵着手，连成一条闪光的线，把断开的桥面一点一点接了起来。<br>小木桥重新连好了！</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-24.jpg" alt="抱住爱洛"></div>
+      <div class="text-box">
+        <span class="p-no">第 24 页</span>
+        <h2>抱住爱洛</h2>
+        <p class="quote">爱洛提着草莓篮，小心地走过桥。玫瑰赶紧跑上前，紧紧抱住她。<br>“我刚才好担心你呀！”<br>“幸好你们来啦。”爱洛笑着说，“快看，草莓一颗也没少！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-25.jpg" alt="带着草莓回家"></div>
+      <div class="text-box">
+        <span class="p-no">第 25 页</span>
+        <h2>带着草莓回家</h2>
+        <p class="quote">大家一起回到海边。人鱼姐姐在水里等着，爱洛把草莓篮递给她，再和蔷薇、玫瑰变出鱼尾巴，跟着她游回贝壳屋。</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-26.jpg" alt="草莓甜甜的"></div>
+      <div class="text-box">
+        <span class="p-no">第 26 页</span>
+        <h2>草莓甜甜的</h2>
+        <p class="quote">人鱼妈妈把草莓洗干净，分给大家。<br>人鱼宝宝捧着一颗小草莓，咬了一口，脸蛋鼓鼓的。<br>“甜！”</p>
+      </div>
+    </article>
+    <article class="page">
+      <div class="img-box"><img src="assets/page-27.jpg" alt="月光的味道"></div>
+      <div class="text-box">
+        <span class="p-no">第 27 页</span>
+        <h2>月光的味道</h2>
+        <p class="quote">玫瑰也咬了一大口，眼睛笑得弯弯的：“还有一点点月光的味道！”<br>爱洛看看朋友们，又看看窗外的月亮，轻轻笑了。<br>贝壳屋里，草莓香香的，大家的心也甜甜的。</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<section class="ending">
+  <div class="wrap">
+    <p class="the-end">完</p>
+    <p>- 第04—08、11、12、17、18、23页采用已确认的修订版；第03页和第27页采用此前修订的现有图。<br>- 其余图片沿用现有小样，尚未逐张确认的部分仅供连读；第09页蔷薇的眼泪、第16页回程方向及第20页多余光点仍待核对。<br>- 暂按原27页编排，是否拆页及封面待定。插图实际为1536 × 1024、3:2，未放大；4:3画幅与印刷清晰度仍待处理。<br>制作资料：EP30-爱洛和月光下的草莓｜文字稿 V0.1、EP30｜分镜图片审核小样。</p>
+  </div>
+</section>
+
+<footer>《爱洛和月光下的草莓》· 系列第三十篇 · 蔷薇公主系列</footer>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="查看插画">
+  <button class="lightbox-btn lightbox-close" type="button" aria-label="关闭">×</button>
+  <button class="lightbox-btn lightbox-nav lightbox-prev" type="button" aria-label="上一张">‹</button>
+  <figure class="lightbox-stage">
+    <img alt="">
+    <figcaption></figcaption>
+  </figure>
+  <button class="lightbox-btn lightbox-nav lightbox-next" type="button" aria-label="下一张">›</button>
+  <p class="lightbox-counter" aria-live="polite"></p>
+</div>
+
+<script>
+(function () {
+  const images = Array.from(document.querySelectorAll('.cover-frame img, .page .img-box img'));
+  const lightbox = document.getElementById('lightbox');
+  const stageImg = lightbox.querySelector('.lightbox-stage img');
+  const caption = lightbox.querySelector('figcaption');
+  const counter = lightbox.querySelector('.lightbox-counter');
+  const btnClose = lightbox.querySelector('.lightbox-close');
+  const btnPrev = lightbox.querySelector('.lightbox-prev');
+  const btnNext = lightbox.querySelector('.lightbox-next');
+  let index = 0;
+  let lastFocus = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  function show(i) {
+    index = (i + images.length) % images.length;
+    const srcImg = images[index];
+    stageImg.src = srcImg.currentSrc || srcImg.src;
+    stageImg.alt = srcImg.alt || '';
+    caption.textContent = srcImg.alt || '';
+    counter.textContent = (index + 1) + ' / ' + images.length;
+  }
+
+  function openAt(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    lightbox.classList.add('is-open');
+    lightbox.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('lightbox-lock');
+    btnClose.focus();
+  }
+
+  function close() {
+    lightbox.classList.remove('is-open');
+    lightbox.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('lightbox-lock');
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  images.forEach(function (img, i) {
+    img.setAttribute('tabindex', '0');
+    img.setAttribute('role', 'button');
+    img.setAttribute('aria-label', '放大查看：' + (img.alt || '插画'));
+    img.addEventListener('click', function () { openAt(i); });
+    img.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openAt(i);
+      }
+    });
+  });
+
+  btnClose.addEventListener('click', close);
+  btnPrev.addEventListener('click', function () { show(index - 1); });
+  btnNext.addEventListener('click', function () { show(index + 1); });
+
+  lightbox.addEventListener('click', function (e) {
+    if (e.target === lightbox) close();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (!lightbox.classList.contains('is-open')) return;
+    if (e.key === 'Escape') { e.preventDefault(); close(); }
+    if (e.key === 'ArrowLeft') { e.preventDefault(); show(index - 1); }
+    if (e.key === 'ArrowRight') { e.preventDefault(); show(index + 1); }
+  });
+
+  lightbox.addEventListener('touchstart', function (e) {
+    if (!e.changedTouches[0]) return;
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }, { passive: true });
+
+  lightbox.addEventListener('touchend', function (e) {
+    if (!e.changedTouches[0]) return;
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return;
+    if (dx < 0) show(index + 1);
+    else show(index - 1);
+  }, { passive: true });
+})();
+</script>
+
+</body>
+</html>
