@@ -54,4 +54,4 @@ python tools/optimize_images.py --all
 3. 运行 `python tools/optimize_images.py <该册路径>`  
 4. 在根目录 `stories.json` 登记（`cover` 用 `assets/cover.jpg`）
 
-也可以在本机运行 `python tools/sync_server.py`，用 `http://127.0.0.1:8765/` 打开首页，点「同步新故事」从 Notion 拉取尚未收录的系列分册。配置见 [`tools/README.md`](tools/README.md)。
+也可以在本机运行 `python tools/sync_server.py`，用 `http://127.0.0.1:8765/` 打开首页，点「同步新故事」从 Notion 拉取尚未收录的系列分册。故事已经提交到 Git 之后，首页「更新故事」会先核对一把校验密码（不是 Git 密码），再让服务器用已配置的 Git 登录执行 `git pull --ff-only`。配置见 [`tools/README.md`](tools/README.md)。
