@@ -44,6 +44,15 @@ series/rose-princess/
 | 18 | [`ep18-elevator-mountain/`](ep18-elevator-mountain/) | 奇怪的电梯山 |
 | 19 | [`ep19-treasure-studio/`](ep19-treasure-studio/) | 人鱼妈妈去宝藏照相馆 |
 | 20 | [`ep20-fish-tails/`](ep20-fish-tails/) | 今天轮到我们长鱼尾 |
+| 21 | [`ep21-birthday-cake/`](ep21-birthday-cake/) | 生日蛋糕里冒出一个小公主 |
+| 22 | [`ep22-fairy-gate/`](ep22-fairy-gate/) | 童话大门后，爱洛在哪里？ |
+| 23 | [`ep23-wardrobe/`](ep23-wardrobe/) | 找到爱洛！衣柜里的小公主 |
+| 24 | [`ep24-picnic-basket/`](ep24-picnic-basket/) | 野餐篮，你漏了一个！ |
+| 25 | [`ep25-flowerpot-ride/`](ep25-flowerpot-ride/) | 花盆也要搭便车！ |
+| 26 | [`ep26-smallest-princess/`](ep26-smallest-princess/) | 最小的公主，你藏在哪儿？ |
+| 27 | [`ep27-tiny-world/`](ep27-tiny-world/) | 小小世界，大家都变小啦！ |
+| 28 | [`ep28-magic-book/`](ep28-magic-book/) | 魔法书，快把爱洛还回来！（上册） |
+| 29 | [`ep29-quilt-adventure/`](ep29-quilt-adventure/) | 被子里的魔法书大冒险 |
 | … | `epNN-.../` | 后续新故事（序号连续） |
 
 ## 快速开始（生成一张新图）

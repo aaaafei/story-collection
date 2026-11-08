@@ -42,6 +42,15 @@ EXTRA_HEAD_RE = re.compile(r"儿歌|尾页|成长")
 CJK_RE = re.compile(r"[\u4e00-\u9fff]")
 
 SLUG_PHRASES = (
+    ("被子里的魔法书大冒险", "quilt-adventure"),
+    ("魔法书，快把爱洛还回来", "magic-book"),
+    ("小小世界，大家都变小啦", "tiny-world"),
+    ("最小的公主，你藏在哪儿", "smallest-princess"),
+    ("花盆也要搭便车", "flowerpot-ride"),
+    ("野餐篮，你漏了一个", "picnic-basket"),
+    ("找到爱洛！衣柜里的小公主", "wardrobe"),
+    ("童话大门后，爱洛在哪里", "fairy-gate"),
+    ("生日蛋糕里冒出一个小公主", "birthday-cake"),
     ("人鱼宝宝的泡泡冠军", "bubble-champion"),
     ("奇怪的电梯山", "elevator-mountain"),
     ("人鱼妈妈去宝藏照相馆", "treasure-studio"),
@@ -71,9 +80,15 @@ WORD_MAP = (
 KNOWN_CHARS = (
     ("蔷薇公主", "姐姐 · 主角", "粉色长发的姐姐，温柔又勇敢，常常带着妹妹一起出门。"),
     ("玫瑰公主", "妹妹 · 主角", "蓝色头发的妹妹，调皮热心，遇到事会大声说出来。"),
-    ("小人鱼宝宝", "小朋友", "还很小的人鱼宝宝，常常跟着姐姐们一起玩。"),
-    ("小人鱼姐姐", "好朋友", "人鱼家的姐姐，喜欢和蔷薇、玫瑰一起冒险。"),
+    ("爱洛", "好朋友", "金色长发的小公主，爱漂亮裙子，常常和蔷薇、玫瑰一起冒险。"),
+    ("蒂安娜", "小小世界的主人", "住在安静的小小世界里，会先问大家愿不愿意接受小小魔法。"),
+    ("艾莎", "冰雪公主", "冰雪世界的公主，会提醒大家在冰地上慢慢走。"),
+    ("铃兰公主", "生日寿星", "在城堡饭店过生日，蛋糕顶上开出了一朵很高的玫瑰花。"),
+    ("安娜", "新朋友", "和艾莎一起从魔法书里走出来的公主。"),
+    ("姐姐和弟弟", "来做客的小朋友", "钻进宽宽的被子，跟着金色星星走进魔法书。"),
     ("人鱼妈妈", "大人", "温柔的人鱼妈妈，有时也会累，需要安静休息。"),
+    ("小人鱼姐姐", "好朋友", "人鱼家的姐姐，喜欢和蔷薇、玫瑰一起冒险。"),
+    ("小人鱼宝宝", "小朋友", "还很小的人鱼宝宝，常常跟着姐姐们一起玩。"),
     ("开心检察官", "新朋友", "戴着小礼帽，拿着笑容放大镜，认真检查大家的心情。"),
     ("金尾巴美人鱼", "新朋友", "有金色鱼尾的美人鱼，一开始有点害羞。"),
     ("小风妖怪", "调皮朋友", "呼呼吹来的小风妖怪，捣蛋之后也会道歉。"),
@@ -83,6 +98,14 @@ KNOWN_CHARS = (
     ("国王", "爸爸", "彩虹城堡的国王，会及时赶来帮忙。"),
     ("王后", "妈妈", "彩虹城堡的王后，温柔又有办法。"),
 )
+
+CHAR_ALIASES = {
+    "蔷薇公主": ("蔷薇",),
+    "玫瑰公主": ("玫瑰",),
+    "小人鱼姐姐": ("人鱼姐姐",),
+    "小人鱼宝宝": ("人鱼宝宝", "宝宝"),
+    "金尾巴美人鱼": ("金尾巴",),
+}
 
 CN_DIGITS = "零一二三四五六七八九"
 
@@ -557,6 +580,12 @@ def html_br(text):
     return escaped
 
 
+def character_mentioned(name, blob):
+    if name in blob:
+        return True
+    return any(alias in blob for alias in CHAR_ALIASES.get(name, ()))
+
+
 def pick_characters(model):
     blob = " ".join(
         [
@@ -568,7 +597,7 @@ def pick_characters(model):
     )
     picked = []
     for name, badge, desc in KNOWN_CHARS:
-        if name in blob:
+        if character_mentioned(name, blob):
             picked.append({"name": name, "badge": badge, "desc": desc})
         if len(picked) >= 4:
             break
