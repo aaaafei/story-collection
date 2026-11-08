@@ -160,6 +160,8 @@ def pull_latest(root):
     before = _git_text(root, ["rev-parse", "--short", "HEAD"])
     code, stdout, stderr = _run_git(root, ["pull", "--ff-only"])
     output = "\n".join(part for part in (stdout, stderr) if part).strip()
+    output = output.replace("Already up to date.", "已经是最新。")
+    output = output.replace("Fast-forward", "快进更新")
     if code != 0:
         raise UpdateError(output or "拉取失败。", 500)
     after = _git_text(root, ["rev-parse", "--short", "HEAD"])
