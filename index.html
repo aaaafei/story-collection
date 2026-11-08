@@ -126,6 +126,14 @@
     background:var(--mint);
     border-color:var(--mint-deep);
   }
+  .hero .update-btn{
+    border-color:#F3C3D0;
+    color:#C45C7A;
+  }
+  .hero .update-btn:hover{
+    background:var(--pink-soft);
+    border-color:#C45C7A;
+  }
 
   .sync-modal{
     position:fixed;inset:0;z-index:80;
@@ -223,6 +231,21 @@
     color:#2F6B45;
   }
   .sync-actions button:disabled{opacity:.55;cursor:wait;}
+  .update-password{
+    width:100%;
+    box-sizing:border-box;
+    border:1.5px solid #F4E7DE;
+    border-radius:16px;
+    padding:12px 14px;
+    margin:0 0 14px;
+    font-size:16px;
+    background:#fff;
+    color:var(--ink);
+  }
+  .update-password:focus{
+    outline:2px solid #F3C3D0;
+    border-color:#C45C7A;
+  }
 
   /* ===== 最新故事 ===== */
   .latest-block{
@@ -554,6 +577,7 @@
     <div class="hero-actions">
       <span class="count-badge" id="countBadge">已收录 0 个故事</span>
       <button type="button" class="refresh-btn" id="refreshBtn" title="绕过缓存，强制重新加载本页">强制刷新</button>
+      <button type="button" class="refresh-btn update-btn" id="updateBtn" title="输入密码后，从 Git 拉取服务器上的最新故事">更新故事</button>
       <button type="button" class="refresh-btn sync-btn" id="syncBtn" title="从 Notion 查找并制作尚未收录的系列故事">同步新故事</button>
     </div>
   </div>
@@ -594,12 +618,27 @@
         <li>打开根目录 <code>stories.json</code>：在 <code>stories</code> 数组里复制一条记录；封面请用 <code>.../assets/cover.jpg</code>。加上 <code>createdAt</code>（如 <code>2026-09-25T08:30:00+08:00</code>）。页顶「最新故事」取最近 3 本；系列正文仍按集数从早到晚排。</li>
         <li>连载故事加上 <code>"series": "中文系列名"</code>，并在同文件的 <code>seriesCatalog</code> 登记该系列（名称需一致）；单本不要填 <code>series</code>。</li>
         <li>本机可点页顶「同步新故事」：先运行 <code>python tools/sync_server.py</code>，用弹出的本地地址打开本站，选择系列后会查找 Notion 里还没收录的分册并生成文件。需要在 <code>tools/.env</code> 配置 Notion 集成令牌。</li>
+        <li>故事已经提交到 Git 后，可点页顶「更新故事」，输入 <code>tools/.env</code> 里的 <code>UPDATE_PASSWORD</code>。服务器只做快进拉取，不会接受网页传来的其他命令。第一次使用前，要先在服务器上手动更新到带这个按钮的版本，并让 Nginx 把 <code>/story/api/</code> 转到本机助手。</li>
         <li>通过 Nginx 等 HTTPS 方式访问本站（不要用双击本地文件预览），保存后点「强制刷新」，新卡片会出现在对应分区。</li>
         <li>本站为轻量 PWA：可用浏览器「安装应用 / 添加到主屏幕」；不做离线缓存，上架故事流程不变。</li>
       </ol>
     </details>
   </div>
 </section>
+
+<div class="sync-modal" id="updateModal" hidden>
+  <div class="sync-dialog" role="dialog" aria-modal="true" aria-labelledby="updateTitle">
+    <h2 id="updateTitle">更新故事</h2>
+    <p class="sync-lead">输入更新密码。核对通过后，服务器会从 Git 拉取当前分支的最新代码，然后刷新这页。</p>
+    <input class="update-password" id="updatePassword" type="password" autocomplete="off" spellcheck="false" placeholder="更新密码">
+    <div class="sync-error" id="updateError" hidden></div>
+    <pre class="sync-log" id="updateLog" hidden></pre>
+    <div class="sync-actions">
+      <button type="button" id="updateCloseBtn">关闭</button>
+      <button type="button" id="updateRunBtn" class="primary">开始更新</button>
+    </div>
+  </div>
+</div>
 
 <div class="sync-modal" id="syncModal" hidden>
   <div class="sync-dialog" role="dialog" aria-modal="true" aria-labelledby="syncTitle">
@@ -971,6 +1010,93 @@
     }
 
     syncBtn.addEventListener("click", openModal);
+
+    var updateModal = document.getElementById("updateModal");
+    var updateBtn = document.getElementById("updateBtn");
+    var updatePassword = document.getElementById("updatePassword");
+    var updateError = document.getElementById("updateError");
+    var updateLog = document.getElementById("updateLog");
+    var updateCloseBtn = document.getElementById("updateCloseBtn");
+    var updateRunBtn = document.getElementById("updateRunBtn");
+    var updateBusy = false;
+
+    function showUpdateError(msg){
+      updateError.hidden = !msg;
+      updateError.textContent = msg || "";
+    }
+
+    function openUpdate(){
+      if(updateBusy) return;
+      showUpdateError("");
+      updateLog.hidden = true;
+      updateLog.textContent = "";
+      updatePassword.value = "";
+      updateModal.hidden = false;
+      updatePassword.focus();
+    }
+
+    function closeUpdate(){
+      if(updateBusy) return;
+      updateModal.hidden = true;
+      updatePassword.value = "";
+    }
+
+    function runUpdate(){
+      var password = updatePassword.value || "";
+      if(!password){
+        showUpdateError("请先输入密码。");
+        return;
+      }
+      updateBusy = true;
+      updateRunBtn.disabled = true;
+      updateCloseBtn.disabled = true;
+      showUpdateError("");
+      updateLog.hidden = false;
+      updateLog.textContent = "正在拉取最新故事…";
+      fetch(apiUrl("api/update"), {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        cache: "no-store",
+        body: JSON.stringify({ password: password })
+      }).then(function(res){
+        return res.json().then(function(data){
+          if(!res.ok || data.ok === false){
+            throw new Error(data.error || ("请求失败 " + res.status));
+          }
+          return data;
+        });
+      }).then(function(data){
+        updatePassword.value = "";
+        updateLog.textContent = data.summary || "已完成。";
+        if(data.log) updateLog.textContent += "\n" + data.log;
+        updateBusy = false;
+        updateRunBtn.disabled = false;
+        updateCloseBtn.disabled = false;
+        if(data.updated){
+          window.setTimeout(forceRefresh, 900);
+        }
+      }).catch(function(err){
+        updateBusy = false;
+        updateRunBtn.disabled = false;
+        updateCloseBtn.disabled = false;
+        updateLog.hidden = true;
+        var message = err && err.message ? err.message : "更新失败";
+        if(message === "Failed to fetch"){
+          message = "还没有连上本机助手。请先运行 python tools/sync_server.py，并用它的地址打开本站。若站点挂在 /story/，还要把 /story/api/ 转到这个助手。";
+        }
+        showUpdateError(message);
+      });
+    }
+
+    updateBtn.addEventListener("click", openUpdate);
+    updateCloseBtn.addEventListener("click", closeUpdate);
+    updateRunBtn.addEventListener("click", runUpdate);
+    updatePassword.addEventListener("keydown", function(e){
+      if(e.key === "Enter") runUpdate();
+    });
+    updateModal.addEventListener("click", function(e){
+      if(e.target === updateModal) closeUpdate();
+    });
     closeBtn.addEventListener("click", function(){ if(!busy) modal.hidden = true; });
     modal.addEventListener("click", function(e){
       if(e.target === modal && !busy) modal.hidden = true;
@@ -978,7 +1104,9 @@
     findBtn.addEventListener("click", findStories);
     runBtn.addEventListener("click", runSync);
     document.addEventListener("keydown", function(e){
-      if(e.key === "Escape" && !modal.hidden && !busy) modal.hidden = true;
+      if(e.key !== "Escape") return;
+      if(!modal.hidden && !busy) modal.hidden = true;
+      if(!updateModal.hidden) closeUpdate();
     });
   })();
 
